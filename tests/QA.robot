@@ -1,19 +1,24 @@
 *** Settings ***
-Resource  /Resources/login_keywords.robot
-Resource  /Resources/QA_keywords.robot
-Library                 SeleniumLibrary
+Documentation
+Resource                                        Resources/login_keywords.robot
+Resource                                        Resources/QA_keywords.robot
+Library                                         SeleniumLibrary
+Test Setup                                      Begin Web Test
+Test Teardown                                   End Web Test
 
-
-Documentation    Suite description
 
 *** Variables ***
-${BROWSER}          headlesschrome
+${BROWSER}                                      chrome
+${URL}                                          https://test.skatteinformation.se/
+${USERNAME_USER}                                infotiv-user
+${USERNAME_EDITOR}                              infotiv-editor
+${PASSWORD}                                     slimy-very-decorate-transit
 
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+Q/A Page Shown
+    [Tags]                                      Q/A page
+    Given User logged in front page
+     When Click Q/A button menu bar
+     Then Q/A page is shown
 

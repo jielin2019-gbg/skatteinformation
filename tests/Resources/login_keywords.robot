@@ -10,4 +10,4 @@ Login Editor
 Log Out
 	# This keyword only works while window is maximized
 	Click Link  xpath=//a[@href="/user/logout"]
-	
+

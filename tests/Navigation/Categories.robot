@@ -8,5 +8,6 @@ Test Teardown  End Web Test
 
 
 *** Test Cases ***
-User can navigate to Fastighetsmoms link
-   
+Categories
+    Login User
+    Confirm Login Successful

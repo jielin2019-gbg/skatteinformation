@@ -7,19 +7,19 @@ Test Setup  Go To Page
 Test Teardown  Close page
 
 *** Variables ***
-${BROWSER} =        chrome
+${BROWSER} =        headlesschrome
 
 *** Keywords ***
 Go To Page
    Open Browser  ${URL}  ${BROWSER}
    Maximize Browser Window
 Close page
-      Close Browser	
+   Close Browser
 
 *** Test Cases ***
 Saving an article
-    [Documentation]     Log out from menu
-    [Tags]              logout
+    [Documentation]     Test saving function in edit page
+    [Tags]              saving
     Login Editor
     Wait Until Page Contains    infotiv-editor
     Click Element               class:toolbar-icon-system-admin-content
@@ -43,5 +43,3 @@ Saving an article
     Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel 1?
     Click Element               id:edit-submit
     Wait Until Page Contains    Artikel Test artikel 1 har raderats.
-
-

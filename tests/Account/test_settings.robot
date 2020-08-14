@@ -13,6 +13,11 @@ ${BROWSER} =                            chrome
 Log In
     The User Log In Successfully
 
+Visit Mitt Konto Page
+    The User Log In Successfully
+    The User Visit Mitt Konto Settings
+    The User Is On The Settings Page
+
 *** Keywords ***
 Skatteinformation Website Is Open
     Open Browser                        ${URL}     ${BROWSER}
@@ -21,3 +26,10 @@ Skatteinformation Website Is Open
 The User Log In Successfully
     Login User
     Page Should Contain                 Senaste nytt
+
+The User Visit Mitt Konto Settings
+    Click Link                          link:Mitt konto
+
+The User Is On The Settings Page
+    ${url}=      Get Location
+    Should Match    ${url}              https://test.skatteinformation.se/user/8624/edit

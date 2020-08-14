@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20200814 12:20:05.001" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20200814 13:31:09.463" rpa="false">
 <suite id="s1" name="Categories" source="C:\ITHS\Testprocesser i praktiken\project\skatteinformation\tests\Navigation\Categories.robot">
 <test id="s1-t1" name="Categories">
 <kw name="Begin Web Test" library="CategoriesKeywords" type="setup">
@@ -9,30 +9,71 @@
 <arg>about:blank</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20200814 12:20:05.242" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20200814 12:20:09.230" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<status status="PASS" starttime="20200814 12:20:09.230" endtime="20200814 12:20:09.231"></status>
+<msg timestamp="20200814 13:31:09.709" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20200814 13:31:09.708" endtime="20200814 13:31:15.363"></status>
 </kw>
-<msg timestamp="20200814 12:20:09.306" level="FAIL">SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 80
-</msg>
-<status status="FAIL" starttime="20200814 12:20:05.242" endtime="20200814 12:20:09.306"></status>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200814 13:31:15.363" endtime="20200814 13:31:19.491"></status>
 </kw>
-<status status="FAIL" starttime="20200814 12:20:05.242" endtime="20200814 12:20:09.306"></status>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20200814 13:31:19.492" level="INFO">Opening url 'https://test.skatteinformation.se/'</msg>
+<status status="PASS" starttime="20200814 13:31:19.492" endtime="20200814 13:31:20.050"></status>
+</kw>
+<status status="PASS" starttime="20200814 13:31:09.708" endtime="20200814 13:31:20.051"></status>
+</kw>
+<kw name="Login User" library="CategoriesKeywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="edit-name"]</arg>
+<arg>${USERNAME_USER}</arg>
+</arguments>
+<msg timestamp="20200814 13:31:20.052" level="INFO">Typing text 'infotiv-user' into text field '//*[@id="edit-name"]'.</msg>
+<status status="PASS" starttime="20200814 13:31:20.051" endtime="20200814 13:31:20.213"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="edit-pass"]</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20200814 13:31:20.213" level="INFO">Typing text 'slimy-very-decorate-transit' into text field '//*[@id="edit-pass"]'.</msg>
+<status status="PASS" starttime="20200814 13:31:20.213" endtime="20200814 13:31:20.389"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="edit-submit"]</arg>
+</arguments>
+<msg timestamp="20200814 13:31:20.389" level="INFO">Clicking button '//*[@id="edit-submit"]'.</msg>
+<status status="PASS" starttime="20200814 13:31:20.389" endtime="20200814 13:31:21.354"></status>
+</kw>
+<status status="PASS" starttime="20200814 13:31:20.051" endtime="20200814 13:31:21.354"></status>
+</kw>
+<kw name="Confirm Login Successful" library="CategoriesKeywords">
+<kw name="Location Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<arguments>
+<arg>https://test.skatteinformation.se/start</arg>
+</arguments>
+<msg timestamp="20200814 13:31:21.374" level="INFO">Current location is 'https://test.skatteinformation.se/start'.</msg>
+<status status="PASS" starttime="20200814 13:31:21.355" endtime="20200814 13:31:21.375"></status>
+</kw>
+<status status="PASS" starttime="20200814 13:31:21.355" endtime="20200814 13:31:21.376"></status>
 </kw>
 <kw name="End Web Test" type="teardown">
-<msg timestamp="20200814 12:20:09.310" level="FAIL">No keyword with name 'End Web Test' found.</msg>
-<status status="FAIL" starttime="20200814 12:20:09.309" endtime="20200814 12:20:09.310">No keyword with name 'End Web Test' found.</status>
+<msg timestamp="20200814 13:31:21.382" level="FAIL">No keyword with name 'End Web Test' found.</msg>
+<status status="FAIL" starttime="20200814 13:31:21.382" endtime="20200814 13:31:21.382">No keyword with name 'End Web Test' found.</status>
 </kw>
-<status status="FAIL" starttime="20200814 12:20:05.241" endtime="20200814 12:20:09.310" critical="yes">Setup failed:
-SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 80
-
-
-Also teardown failed:
+<status status="FAIL" starttime="20200814 13:31:09.708" endtime="20200814 13:31:21.382" critical="yes">Teardown failed:
 No keyword with name 'End Web Test' found.</status>
 </test>
-<status status="FAIL" starttime="20200814 12:20:05.002" endtime="20200814 12:20:09.310"></status>
+<status status="FAIL" starttime="20200814 13:31:09.465" endtime="20200814 13:31:21.383"></status>
 </suite>
 <statistics>
 <total>

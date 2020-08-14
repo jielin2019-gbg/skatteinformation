@@ -22,3 +22,14 @@ Login User
 
 Confirm Login Successful
     Location Should Be  https://test.skatteinformation.se/start
+
+Verify The User Is Able To Show different Categories When Clicks On Dropdown Arrow
+    Click Element   xpath://*[@id="block-main-menu"]
+    Page Should Contain    Allmänt
+    Page Should Contain    Civilrätt och bokföring
+    Page Should Contain    Deklaration och förfarande
+
+
+
+End Web Test
+    Close Browser

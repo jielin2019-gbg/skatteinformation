@@ -16,9 +16,14 @@ ${PASSWORD}                                     slimy-very-decorate-transit
 
 
 *** Test Cases ***
-Q/A Page Shown
-    [Tags]                                      Q/A page
-    Given User logged in front page
-     When Click Q/A button menu bar
-     Then Q/A page is shown
+#Q/A Page Shown
+#    [Tags]                                      Q/A page
+#    Given User logged in front page
+#     When Click Q/A button menu bar
+#     Then Q/A page is showne
 
+Next Page
+     [Tags]                                      Q/A page
+     Given Begin at Q/A page
+     When Click Next page arrow
+     Then Next page is shown

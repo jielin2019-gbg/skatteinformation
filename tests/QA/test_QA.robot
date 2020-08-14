@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
-Resource                                        Resources/login_keywords.robot
-Resource                                        Resources/QA_keywords.robot
+Resource                                        ../Resources/login_keywords.robot
+Resource                                        ../Resources/QA_keywords.robot
 Library                                         SeleniumLibrary
 Suite Setup                                     Begin Web Test
 Suite Teardown                                  End Web Test

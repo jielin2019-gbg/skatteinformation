@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20200816 11:15:21.103" rpa="false">
 <suite id="s1" name="Test Content Editor Edit Article" source="C:\Users\SpEEk0Desktop\Documents\GitHub\skatteinformation\tests\Content\test_content_editor_edit_article.robot">
-<test id="s1-t1" name="Login to webpage as Editor and add an Article">
+<test id="s1-t1" name="Login to webpage as Editor and edit an Article">
 <kw name="Go to Webpage" type="setup">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the optional ``url``.</doc>

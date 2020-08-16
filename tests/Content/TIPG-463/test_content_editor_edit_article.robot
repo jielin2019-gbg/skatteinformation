@@ -45,7 +45,7 @@ Close Webpage
     Close Browser
 
 *** Test Cases ***
-Login to webpage as Editor and add an Article
+Login to webpage as Editor and edit an Article
     [Documentation]     Login to https://test.skatteinformation.se/ as an Editor and edit content on the content page.
     [Tags]              login       editor      content     edit
     Given that the editor is on content type page after logging in

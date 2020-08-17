@@ -1,10 +1,14 @@
-*** keywords ***
+*** Keywords ***
 Login User
 	Input Text  //*[@id="edit-name"]  ${USERNAME_USER}
 	Input Text  //*[@id="edit-pass"]  ${PASSWORD}
 	Click Button  //*[@id="edit-submit"]
 Login Editor
 	Input Text  //*[@id="edit-name"]  ${USERNAME_EDITOR}
+	Input Text  //*[@id="edit-pass"]  ${PASSWORD}
+	Click Button  //*[@id="edit-submit"]
+Login ResetUser
+	Input Text  //*[@id="edit-name"]  ${RESET_USERNAME}
 	Input Text  //*[@id="edit-pass"]  ${PASSWORD}
 	Click Button  //*[@id="edit-submit"]
 Log Out

@@ -1,6 +1,6 @@
 *** keywords ***
 Login User
-	Input Text  //*[@id="edit-name"]  ${USERNAME_USER}
+    Input Text  //*[@id="edit-name"]  ${USERNAME_USER}
 	Input Text  //*[@id="edit-pass"]  ${PASSWORD}
 	Click Button  //*[@id="edit-submit"]
 Login Editor
@@ -10,4 +10,3 @@ Login Editor
 Log Out
 	# This keyword only works while window is maximized
 	Click Link  xpath=//a[@href="/user/logout"]
-

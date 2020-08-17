@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('robot') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/*.robot'
+        sh 'robot -d results --variable BROWSER:headlesschrome ./tests'
       }
     }
   }

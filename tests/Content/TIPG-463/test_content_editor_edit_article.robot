@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation     A single test to see if a user with the right credentials can log in as an editor and edit content on the content page.
 Library           SeleniumLibrary
-Resource	  ../Resources/login_keywords.robot
-Resource	  ../Resources/login_variables.robot
+Resource	  ../../Resources/login_keywords.robot
+Resource	  ../../Resources/login_variables.robot
 Test Setup  Go to Webpage
 Test Teardown  Close Webpage
 	
@@ -24,7 +24,7 @@ Go to Content Page
 
 Go to edit page for the top item on the content page
     Click Element                   xpath://html/body/div[2]/div/main/div[3]/div[2]/div/div/div[2]/table/tbody/tr[1]/td[7]/div/div/ul/li[1]/a
-    Wait Until Page Contains        Redigera Artikel
+    Wait Until Page Contains        Kom ihåg att ändra författardatumet innan du publicerar
 
 Edit title and save changes
     Input Text                      xpath://html/body/div[2]/div/main/div[3]/div/form/div/div[1]/div/div/div/details[1]/div/fieldset[1]/div/div[1]/div/input        (automated_edit)        clear=False

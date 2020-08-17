@@ -20,12 +20,18 @@ Close page
 Saving an article
     [Documentation]     Test saving function in edit page
     [Tags]              saving
+    # Login
     Login Editor
     Wait Until Page Contains    infotiv-editor
+    #Go to Create Article
     Go to                       https://test.skatteinformation.se/node/add/article
+    #Input text in Title
     Input Text                  xpath://*[@id="edit-title-0-value"]     Test artikel
+    #Save article
     Click Element               id:edit-submit
+    #Check if article is saved
     Wait Until Page Contains    Test artikel (Artikel) har skapats.
+    #Remove created article
     Click Element               xpath://*[@id="block-skatteinfo-local-tasks"]/ul/li[3]/a
     Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel?
     Click Element               id:edit-submit

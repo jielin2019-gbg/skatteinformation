@@ -17,7 +17,7 @@ ${PASSWORD}                                     slimy-very-decorate-transit
 
 *** Test Cases ***
 Test on 'Collapse' button
-    [Tags]                                      Link in QA paragraph
+    [Tags]                                      'Collapse' button functionality
     User clicks on show button
     Collapse button is clicked
     Q/A paragraph disappear

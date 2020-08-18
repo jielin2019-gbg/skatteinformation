@@ -28,7 +28,6 @@ Begin at Q/A page
     Q/A page is shown
 
 Click Next page arrow
-    #Scroll Element Into View                     xpath://li[@class='pager__item pager__item--next']//span[2]
     Click Element                                xpath://li[@class='pager__item pager__item--next']//span[2]
 
 Next page is shown

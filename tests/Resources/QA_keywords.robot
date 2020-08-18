@@ -34,3 +34,4 @@ Click Next page arrow
 Next page is shown
     ${url_next_page}                             Get Location
     Should Match                                 ${url_next_page}    https://test.skatteinformation.se/fraga-och-svar?page=1
+

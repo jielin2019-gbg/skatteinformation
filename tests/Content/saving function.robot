@@ -12,7 +12,7 @@ ${BROWSER} =        headlesschrome
 *** Keywords ***
 Go To Page
    Open Browser  ${URL}  ${BROWSER}
-   Maximize Browser Window
+   Set Window Size    ${1920}    ${1080}
 Close page
    Close Browser
 

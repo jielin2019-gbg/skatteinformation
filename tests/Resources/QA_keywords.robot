@@ -7,7 +7,7 @@ Begin Web Test
 Go To Web Page
     Go To   ${URL}
 
-Verify start page loaded
+Verify Q&A page loaded
     ${link_text} = 		                    Get Text  xpath://*[@id="block-facet-category-term-name"]/div/button
     Should Be Equal		                    ${link_text}  Visa fler val
 
@@ -26,6 +26,9 @@ Verify selected tags became marked
       Page Should Contain Element           xpath://*[@id="kategori-EU-handel"]
       Page Should Contain Element           xpath://*[@id="kategori-Enskild-firma"]
       Page Should Contain Element           xpath://*[@id="kategori-Aktiebolag"]
+
+Click Q/A button menu bar
+      Click Element                         xpath://a[text()='Fråga / svar']
 
 End Web Test
     Close Browser

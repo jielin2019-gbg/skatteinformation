@@ -14,7 +14,8 @@ ${DAILY_RATTS}                                  id=edit-field-mail-daily-digest-
 *** Test Cases ***
 
 Assert Rättsfall option visible in Daily
-    [Documentation]                             Check that checkbox for daily news is selected and therefor the option for "rättsfall" is visible for the user
+    [Documentation]                             Check that checkbox for daily news is selected and therefor the option
+     ...                                        for "rättsfall" is visible for the user
     [Tags]                                      test_verdict_vis
     Page Should Not Contain Element             id=block-sitebranding
     The User Log In Successfully
@@ -27,7 +28,8 @@ Assert Rättsfall option visible in Daily
 
 
 Assert Rättsfall option not visible in Daily
-    [Documentation]                             Check that checkbox for daily news is not selected and therefor the option for "rättsfall" is not visible
+    [Documentation]                             Check that checkbox for daily news is not selected and therefor the
+     ...                                        option for "rättsfall" is not visible
     [Tags]                                      test_verdict_invis
     Page Should Not Contain Element             id=block-sitebranding
     The User Log In Successfully
@@ -36,7 +38,22 @@ Assert Rättsfall option not visible in Daily
     Element Should Not Be Visible               ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
 
-
+Assert Rättsfall option visible in Daily after updated mail settings
+    [Documentation]                             Check that checkbox for daily news is selected and therefor the option
+     ...                                        for "rättsfall" is visible for the user after updated mail settings
+    [Tags]                                      test_verdict_vis2
+    Page Should Not Contain Element             id=block-sitebranding
+    The User Log In Successfully
+    The User Visit Mitt Konto Settings
+    Element Should Not Be Visible               ${DAILY_RATTS}
+    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Checkbox Should Be Selected                 ${DAILY}
+    Element Should Be Visible                   ${DAILY_RATTS}
+    Checkbox Should Not Be Selected             ${DAILY_RATTS}
+    Save Mail Settings
+    Checkbox Should Be Selected                 ${DAILY}
+    Element Should Be Visible                   ${DAILY_RATTS}
+    Checkbox Should Not Be Selected             ${DAILY_RATTS}
 
 *** Keywords ***
 Go To Site

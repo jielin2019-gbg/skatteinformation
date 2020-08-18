@@ -4,6 +4,7 @@ Resource                                        ../Resources/login_keywords.robo
 Resource                                        ../Resources/QA_keywords.robot
 Library                                         SeleniumLibrary
 Suite Setup                                     Begin Web Test
+Test Teardown                                   Log Out
 Suite Teardown                                  End Web Test
 
 
@@ -20,7 +21,7 @@ Q/A Page Shown
     [Tags]                                      Q/A page
     Given User logged in front page
      When Click Q/A button menu bar
-     Then Q/A page is showne
+     Then Q/A page is shown
 
 Next Page
     [Tags]                                      Q/A page

@@ -7,7 +7,7 @@ Test Setup	     Begain Web Test
 Test Teardown	 End Web Test
 
 *** Variables ***
-${BROWSER} =                  Chrome
+${BROWSER} =                  headlesschrome
 *** Keywords ***
 Begain Web Test
     Open Browser     ${URL}           ${BROWSER}

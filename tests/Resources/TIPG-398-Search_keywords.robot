@@ -40,5 +40,20 @@ Search Empty
     Wait Until Page Contains Element        xpath://*[@id="block-facet-search-content-type"]/div/ul/li[4]/a
 
 
+Click Refresh
+    Click Element                           //*[@id="views-exposed-form-search-page"]/div/div[2]/a
+
+
+Verify Refresh Button
+    Wait Until Element Is Visible           id:edit-submit-search
+    ${Refresh_all}=                         Get text        xpath://*[@id="edit-search"]
+    Should be equal                         ${empty}        ${Refresh_all}
+
+
+Verify Search invalid
+    ${link_text} =                          Get Text  xpath://*[@id="block-facet-search-summary"]/ul/li/span[1]
+    Page Should Contain                     ${link_text}  Visar 0 träffar på "abcd"
+
+
 End Web Test
         Close Browser

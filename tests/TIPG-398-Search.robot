@@ -29,3 +29,25 @@ Make Search With No Query
         Login User
         Search Empty
         Log Out
+
+
+Verify Searchbar Clearing after Refresh
+        [Documentation]                     Test to verify that search bar is clearing after refreshing
+        [Tags]                              TIPG-477
+        Login User
+        Enter Search Text                   moms
+        Click Search
+        Verify Search
+        Click Refresh
+        Verify Refresh Button
+        Log Out
+
+
+Verify Login and Invalid Search
+        [Documentation]                     Test to verify that search function is working with an invalid keyword for eg: abcd
+        [Tags]                              TIPG-470
+        Login User
+        Enter Search Text                   abcd
+        Click Search
+        Verify Search invalid
+        Log Out

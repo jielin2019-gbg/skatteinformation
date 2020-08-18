@@ -35,3 +35,24 @@ Next page is shown
     ${url_next_page}                             Get Location
     Should Match                                 ${url_next_page}    https://test.skatteinformation.se/fraga-och-svar?page=1
 
+#*** Keywords *** (TIPG-545 - test functionality of 'Collapse' button )
+
+User clicks on show button
+
+      Login User
+      Click Q/A button menu bar
+      Execute Javascript                    window.scrollBy(0,400)
+      Click Button                          xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button
+
+Verify Q/A paragraph displayed
+      Page Should Contain Element          xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div
+      Page Should Contain Element          xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div/div/div[1]
+      sleep                                5s
+
+Collapse button is clicked
+
+      Click Button                         xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[2]/article/div[1]/button
+
+Q/A paragraph disappear
+      Page Should not Contain              FRÅGA
+

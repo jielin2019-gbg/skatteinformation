@@ -17,9 +17,7 @@ Go to Webpage
     Wait Until Page Contains        Du behöver vara inloggad
 
 Go to Content Page
-    Click Element                   xpath://*[@id="toolbar-item-administration"]
-    Wait Until Element Is Visible   xpath://*[@id="toolbar-item-administration-tray"]/nav/div[1]/ul/li/a
-    Click Element                   xpath://*[@id="toolbar-item-administration-tray"]/nav/div[1]/ul/li/a
+    Go To                           https://test.skatteinformation.se/admin/content
     Wait Until Element Is Visible   xpath://html/body/div[2]/div/main/div[3]/div[2]/div/div/div[2]/table/tbody/tr[1]/td[7]/div/div/ul/li[1]/a
 
 Go to edit page for the top item on the content page

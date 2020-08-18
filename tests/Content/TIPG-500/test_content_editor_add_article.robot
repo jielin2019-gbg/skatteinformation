@@ -18,7 +18,7 @@ Generate Title
 
 Go to Webpage
     Open Browser  ${URL}  ${BROWSER}
-    Maximize Browser Window
+    Set Window Size    ${1400}    ${600}
     Wait Until Page Contains        Du behöver vara inloggad
 
 Go to Content Page

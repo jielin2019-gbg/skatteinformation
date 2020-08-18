@@ -1,28 +1,42 @@
 *** Keywords ***
 Begin Web Test
-    Open Browser    about:blank  ${BROWSER}
+    Open Browser                            about:blank  ${BROWSER}
     Maximize Browser Window
+    Set Selenium Speed                      0.5
 
 Go To Web Page
     Go To   ${URL}
 
+Verify start page loaded
+    ${link_text} = 		                    Get Text  xpath://*[@id="block-facet-category-term-name"]/div/button
+    Should Be Equal		                    ${link_text}  Visa fler val
+
 User select more than one filetring tag
       Login User
       Click Q/A button menu bar
-      Click Element                         id:kategori-Enskild-firma
+      Click Button                          xpath://*[@id="block-facet-category-term-name"]/div/button
+      Execute Javascript                    window.scrollBy(0,800)
+      Click Element                         xpath://*[@id="kategori-Enskild-firma"]
+      Click Element                         xpath://*[@id="kategori-EU-handel"]
+      Click Element                         xpath://*[@id="kategori-Aktiebolag"]
       Execute Javascript                    window.scrollBy(0,400)
-      Click Element                         id:kategori-Aktiebolag
-      Execute Javascript                    window.scrollBy(0,400)
-      Click Element                         id:kategori-EU-handel
+      sleep                                 5s
 
 Verify selected tags became marked
       Page Should Contain Element           xpath://*[@id="kategori-EU-handel"]
       Page Should Contain Element           xpath://*[@id="kategori-Enskild-firma"]
       Page Should Contain Element           xpath://*[@id="kategori-Aktiebolag"]
 
-
-Number of Q&A are displayed correctly.
-      Click Element                         xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]/a/span[1]
+Check relevant Q&A are displayed
+      Execute Javascript                    window.scrollBy(0,900)
+      Click Element                         xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]/a
+      sleep                                 5s
 
 Verify all Q&A are displayed
-      Page should contain                   xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]
+      Page should contain Element           xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]
+
+Click Q/A button menu bar
+      Click Element                         xpath://a[text()='Fråga / svar']
+
+End Web Test
+    Close Browser

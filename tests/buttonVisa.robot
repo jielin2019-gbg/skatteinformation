@@ -1,12 +1,9 @@
-*** Settings ***
-Resource  /Resources/login_keywords.robot
-Library                 SeleniumLibrary
-Test Setup  Begin Web Test
-Test Teardown  End Web Test
+
 
 *** Variables ***
-${BROWSER}          headlesschrome
+${BROWSER}          Chrome
 ${URL}              https://test.skatteinformation.se/fraga-och-svar
+
 *** Keywords ***
 Begin Web Test
     Open Browser    about:blank  ${BROWSER}

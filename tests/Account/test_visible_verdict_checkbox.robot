@@ -3,7 +3,8 @@ Documentation                           Change daily email, weekly email setting
 Library                                 SeleniumLibrary
 Resource	                            ../Resources/login_keywords.robot
 Resource	                            ../Resources/login_variables.robot
-Test Setup                             Go To Site
+Resource	                            ../Resources/setup_keywords.robot
+Test Setup                             Skatteinformation Website Is Open
 Test Teardown                          Close Browser
 
 *** Variables ***
@@ -54,7 +55,32 @@ Assert Rättsfall option visible in Daily after updated mail settings
     Checkbox Should Be Selected                 ${DAILY}
     Element Should Be Visible                   ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
+    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Checkbox Should Not Be Selected             ${DAILY}
+    Save Mail Settings
 
+Assert Rättsfall option visible in Daily after updated mail settings and relogs
+    [Documentation]                             Check that checkbox for daily news is selected and therefor the option
+     ...                                        for "rättsfall" is visible for the user after updated mail settings
+    [Tags]                                      test_verdict_vis3
+    Page Should Not Contain Element             id=block-sitebranding
+    The User Log In Successfully
+    The User Visit Mitt Konto Settings
+    Element Should Not Be Visible               ${DAILY_RATTS}
+    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Checkbox Should Be Selected                 ${DAILY}
+    Element Should Be Visible                   ${DAILY_RATTS}
+    Checkbox Should Not Be Selected             ${DAILY_RATTS}
+    Save Mail Settings
+    Log Out
+    Page Should Not Contain Element             id=block-sitebranding
+    The User Log In Successfully
+    The User Visit Mitt Konto Settings
+    Element Should Be Visible                   ${DAILY_RATTS}
+    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Checkbox Should Not Be Selected             ${DAILY}
+    Save Mail Settings
+    
 *** Keywords ***
 Go To Site
     Open Browser                        ${URL}     ${BROWSER}

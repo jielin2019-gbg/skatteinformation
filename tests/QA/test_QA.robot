@@ -27,3 +27,11 @@ Test on 'Collapse' button
     User clicks on show button
     Collapse button is clicked
     Q/A paragraph disappear
+
+Visa Button
+    [Tags]                                      TIPG-549
+    Given User logged in front page
+    When  Click Q/A button menu bar
+    Click Link
+    When  Click 'Visa' Button
+    Then  Verify answer is visable

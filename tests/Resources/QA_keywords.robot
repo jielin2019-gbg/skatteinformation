@@ -46,5 +46,11 @@ Collapse button is clicked
 Q/A paragraph disappear
       Page Should not Contain              FRÅGA
 
+#*** Keywords *** TIPG-549 - test the functionality of the 'visa' button
 
+Click 'Visa' Button
+      Click Element                         xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button/span[1]
+
+Verify answer is visable
+      Page Should Contain Element           xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div/div/div[3]
 

@@ -1,14 +1,14 @@
 *** Settings ***
 Documentation
-Resource                                        Resources/login_keywords.robot
-Resource                                        Resources/QA_keywords.robot
+Resource                                        ../Resources/login_keywords.robot
+Resource                                        ../Resources/QA_keywords.robot
 Library                                         SeleniumLibrary
-Test Setup                                      Begin Web Test
-Test Teardown                                   End Web Test
+Suite Setup                                     Begin Web Test
+Suite Teardown                                  End Web Test
 
 
 *** Variables ***
-${BROWSER}                                      chrome
+${BROWSER}                                      headless chrome
 ${URL}                                          https://test.skatteinformation.se/
 ${USERNAME_USER}                                infotiv-user
 ${USERNAME_EDITOR}                              infotiv-editor
@@ -22,3 +22,8 @@ Q/A Page Shown
      When Click Q/A button menu bar
      Then Q/A page is shown
 
+Test on 'Collapse' button
+    [Tags]                                      'Collapse' button functionality
+    User clicks on show button
+    Collapse button is clicked
+    Q/A paragraph disappear

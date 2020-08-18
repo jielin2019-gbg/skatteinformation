@@ -18,10 +18,6 @@ Test mutiple filtering tags
     When User select more than one filetring tag
     Then Check relevant Q&A are displayed
 
-Test Selected Q&A are displayed
-    [Tags]                                  DEBUG / Test funcionality of chosen Q&A are displayed
-    Given Check relevant Q&A are displayed
-    When Verify all Q&A are displayed
-    Then End Web Test
+
 
 

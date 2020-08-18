@@ -13,7 +13,7 @@ ${PASSWORD} =                slimy-very-decorate-transit
 *** Keywords ***
 Begain Web Test
     Open Browser     ${URL}           ${BROWSER}
-    Maximize Browser Window
+    Set Window Size    ${1920}       ${1080}
 End Web Test
         Close Browser
 

@@ -22,6 +22,6 @@ User is able to edit the article
        Login Editor
        Wait Until Page Contains        infotiv-editor
        Go To                          https://test.skatteinformation.se/admin/content
-	   Click Element                  xpath://td/a[contains(text(),'testartikel')]/../../td[7]/div/div/ul/li[contains(@class, 'edit')]/a
+	   Click Element                  xpath://a[contains(text(),'testartikel')]
+	   Click Element                  xpath://*[@id="block-skatteinfo-local-tasks"]/ul/li[2]/a
        Wait Until Page Contains       Redigera Artikel testartikel
-	   Click Button                   xpath://*[@id="edit-submit"]

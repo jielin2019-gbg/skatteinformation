@@ -9,7 +9,7 @@ Suite Teardown                                  End Web Test
 
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                      headlesschrome
 ${URL}                                          https://test.skatteinformation.se/
 ${USERNAME_USER}                                infotiv-user
 ${USERNAME_EDITOR}                              infotiv-editor
@@ -45,6 +45,6 @@ Visa Button
 
 Test mutiple filtering tags
     [Tags]                                  DEBUG / Test funcionality of mutiple filtering tags
-    Given Go To Web Page
+    Given Begin at Q/A page
     When User select more than one filetring tag
     Then Verify selected tags became marked

@@ -1,17 +1,19 @@
 *** Keywords ***
+Begin Web Test
+      Open Browser	                         ${URL}  	        ${BROWSER}
+      Set Window Size                        1920               1080
+    #Maximize Browser Window
 
 Verify Q&A page loaded
     ${link_text} = 		                    Get Text  xpath://*[@id="block-facet-category-term-name"]/div/button
     Should Be Equal		                    ${link_text}  Visa fler val
 
 User select more than one filetring tag
-      Login User
-      Click Q/A button menu bar
       Click Button                          xpath://*[@id="block-facet-category-term-name"]/div/button
       Execute Javascript                    window.scrollBy(0,800)
-      Click Element                         xpath://*[@id="kategori-Enskild-firma"]
-      Click Element                         xpath://*[@id="kategori-EU-handel"]
-      Click Element                         xpath://*[@id="kategori-Aktiebolag"]
+      Select Checkbox                       xpath://*[@id="kategori-Enskild-firma"]
+      Select Checkbox                       xpath://*[@id="kategori-EU-handel"]
+      Select Checkbox                       xpath://*[@id="kategori-Aktiebolag"]
       Execute Javascript                    window.scrollBy(0,400)
       sleep                                 5s
 
@@ -23,11 +25,6 @@ Verify selected tags became marked
 Click Q/A button menu bar
       Click Element                         xpath://a[text()='Fråga / svar']
 
-Begin Web Test
-      Open Browser	                         ${URL}  	        ${BROWSER}
-      Set Window Size                        1920               1080
-    #Maximize Browser Window
-
 End Web Test
     Close Browser
 
@@ -38,9 +35,6 @@ User logged in front page
 Verify logged in
     ${url_start}                                 Get Location
     Should Match                                 ${url_start}       https://test.skatteinformation.se/start
-
-Click Q/A button menu bar
-    Click Link                                   Fråga / svar
 
 Q/A page is shown
     ${url_Q/A}                                   Get Location
@@ -72,7 +66,6 @@ Verify Q/A paragraph displayed
       sleep                                5s
 
 Collapse button is clicked
-
       Click Button                         xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[2]/article/div[1]/button
 
 Q/A paragraph disappear

@@ -57,12 +57,15 @@ Q/A paragraph disappear
 
 #**************** TIPG-555 testing the filtering option
 
-Clicking show more and selecting category
+Show more and selecting category
+    [Arguments]                             ${kategori}
     Click Button                           xpath://*[@id="block-facet-category-term-name"]/div/button
-    Click Button                           xpath://*[@id="kategori-Förmåner"]
+    Select Checkbox                        xpath://*[@id="kategori-${kategori}"]
 
-Checkbox Should Be Selected
-    Checkbox Should Be Selected             xpath://*[@id="kategori-Förmåner"]
+Checkbox Selected
+    [Arguments]                            ${kategori}
+    Checkbox should be selected            xpath://*[@id="kategori-${kategori}"]
+
 
 #*** Keywords *** TIPG-549 - test the functionality of the 'visa' button
 

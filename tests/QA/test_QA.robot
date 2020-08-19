@@ -9,12 +9,11 @@ Test Teardown                                   Log Out
 Suite Teardown                                  End Web Test
 
 *** Variables ***
-${BROWSER}                                      chrome
+${BROWSER}                                      headless chrome
 ${URL}                                          https://test.skatteinformation.se/
 ${USERNAME_USER}                                infotiv-user
 ${USERNAME_EDITOR}                              infotiv-editor
 ${PASSWORD}                                     slimy-very-decorate-transit
-
 
 *** Test Cases ***
 Q/A Page Shown
@@ -36,10 +35,10 @@ Test on 'Collapse' button
     Q/A paragraph disappear
 
 Selecting a filter category
-    [Tags]                                      TIPG-555 Q/A page
+    [Tags]                                      TIPG-555 Q/A page category selector
     Given Begin at Q/A page
-    When Clicking show more and selecting category
-    Then Checkbox should be selected
+    When Show more and selecting category       Förmåner
+    Then Checkbox Selected                      Förmåner
 
 Visa Button
     [Tags]                                      TIPG-549

@@ -23,6 +23,18 @@ Q/A Page Shown
      When Click Q/A button menu bar
      Then Q/A page is shown
 
+Test on 'Collapse' button
+    [Tags]                                      TIPG-545
+    User clicks on show button
+    Collapse button is clicked
+    Q/A paragraph disappear
+
+Visa Button
+    [Tags]                                      TIPG-549
+    Given Begin at Q/A page
+    When Click 'Visa' Button
+    Then Verify answer is visible
+
 Next Page
     [Tags]                                      TIPG-550
     Given Begin at Q/A page
@@ -36,15 +48,5 @@ Previous Page
     When Click Previous page button
     Then Previous page is shown
 
-Test on 'Collapse' button
-    [Tags]                                      'Collapse' button functionality
-    User clicks on show button
-    Collapse button is clicked
-    Q/A paragraph disappear
 
-Visa Button
-    [Tags]                                      TIPG-549
-    Given Begin at Q/A page
-    When Click 'Visa' Button
-    Then Verify answer is visable
 

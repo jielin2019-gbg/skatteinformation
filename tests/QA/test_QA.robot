@@ -2,13 +2,15 @@
 Documentation
 Resource                                        ../Resources/login_keywords.robot
 Resource                                        ../Resources/QA_keywords.robot
+Resource                                        ../Resources/login_variables.robot
 Library                                         SeleniumLibrary
 Suite Setup                                     Begin Web Test
+Test Teardown                                   Log Out
 Suite Teardown                                  End Web Test
 
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                      chrome
 ${URL}                                          https://test.skatteinformation.se/
 ${USERNAME_USER}                                infotiv-user
 ${USERNAME_EDITOR}                              infotiv-editor
@@ -20,7 +22,7 @@ Q/A Page Shown
     [Tags]                                      Q/A page
     Given User logged in front page
      When Click Q/A button menu bar
-     Then Q/A page is showne
+     Then Q/A page is shown
 
 Next Page
     [Tags]                                      Q/A page
@@ -33,4 +35,10 @@ Test on 'Collapse' button
     User clicks on show button
     Collapse button is clicked
     Q/A paragraph disappear
+
+Selecting a filter category
+    [Tags]                                      TIPG-555 Q/A page
+    Given Begin at Q/A page
+    When Clicking show more and selecting category
+    Then Checkbox should be selected
 

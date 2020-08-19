@@ -56,3 +56,11 @@ Collapse button is clicked
 Q/A paragraph disappear
       Page Should not Contain              FRÅGA
 
+#**************** TIPG-555 testing the filtering option
+
+Clicking show more and selecting category
+    Click Button                           xpath://*[@id="block-facet-category-term-name"]/div/button
+    Click Button                           xpath://*[@id="kategori-Förmåner"]
+
+Checkbox Should Be Selected
+    Checkbox Should Be Selected             xpath://*[@id="kategori-Förmåner"]

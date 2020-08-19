@@ -3,22 +3,14 @@ Documentation     This is some basic info about the whole test suite
 Library           SeleniumLibrary
 Resource	      ../Resources/login_keywords.robot
 Resource	      ../Resources/login_variables.robot
-Test Setup  Go To Page
-Test Teardown  Close page
-
-*** Variables ***
-${BROWSER} =        chrome
+Resource	      ../Resources/navigation_variables.robot
+Resource	      ../Resources/navigation_keywords.robot	
+Test Setup  Begin Web Test
+Test Teardown  End Web Test
 
 *** Keywords ***
 Go To Page
-   Open Browser  ${URL}  ${BROWSER}
-   Maximize Browser Window
    Set Selenium Speed          0.9
-Close page
-      Close Browser
-Varify login as user
-      Wait Until Page Contains    Logga ut
-
 
 *** Test Cases ***
 User can able to acces own account details

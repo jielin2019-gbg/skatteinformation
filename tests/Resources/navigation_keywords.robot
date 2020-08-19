@@ -1,15 +1,7 @@
-*** Settings ***
-Library     SeleniumLibrary
-Library     Collections
-Resource       ../Resources/login_keywords.robot
-
-*** Variables ***
-${BROWSER} =  chrome
-
 *** Keywords ***
 Begin Web Test
     Open Browser                about:blank   ${BROWSER}
-    Maximize Browser Window
+    Set Window Size    		${1920}       ${1080}
     Go To                       ${URL}
 
 Confirm Login Successful
@@ -37,7 +29,6 @@ Verify the user is able to navigate when clicks on any of the popular topic of 3
     Click Link      //*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/a
     Location Should Be   https://test.skatteinformation.se/artikel/708/proposition-om-nya-skatteregler-generationsskiften-i-famansforetag
     Page Should Contain     Alexandra Wallerius
-
 
 
 
@@ -78,6 +69,24 @@ Press And Verify Förmåner
 Press And Verify 3:12
    Click Element                 //*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[1]/form/div[1]/div[3]/div[2]/div/div/div[2]
    Location Should Be            https://test.skatteinformation.se/sok?search=3%3A12-reglerna&f%5B0%5D=kategori%3A29
+
+
+Press and Verify Content of Frågor/Svar
+    Click Link                  //*[@id="block-main-menu"]/ul/li[4]/a
+    Location Should Be          https://test.skatteinformation.se/fraga-och-svar
+    Wait Until Page Contains    Går det att få avdrag för arbetsresor med mer än 18,50 kronor/mil?
+
+Press And Verify Content of Tabeller
+    Click Link                  //*[@id="block-main-menu"]/ul/li[5]/a
+    Location Should Be          https://test.skatteinformation.se/tabeller
+    Wait Until Page Contains      Allmän pensionsavgift
+
+
+Press and Verify Return To Start Button
+    Click Link                  //*[@id="block-main-menu"]/ul/li[5]/a
+    CLick Link                  //*[@id="block-main-menu"]/ul/li[1]/a
+    Location Should Be          https://test.skatteinformation.se/
+    Wait Until Page Contains    Visa fler filtreringsmöjligheter
 
 
 

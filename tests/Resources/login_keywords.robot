@@ -20,4 +20,3 @@ Log Out
 
 Log Out Forced
 	Go To  https://test.skatteinformation.se/user/logout
-

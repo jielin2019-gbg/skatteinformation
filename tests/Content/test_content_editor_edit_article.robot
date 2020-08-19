@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation     A single test to see if a user with the right credentials can log in as an editor and edit content on the content page.
 Library           SeleniumLibrary
-Resource	  ../../Resources/login_keywords.robot
-Resource	  ../../Resources/login_variables.robot
+Resource	  ../Resources/login_keywords.robot
+Resource	  ../Resources/login_variables.robot
 Test Setup  Go to Webpage
 Test Teardown  Close Webpage
 	

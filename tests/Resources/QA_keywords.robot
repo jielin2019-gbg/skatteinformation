@@ -2,7 +2,7 @@
 Begin Web Test
       Open Browser	                         ${URL}  	        ${BROWSER}
       Set Window Size                        1920               1080
-    #Maximize Browser Window
+      #Maximize Browser Window
 
 Go To Web Page
     Go To   ${URL}
@@ -83,23 +83,40 @@ On Next page
 
 #*** Keywords *** (TIPG-545 - test functionality of 'Collapse' button )
 
-User clicks on show button
+User is on QA paragraph
       Login User
       Click Q/A button menu bar
-      Execute Javascript                    window.scrollBy(0,400)
+      Execute Javascript                    window.scrollTo(0,400)
       Click Button                          xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button
-
-Verify Q/A paragraph displayed
-      Page Should Contain Element          xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div
-      Page Should Contain Element          xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div/div/div[1]
-      sleep                                5s
 
 Collapse button is clicked
       Click Button                         xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[2]/article/div[1]/button
 
 Q/A paragraph disappear
       Page Should not Contain              FRÅGA
+      sleep                                 2s
 
+#*** Keywords *** (TIPG-554 - test the functionality of the link in QA Paragraph )
+
+User is on page 4 QA paragraph
+      Login User
+      Click Q/A button menu bar
+      Execute Javascript                    window.scrollTo(0,600)
+      Click Element                        xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]/a
+      Click Element                        xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[3]/a
+      Click Element                        xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[3]/a/span[2]
+      Click Button                         xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[6]/article/div[1]/button
+      sleep                                5s
+
+
+Clicks the link in QA paragraph
+      Click Element                        xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[6]/article/div[2]/div/div/div[4]/p/a
+
+Corresponding website should appear
+       ${website_link}                     Get Location
+       Should Match                        ${website_link}     https://www4.skatteverket.se/rattsligvagledning/369260.html
+       sleep                               2s
+       Go Back
 
 #*** Keywords *** TIPG-549 - test the functionality of the 'visa' button
 

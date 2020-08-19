@@ -25,9 +25,15 @@ Q/A Page Shown
 
 Test on 'Collapse' button
     [Tags]                                      TIPG-545
-    User clicks on show button
-    Collapse button is clicked
-    Q/A paragraph disappear
+    Given User is on QA paragraph
+    When Collapse button is clicked
+    Then Q/A paragraph disappear
+
+Link in QA Paragraph
+    [Tags]                                      TIPG-554
+    Given User is on page 4 QA paragraph
+    When Clicks the link in QA paragraph
+    Then Corresponding website should appear
 
 Visa Button
     [Tags]                                      TIPG-549

@@ -16,6 +16,6 @@ Test mutiple filtering tags
     [Tags]                                  DEBUG / Test funcionality of chosen Q&A are displayed
     Given Go To Web Page
     When User select more than one filetring tag
-    Then Check relevant Q&A are displayed
+    Then Verify selected tags became marked
 
 

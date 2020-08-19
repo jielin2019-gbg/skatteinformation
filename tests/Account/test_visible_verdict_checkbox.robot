@@ -1,11 +1,11 @@
 *** Settings ***
-Documentation                           Change daily email, weekly email settings in Mitt Konto
-Library                                 SeleniumLibrary
-Resource	                            ../Resources/login_keywords.robot
-Resource	                            ../Resources/login_variables.robot
-Resource	                            ../Resources/setup_keywords.robot
-Test Setup                             Skatteinformation Website Is Open
-Test Teardown                          Close Browser
+Documentation                                   Change daily email, weekly email settings in Mitt Konto
+Library                                         SeleniumLibrary
+Resource	                                    ../Resources/login_keywords.robot
+Resource	                                    ../Resources/login_variables.robot
+Resource	                                    ../Resources/setup_keywords.robot
+Test Setup                                      Skatteinformation Website Is Open
+Test Teardown                                   Close Browser
 
 *** Variables ***
 ${BROWSER} =                                    chrome
@@ -20,7 +20,7 @@ Assert Rättsfall option visible in Daily
     [Tags]                                      test_verdict_vis
     Log in and go to account settings
     Element Should Not Be Visible               ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Click The Checkbox Dagligt Utskick
     Checkbox Should Be Selected                 ${DAILY}
     Element Should Be Visible                   ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
@@ -41,7 +41,7 @@ Assert Rättsfall option visible in Daily after updated mail settings
     [Tags]                                      test_verdict_vis2
     Log in and go to account settings
     Element Should Not Be Visible               ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Click The Checkbox Dagligt Utskick
     Checkbox Should Be Selected                 ${DAILY}
     Element Should Be Visible                   ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
@@ -49,7 +49,8 @@ Assert Rättsfall option visible in Daily after updated mail settings
     Checkbox Should Be Selected                 ${DAILY}
     Element Should Be Visible                   ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+#   Lines below may be a part of a teardown
+    Click The Checkbox Dagligt Utskick
     Checkbox Should Not Be Selected             ${DAILY}
     Save Mail Settings
 
@@ -60,7 +61,7 @@ Assert Rättsfall option visible in Daily after updated mail settings and relog
     [Tags]                                      test_verdict_vis3
     Log in and go to account settings
     Element Should Not Be Visible               ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Click The Checkbox Dagligt Utskick
     Checkbox Should Be Selected                 ${DAILY}
     Element Should Be Visible                   ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
@@ -69,7 +70,8 @@ Assert Rättsfall option visible in Daily after updated mail settings and relog
     Log in and go to account settings
     Element Should Be Visible                   ${DAILY_RATTS}
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+#   Lines below may be a part of a teardown
+    Click The Checkbox Dagligt Utskick
     Checkbox Should Not Be Selected             ${DAILY}
     Save Mail Settings
 
@@ -78,7 +80,7 @@ Assert Rättsfall checkbox still checked after updated mail settings and relog
     [Tags]                                      test_verdict_vis4
     Log in and go to account settings
     Element Should Not Be Visible               ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+    Click The Checkbox Dagligt Utskick
     Click The Checkbox Notiser Om Rättsfall
     Checkbox Should Be Selected                 ${DAILY}
     Checkbox Should Be Selected                 ${DAILY_RATTS}
@@ -86,7 +88,8 @@ Assert Rättsfall checkbox still checked after updated mail settings and relog
     Log Out
     Log in and go to account settings
     Checkbox Should Be Selected                 ${DAILY_RATTS}
-    Click The Checkbox Jag Vill Ha Dagligt Utskick
+#   Lines below may be a part of a teardown
+    Click The Checkbox Dagligt Utskick
     Click The Checkbox Notiser Om Rättsfall
     Save Mail Settings
 
@@ -97,30 +100,26 @@ Log in and go to account settings
     The User Log In Successfully
     The User Visit Mitt Konto Settings
 
-Go To Site
-    Open Browser                        ${URL}     ${BROWSER}
-    Maximize Browser Window
-
 The User Log In Successfully
     Login ResetUser
-    ${url}=                             Get Location
-    Should Match                        ${url}      https://test.skatteinformation.se/start
-    Page Should Contain Element         id=block-sitebranding
+    ${url}=                                     Get Location
+    Should Match                                ${url}      https://test.skatteinformation.se/start
+    Page Should Contain Element                 id=block-sitebranding
 
 The User Visit Mitt Konto Settings
-    Click Link                          //body/div/div/div/header/div/div/div/div/div/nav[@id='block-utility-menu']/ul/li[2]/a[1]
-    Wait Until Page Contains Element    id:edit-field-mail-daily-digest-wrapper
-    Page Should Contain                 E-postinställningar
+    Go To                                       https://test.skatteinformation.se/user/8629/edit
+    Wait Until Page Contains Element            id:edit-field-mail-daily-digest-wrapper
+    Page Should Contain                         E-postinställningar
 
-Click The Checkbox Jag Vill Ha Dagligt Utskick
-    ${ele}      Get WebElement          ${DAILY}
-    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
+Click The Checkbox Dagligt Utskick
+    ${ele}      Get WebElement                  ${DAILY}
+    Execute Javascript                          arguments[0].click();       ARGUMENTS    ${ele}
 
 Click The Checkbox Notiser Om Rättsfall
-    ${ele}      Get WebElement          ${DAILY_RATTS}
-    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
+    ${ele}      Get WebElement                  ${DAILY_RATTS}
+    Execute Javascript                          arguments[0].click();       ARGUMENTS    ${ele}
 
 Save Mail Settings
-    ${ele}      Get WebElement          id:edit-submit
-    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
-    Page Should Contain                 Ändringarna har sparats.
+    ${ele}      Get WebElement                  id:edit-submit
+    Execute Javascript                          arguments[0].click();       ARGUMENTS    ${ele}
+    Page Should Contain                         Ändringarna har sparats.

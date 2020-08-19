@@ -3,12 +3,12 @@ Library                 SeleniumLibrary
 Resource                login_variables.robot
 
 
+
 *** Keywords ***
 Open Browser To Start Page
-     Open Browser                          about:blank                     ${BROWSER}      options=add_argument("--ignore-certificate-errors")
-     Maximize Browser Window
-     Go To                                                                 ${URL}
-     Set Selenium Speed                                                                  1
+     Open Browser                          ${URL}     ${BROWSER}
+     Set Window Size                       1920       1080
+     Set Selenium Speed                    1
      Wait Until Page Contains              Ange din e-postadress som användarnamn.
 
 

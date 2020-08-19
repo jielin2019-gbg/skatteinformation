@@ -1,17 +1,13 @@
 ***Settings***
-Documentation  This is some
-Library		   SeleniumLibrary
-Test Setup	   Begin Web Test
+Documentation  Logging out from start page
+Library	       SeleniumLibrary
+Test Setup     Begin Web Test
 Test Teardown  End Web Test
-
 Resource       ../Resources/login_keywords.robot
 Resource       ../Resources/navigation_keywords.robot
 Resource       ../Resources/login_variables.robot
+Resource       ../Resources/navigation_variables.robot
 
-
-*** Variables ***
-${BROWSER} =  headlesschrome
-${URL} =  https://test.skatteinformation.se/start
 
 *** Keywords ***
 
@@ -29,8 +25,8 @@ Test of logout button
     [Tags]           TIPG-433
     Login User					
     Confirm Login Successful
-	Log Out
-	End Web Test
+    Log Out
+
 
 
 

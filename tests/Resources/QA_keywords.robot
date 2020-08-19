@@ -19,7 +19,7 @@ User select more than one filetring tag
       Select Checkbox                       xpath://*[@id="kategori-Enskild-firma"]
       Select Checkbox                       xpath://*[@id="kategori-EU-handel"]
       Select Checkbox                       xpath://*[@id="kategori-Aktiebolag"]
-      Execute Javascript                    window.scrollBy(0,400)
+      Execute Javascript                    window.scrollBy(0,800)
       sleep                                 5s
 
 Verify selected tags became marked

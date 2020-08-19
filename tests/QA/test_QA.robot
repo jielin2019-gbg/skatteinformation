@@ -43,9 +43,7 @@ Selecting a filter category
 
 Visa Button
     [Tags]                                      TIPG-549
-    Given User logged in front page
-    When  Click Q/A button menu bar
-    Click Link
-    When  Click 'Visa' Button
-    Then  Verify answer is visable
+    Given Begin at Q/A page
+    When Click 'Visa' Button
+    Then Verify answer is visable
 

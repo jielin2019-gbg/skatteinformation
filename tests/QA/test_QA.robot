@@ -4,6 +4,7 @@ Resource                                        ../Resources/login_keywords.robo
 Resource                                        ../Resources/QA_keywords.robot
 Library                                         SeleniumLibrary
 Suite Setup                                     Begin Web Test
+Test Teardown                                   Log Out
 Suite Teardown                                  End Web Test
 
 
@@ -20,7 +21,7 @@ Q/A Page Shown
     [Tags]                                      Q/A page
     Given User logged in front page
      When Click Q/A button menu bar
-     Then Q/A page is showne
+     Then Q/A page is shown
 
 Next Page
     [Tags]                                      Q/A page
@@ -33,4 +34,12 @@ Test on 'Collapse' button
     User clicks on show button
     Collapse button is clicked
     Q/A paragraph disappear
+
+Visa Button
+    [Tags]                                      TIPG-549
+    Given User logged in front page
+    When  Click Q/A button menu bar
+    Click Link
+    When  Click 'Visa' Button
+    Then  Verify answer is visable
 

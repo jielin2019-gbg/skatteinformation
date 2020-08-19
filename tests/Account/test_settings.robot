@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation                           Change daily email, weekly email settings in Mitt Konto
 Library                                 SeleniumLibrary
-Resource	                            ../Resources/login_keywords.robot
-Resource	                            ../Resources/login_variables.robot
+Resource	                              ../Resources/login_keywords.robot
+Resource	                              ../Resources/login_variables.robot
+Resource                                ../Resources/setup_variables.robot
+Resource                                ../Resources/teardown_keywords.robot
 Test Setup                              Skatteinformation Website Is Open
-Test Teardown                           Close All Browsers
+Test Teardown                           Logout And Close All
 
 *** Variables ***
 ${BROWSER} =                            chrome
@@ -27,10 +29,6 @@ Change The Settings Of Weekly Email
     Save The Changes In The Settings
 
 *** Keywords ***
-Skatteinformation Website Is Open
-    Open Browser                        ${URL}     ${BROWSER}
-    Maximize Browser Window
-
 The User Log In Successfully
     Login User
     Page Should Contain                 Senaste nytt
@@ -59,4 +57,3 @@ Save The Changes In The Settings
     ${ele}      Get WebElement          id:edit-submit
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
     Page Should Contain                 Ändringarna har sparats.
-

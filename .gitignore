@@ -19,3 +19,9 @@
 
 .idea/
 .Results/
+.results/
+
+log.html
+output.xml
+report.html
+selenium-screenshot-*.png

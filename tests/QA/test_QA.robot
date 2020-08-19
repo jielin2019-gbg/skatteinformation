@@ -4,6 +4,7 @@ Resource                                        ../Resources/login_keywords.robo
 Resource                                        ../Resources/QA_keywords.robot
 Library                                         SeleniumLibrary
 Suite Setup                                     Begin Web Test
+Test Teardown                                   Log Out
 Suite Teardown                                  End Web Test
 
 
@@ -22,6 +23,12 @@ Q/A Page Shown
      When Click Q/A button menu bar
      Then Q/A page is shown
 
+Next Page
+    [Tags]                                      Q/A page
+    Given Begin at Q/A page
+     When Click Next page arrow
+     Then Next page is shown
+
 Test on 'Collapse' button
     [Tags]                                      'Collapse' button functionality
     User clicks on show button
@@ -35,3 +42,4 @@ Visa Button
     Click Link
     When  Click 'Visa' Button
     Then  Verify answer is visable
+

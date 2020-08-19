@@ -36,7 +36,7 @@ Assert Rättsfall option not visible in Daily
     Checkbox Should Not Be Selected             ${DAILY_RATTS}
 
 Assert Rättsfall option visible in Daily after updated mail settings
-    [Documentation]                             Check that checkbox for daily news is selected and therefor the option
+    [Documentation]                             Check that the checkbox for "dagligt utskick" is selected and therefor the option
      ...                                        for "rättsfall" is visible for the user after updated mail settings
     [Tags]                                      test_verdict_vis2
     Log in and go to account settings
@@ -54,8 +54,9 @@ Assert Rättsfall option visible in Daily after updated mail settings
     Save Mail Settings
 
 Assert Rättsfall option visible in Daily after updated mail settings and relog
-    [Documentation]                             Check that checkbox for daily news is selected and therefor the option
-     ...                                        for "rättsfall" is visible for the user after updated mail settings
+    [Documentation]                             Check that checkbox for "dagligt utskick" is selected and therefor the option
+     ...                                        for "rättsfall" is visible but not checked for the user after updated mail
+     ...                                        settings and a relog
     [Tags]                                      test_verdict_vis3
     Log in and go to account settings
     Element Should Not Be Visible               ${DAILY_RATTS}
@@ -67,6 +68,7 @@ Assert Rättsfall option visible in Daily after updated mail settings and relog
     Log Out
     Log in and go to account settings
     Element Should Be Visible                   ${DAILY_RATTS}
+    Checkbox Should Not Be Selected             ${DAILY_RATTS}
     Click The Checkbox Jag Vill Ha Dagligt Utskick
     Checkbox Should Not Be Selected             ${DAILY}
     Save Mail Settings
@@ -106,7 +108,7 @@ The User Log In Successfully
     Page Should Contain Element         id=block-sitebranding
 
 The User Visit Mitt Konto Settings
-    Click Link                          link:Mitt konto
+    Click Link                          //body/div/div/div/header/div/div/div/div/div/nav[@id='block-utility-menu']/ul/li[2]/a[1]
     Wait Until Page Contains Element    id:edit-field-mail-daily-digest-wrapper
     Page Should Contain                 E-postinställningar
 

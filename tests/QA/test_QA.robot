@@ -8,7 +8,6 @@ Suite Setup                                     Begin Web Test
 Test Teardown                                   Log Out
 Suite Teardown                                  End Web Test
 
-
 *** Variables ***
 ${BROWSER}                                      chrome
 ${URL}                                          https://test.skatteinformation.se/
@@ -41,4 +40,12 @@ Selecting a filter category
     Given Begin at Q/A page
     When Clicking show more and selecting category
     Then Checkbox should be selected
+
+Visa Button
+    [Tags]                                      TIPG-549
+    Given User logged in front page
+    When  Click Q/A button menu bar
+    Click Link
+    When  Click 'Visa' Button
+    Then  Verify answer is visable
 

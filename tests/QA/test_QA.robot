@@ -9,7 +9,7 @@ Suite Teardown                                  End Web Test
 
 
 *** Variables ***
-${BROWSER}                                      headlesschrome
+${BROWSER}                                      chrome
 ${URL}                                          https://test.skatteinformation.se/
 ${USERNAME_USER}                                infotiv-user
 ${USERNAME_EDITOR}                              infotiv-editor
@@ -48,10 +48,15 @@ Previous Page
     When Click Previous page button
     Then Previous page is shown
 
-
-
 Test mutiple filtering tags
     [Tags]                                  DEBUG / Test funcionality of mutiple filtering tags
     Given Begin at Q/A page
     When User select more than one filetring tag
     Then Verify selected tags became marked
+
+Test Selected Q&A are displayed
+    [Tags]                                  DEBUG / Test funcionality of chosen Q&A are displayed
+    Given Begin at Q/A page
+    When Check relevant Q&A are displayed
+    Then Verify all Q&A are displayed
+

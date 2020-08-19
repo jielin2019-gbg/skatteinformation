@@ -18,16 +18,23 @@ ${PASSWORD}                                     slimy-very-decorate-transit
 
 *** Test Cases ***
 Q/A Page Shown
-    [Tags]                                      Q/A page
+    [Tags]                                      TIPG-543
     Given User logged in front page
      When Click Q/A button menu bar
      Then Q/A page is shown
 
 Next Page
-    [Tags]                                      Q/A page
+    [Tags]                                      TIPG-550
     Given Begin at Q/A page
-     When Click Next page arrow
+     When Click Next page button
      Then Next page is shown
+
+Previous Page
+    [Tags]                                      TIPG-550
+    Given Begin at Q/A page
+    And On Next page
+    When Click Previous page button
+    Then Previous page is shown
 
 Test on 'Collapse' button
     [Tags]                                      'Collapse' button functionality

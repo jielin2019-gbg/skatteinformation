@@ -7,6 +7,13 @@ Begin Web Test
 End Web Test
     Close Browser
 
+Begin at Q/A page
+    User logged in front page
+    Click Q/A button menu bar
+    Q/A page is shown
+
+#*** Keywords *** (TIPG-543 - test functionality of Q/A button )
+
 User logged in front page
     Login User
     Verify logged in
@@ -22,17 +29,24 @@ Q/A page is shown
     ${url_Q/A}                                   Get Location
     Should Match                                 ${url_Q/A}        https://test.skatteinformation.se/fraga-och-svar
 
-Begin at Q/A page
-    User logged in front page
-    Click Q/A button menu bar
-    Q/A page is shown
-
-Click Next page arrow
+#*** Keywords *** (TIPG-550 - test functionality of 'Next/Previous page' button )
+Click Next page button
     Click Element                                xpath://li[@class='pager__item pager__item--next']//span[2]
 
 Next page is shown
     ${url_next_page}                             Get Location
     Should Match                                 ${url_next_page}    https://test.skatteinformation.se/fraga-och-svar?page=1
+
+Click Previous page button
+    Click Element                                xpath://li[@class='pager__item pager__item--previous']//span[2]
+
+Previous page is shown
+    ${url_previous_page}                         Get Location
+    Should Match                                 ${url_previous_page}   https://test.skatteinformation.se/fraga-och-svar?page=0
+
+On Next page
+    Click Next page button
+    Next page is shown
 
 #*** Keywords *** (TIPG-545 - test functionality of 'Collapse' button )
 

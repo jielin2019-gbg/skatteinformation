@@ -3,7 +3,7 @@ Documentation                           Change daily email, weekly email setting
 Library                                 SeleniumLibrary
 Resource	                              ../Resources/login_keywords.robot
 Resource	                              ../Resources/login_variables.robot
-Resource                                ../Resources/setup_variables.robot
+Resource                                ../Resources/setup_keywords.robot
 Resource                                ../Resources/teardown_keywords.robot
 Test Setup                              Skatteinformation Website Is Open
 Test Teardown                           Logout And Close All

@@ -18,6 +18,13 @@ ${PASSWORD}                                     slimy-very-decorate-transit
 Test the Q/A Toplistan section
     [Tags]                                      TIPG-596 Test Q/A toplistan section
     Given User logged in front page
-    When Scrolling down the page
-    Then Q/A topplistan section is shown
+     When Scrolling down the page
+     Then Q/A topplistan section is shown
+
+Test Q/A Toplist paragraph
+    [Tags]                                      TIPG-601   Test Q/A Toplist paragraph
+    Given Begin at Toplist
+     When Mouse over question
+     Then Q/A paragraph is shown
+
 

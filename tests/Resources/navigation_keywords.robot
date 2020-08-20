@@ -5,9 +5,9 @@ Begin Web Test
     Go To                       ${URL}
 
 Check Start Page Loaded
-	Location Should Be			https://test.skatteinformation.se/start
-	Wait Until Element Is Visible		xpath://input[@id="edit-search"]
-
+    Location Should Be  https://test.skatteinformation.se/start
+    Wait Until Element Is Visible  xpath://input[@id="edit-search"]
+	
 Verify the user is able to navigate to Fastighetsmoms link
     Click Link              //*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[1]/form/div[1]/div[3]/div[2]/div/div/div[3]/a
     Location Should Be      https://test.skatteinformation.se/sok?search=fastighet&f%5B0%5D=kategori%3A25
@@ -60,5 +60,30 @@ Press and Verify Return To Start Button
     Location Should Be          https://test.skatteinformation.se/
     Wait Until Page Contains    Visa fler filtreringsmöjligheter
 
+Verify the user is able to navigate to Sök innehåll link to confirm the content present in it
+    Click Link   //*[@id="block-main-menu"]/ul/li[2]/a
+    Page Should Contain   Vad söker du?
+
+Verify the user can access the wide search functionality in one click
+    Click Link   //*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[1]/form/div[1]/div[3]/div[2]/div/div/div[3]/a
+    Location Should Be      https://test.skatteinformation.se/sok?search=fastighet&f%5B0%5D=kategori%3A25
+    Click Link    //*[@id="block-skatteinfo-content"]/div/div/div/div/div[5]/article/div/a
+    #Click Sök innehåll menu
+    Click Link    //*[@id="block-main-menu"]/ul/li[2]/a
+    Page Should Contain    Vad söker du?
+
+    Click Link   //*[@id="block-main-menu"]/ul/li[4]/a
+    Location Should Be   https://test.skatteinformation.se/fraga-och-svar
+    Click Button   //*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button
+    #Click Sök innehåll menu
+    Click Link    //*[@id="block-main-menu"]/ul/li[2]/a
+    Page Should Contain    Vad söker du?
+
+    Click Link    //*[@id="block-utility-menu"]/ul/li[2]/a
+    #Click Sök innehåll menu
+    Click Link    //*[@id="block-main-menu"]/ul/li[2]/a
+    Page Should Contain    Vad söker du?
+
 End Web Test
     Close Browser
+

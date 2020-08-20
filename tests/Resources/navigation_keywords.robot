@@ -54,9 +54,6 @@ Verify The User Is Able To hide the category list with one click
     Click Element   xpath://*[@id="block-main-menu"]
     sleep  3s
 
-End Web Test
-    Close Browser
-
 Press And Verify Deklaration
     Click Element               //*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[1]/form/div[1]/div[3]/div[2]/div/div/div[5]
     Location Should Be          https://test.skatteinformation.se/sok?search=dek20
@@ -114,5 +111,6 @@ Verify the user can access the wide search functionality in one click
     Page Should Contain    Vad söker du?
 
 
-
+End Web Test
+    Close Browser
 

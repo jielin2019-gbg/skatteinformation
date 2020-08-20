@@ -16,5 +16,5 @@ User can navigate to Sök innehåll link to confirm the content
     [Documentation]  This is to check naviagtion to Fastighetsmoms link
     [Tags]           Test_Fastighetsmoms
     Login User
-    Confirm Login Successful
+    Check Start Page Loaded
     Verify the user is able to navigate to Sök innehåll link to confirm the content present in it

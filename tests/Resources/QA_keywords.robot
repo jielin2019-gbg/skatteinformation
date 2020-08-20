@@ -149,3 +149,9 @@ Mouse over question
 
 Q/A paragraph is shown
     Page Should Contain Element             xpath://div[@class='paragraph paragraph--faq-toplist paragraph--view-mode--default']//div[@class='views-element-container']//div[1]//article[1]//div[2]//div[1]//div[1]
+
+#*** Keywords *** TIPG-597 - Test the link on Topplistan goes to QA page
+
+Go to QA Page from topplistan section
+    Click Element   xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/a/span
+

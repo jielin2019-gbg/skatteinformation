@@ -27,4 +27,8 @@ Test Q/A Toplist paragraph
      When Mouse over question
      Then Q/A paragraph is shown
 
-
+Test the link on Topplistan goes to QA page
+    [Tags]                                      TIPG-597 From topplistan to QA page
+    Given Begin at Toplist
+    Then Go to QA page from topplistan section
+    When Q/A page is shown

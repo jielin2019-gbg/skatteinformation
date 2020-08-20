@@ -16,5 +16,6 @@ Show Content of the Selected Category(TIPG-446)
     [Documentation]  This is to show Specific content of the selected Category
     [Tags]           Test_CategoryContent
     Login User
-    Confirm Login Successful
+    Check Start Page Loaded
+
     Verify The User Is Able To Show Specific content of the selected Category

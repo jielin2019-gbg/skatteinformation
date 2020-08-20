@@ -16,5 +16,5 @@ Hide Categories(TIPG-456)
     [Documentation]  This is to hide the category list with one click
     [Tags]           Test_HideCategoryList
     Login User
-    Confirm Login Successful
+    Check Start Page Loaded
     Verify The User Is Able To hide the category list with one click

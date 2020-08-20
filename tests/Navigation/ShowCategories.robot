@@ -15,7 +15,7 @@ Show Categories
     [Documentation]  This is to show Categories options when clicks on dropdown button
     [Tags]           Test_Categories
     Login User
-    Confirm Login Successful
+    Check Start Page Loaded
     Verify The User Is Able To Show different Categories When Clicks On Dropdown Arrow
 
 

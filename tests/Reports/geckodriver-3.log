@@ -1,0 +1,6 @@
+*** You are running in headless mode.
+console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
+JavaScript warning: moz-extension://7ffc3bf4-5b63-4949-8f62-724283a6334e/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 0ms)
+1597836458971	Marionette	INFO	Listening on port 46071
+1597836459065	Marionette	WARN	TLS certificate errors will be ignored for this session
+1597836459207	Marionette	INFO	Stopped listening on port 46071

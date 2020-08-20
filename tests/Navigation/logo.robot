@@ -8,7 +8,6 @@ Resource	  ../Resources/navigation_variables.robot
 Test Setup	  Begin Web Test
 Test Teardown	  End Web Test
 
-
 *** Keywords ***
 Check Start Page Loaded
 	Location Should Be			https://test.skatteinformation.se/start

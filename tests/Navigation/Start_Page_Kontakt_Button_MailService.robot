@@ -1,5 +1,5 @@
 ***Settings***
-Documentation  Testing the Kontakt button at the StartPage 
+Documentation  Testing the Kontakt button at the StartPage
 Library		   SeleniumLibrary
 Test Setup	   Begin Web Test
 Test Teardown  End Web Test
@@ -20,8 +20,8 @@ Confirm Login Start
 	Page Should Contain     //*[@id="edit-submit"]
 	
 Test Click Kontakt
-	Click Link				//*[@id="block-utility-menu"]/ul/li[1]/a	
-	
+		Click Link				//a[@href="mailto:skatteinformation@wolterskluwer.se?subject=Skatteinformation.se%3A%20Jag%20har%20en%20fr%C3%A5ga"]
+
 *** Test Cases ***
 
 Test Kontakt button 

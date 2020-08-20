@@ -1,6 +1,0 @@
-console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
-JavaScript warning: moz-extension://448f6456-31a3-4ba4-99b2-19ba56f32c78/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 0ms)
-1597852775861	Marionette	INFO	Listening on port 32825
-1597852775871	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/modules/URIFixup.jsm, line 281: NS_ERROR_FAILURE: Should pass a non-null uri
-1597852779134	Marionette	INFO	Stopped listening on port 32825

@@ -52,7 +52,7 @@ the user will get a popup and a email
    ${ele}      Get WebElement          //*[@id="identifierNext"]/div/button
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
     Sleep   6
-    Input Text                           name:password       ${RESET_EMAIL_PASSWORD}
+    Input Text                           xpath://input[@type= 'password' and @name= 'password']       ${RESET_EMAIL_PASSWORD}
     ${ele}      Get WebElement          //*[@id="passwordNext"]/div/button/div[2]
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
 

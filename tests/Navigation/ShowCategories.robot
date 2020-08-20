@@ -1,5 +1,6 @@
 *** Settings ***
 Resource       ../Resources/navigation_keywords.robot
+Resource       ../Resources/navigation_variables.robot
 Resource	  ../Resources/login_keywords.robot
 Resource	  ../Resources/login_variables.robot
 Library        SeleniumLibrary

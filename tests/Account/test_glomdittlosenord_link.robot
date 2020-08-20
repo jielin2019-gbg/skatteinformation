@@ -12,13 +12,13 @@ Test Teardown                           Logout And Close All
 ${BROWSER} =                            chrome
 
 *** Test Cases ***
-Test Glöm Ditt Lösenord link
-    Click Link Glöm Ditt Lösenord
+Test Glömt Ditt Lösenord link
+    Click Link Glömt Ditt Lösenord
     The Page Should Navigate to Återställ Ditt Lösenord Page
     Submit Email Address
 
 *** Keywords ***
-Click Link Glöm Ditt Lösenord
+Click Link Glömt Ditt Lösenord
     ${ele}      Get WebElement          xpath://a[contains(text(),'glömt ditt lösenord')]
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
 

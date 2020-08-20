@@ -33,11 +33,11 @@ user puts in emailadrees and presses submit
 
 the user will get a popup and a email
 
-    Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-${userAgent}=  set variable  --user-agent="Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
-Call Method    ${options}  add_argument  ${userAgent}
-Create WebDriver    Chrome    chrome_options=${options}
+   # Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
+   #${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+   #${userAgent}=  set variable  --user-agent="Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+   #Call Method    ${options}  add_argument  ${userAgent}
+   #Create WebDriver    Chrome    chrome_options=${options}
     
     Go to                               ${reset_email_service}
     Input Text                          id:identifierId    ${RESET_EMAIL}

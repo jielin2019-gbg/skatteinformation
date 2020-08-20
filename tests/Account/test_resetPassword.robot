@@ -38,13 +38,13 @@ the user will get a popup and a email
    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
    ${userAgent}=  set variable  --user-agent="Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
    Call Method    ${options}     add_argument  ${userAgent}
-        Call Method    ${chrome_options}    add_argument    headless
-        Call Method    ${chrome_options}    add_argument    disable-gpu
-        Call Method    ${chrome_options}    add_argument    --start-maximized
-        Call Method    ${chrome_options}    add_argument    --allow-running-insecure-content
-        Call Method    ${chrome_options}    add_argument    --disable-web-security
-        Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
-        Call Method    ${chrome_options}    add_argument    --no-sandbox
+        Call Method     ${options}     add_argument    headless
+        Call Method     ${options}     add_argument    disable-gpu
+        Call Method     ${options}     add_argument    --start-maximized
+        Call Method     ${options}     add_argument    --allow-running-insecure-content
+        Call Method     ${options}     add_argument    --disable-web-security
+        Call Method     ${options}     add_argument    --disable-dev-shm-usage
+        Call Method      ${options}     add_argument    --no-sandbox
    #Create WebDriver    Chrome    chrome_options=${options}
     
     Go to                               ${reset_email_service}

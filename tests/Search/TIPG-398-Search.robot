@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       This is test suite of search function verification of skatteinformation.se
-Resource            ../tests/Resources/TIPG-398-Search_keywords.robot
-Resource            ../tests/Resources/login_keywords.robot
+Resource            ../Resources/TIPG-398-Search_keywords.robot
+Resource            ../Resources/login_keywords.robot
 Library             SeleniumLibrary
 Test Setup          Open Browser To Start Page
 Test Teardown       End Web Test

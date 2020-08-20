@@ -128,3 +128,11 @@ Check relevant Q&A are displayed
 
 Verify all Q&A are displayed
     Page should contain Element             xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]
+
+#*** Keywords *** (TIPG-596 - test that toplistan section is shown on the start page )
+
+Scrolling down the page
+    Execute Javascript                      window.scrollTo(0,600)
+
+Q/A topplistan section is shown
+    Page Should Contain Element             xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div

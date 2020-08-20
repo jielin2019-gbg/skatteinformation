@@ -14,7 +14,7 @@ User can navigate to Fastighetsmoms link
     [Documentation]  This is to check naviagtion to Fastighetsmoms link
     [Tags]           Test_Fastighetsmoms
     Login User
-    Confirm Login Successful
+    Check Start Page Loaded
     Verify the user is able to navigate to Fastighetsmoms link
     Verify the user is able to navigate when clicks on any of the popular topic of Fastighetsmoms link
 

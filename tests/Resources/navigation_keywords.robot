@@ -84,6 +84,9 @@ Verify the user can access the wide search functionality in one click
     Click Link    //*[@id="block-main-menu"]/ul/li[2]/a
     Page Should Contain    Vad söker du?
 
+Test Click Kontakt
+		Click Link				//a[@href="mailto:skatteinformation@wolterskluwer.se?subject=Skatteinformation.se%3A%20Jag%20har%20en%20fr%C3%A5ga"]
+
 End Web Test
     Close Browser
 

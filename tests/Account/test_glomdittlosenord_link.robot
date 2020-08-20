@@ -19,7 +19,6 @@ Test Glöm Ditt Lösenord link
 
 *** Keywords ***
 Click Link Glöm Ditt Lösenord
-    sleep  6
     ${ele}      Get WebElement          xpath://a[contains(text(),'glömt ditt lösenord')]
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
 

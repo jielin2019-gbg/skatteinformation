@@ -11,9 +11,9 @@ pipeline {
         sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Content'
       }
     }
-    stage('Navigation') {
+    stage('QA') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Navigation'
+        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/QA'
       }
     }
     stage('Search') {
@@ -21,9 +21,9 @@ pipeline {
         sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
       }
     }
-    stage('QA') {
+    stage('Navigation') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/QA'
+        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Navigation'
       }
     }
   }

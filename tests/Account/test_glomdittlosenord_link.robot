@@ -85,9 +85,20 @@ Change Password
 Change Chrome
     ${options}=    Evaluate              sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     ${userAgent}=  set variable          --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
+    #Call Method    ${options}            add_argument  ${userAgent}
+    #Call Method     ${options}           add_argument   --headless
+    Call Method    ${options}    add_argument    test-type
     Call Method    ${options}            add_argument  ${userAgent}
+    Call Method    ${options}    add_argument    --disable-extensions
+    Call Method   ${options}    add_argument    --headless
+    Call Method    ${options}    add_argument    --disable-gpu
+    Call Method    ${options}    add_argument    --no-sandbox
     Create WebDriver    Chrome           chrome_options=${options}
 
+
+
+Change Chrome2
+    sleep  2
 Delete The Skatteinformation Email In Gmail
     Change Chrome
     Input Gmail Account

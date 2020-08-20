@@ -16,10 +16,6 @@ pipeline {
         sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Navigation'
       }
     }
-    stage('Search') {
-      steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
-      }
-    }
+    
   }
 }

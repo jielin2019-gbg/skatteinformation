@@ -33,7 +33,7 @@
 
  the user will get a popup and a email
 
-    # Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
+     Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
 
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
      ${userAgent}=  set variable  --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"

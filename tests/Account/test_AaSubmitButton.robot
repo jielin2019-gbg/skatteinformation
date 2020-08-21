@@ -57,7 +57,7 @@ the user will get a popup and a email
      Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
      Go to     https://mail.google.com/mail/u/0/?tab=gm#inbox
      Sleep  10
-     ${ele}      Get WebElement          //*[@id=":2t"]/span/span
+     ${ele}      Get WebElement          //*[@id=":31"]/span[2]
      Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
      Sleep   6
      Page Should Contain         Ersättande inloggningsuppgifter för infotiv-user-reset på Wolters Kluwer Skatteinformation

@@ -57,6 +57,7 @@ the user will get a popup and a email
      Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
      Go to     https://mail.google.com/mail/u/0/?tab=gm#inbox
      Sleep  10
+     Capture Page Screenshot         C:/Bobi/Projekts/PycharmProjects/Skatteinfo/skatteinformation/tests/Account/fel.png
      ${ele}      Get WebElement          //*[@id=":31"]/span[2]
      Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
      Sleep   6

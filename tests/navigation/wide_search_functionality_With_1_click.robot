@@ -14,5 +14,5 @@ User can check the wide search functionality with one click
     [Documentation]  This is to check search functionality in one click
     [Tags]           Test_WideSearch1Click
     Login User
-    Confirm Login Successful
+    Check Start Page Loaded
     Verify the user can access the wide search functionality in one click

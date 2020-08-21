@@ -9,7 +9,8 @@ Test Setup                              Skatteinformation Website Is Open
 Test Teardown                           Logout And Close All
 
 *** Variables ***
-${BROWSER} =                            chrome
+${BROWSER} =                            headlesschrome
+${reset_email_service}                  https://mail.google.com/mail/
 
 *** Test Cases ***
 Test Glömt Ditt Lösenord link
@@ -31,6 +32,4 @@ Submit Email Address
     Input Text                          id:edit-name    ${RESET_EMAIL}
     Click Button                        id:edit-submit
     Page Should Contain                 Ytterligare instruktioner har skickats till din e-postadress.
-
-
 

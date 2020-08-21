@@ -25,7 +25,7 @@ Process Links
        	Click Link	xpath://a[contains(@href,"${value}")]	
        	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]  timeout=15
        	Click Logo
-#       	Wait Until Page Contains Element  xpath://input[@id="edit-search"]
+#      	Wait Until Page Contains Element  xpath://input[@id="edit-search"]
 
 Process Links Intl Chars
 	[Arguments]	${value}	${value2}
@@ -105,7 +105,7 @@ Return to start from shortcut page
     [Tags]		shortcuts
     Login User
     Check Start Page Loaded	
-    Maximize Browser Window
+    Set Selenium Speed		0.2	# Needed for chrome/firefox testing
     Start From Shortcut  Corona
     Start From Shortcut  12-reglerna
     Start From Shortcut  fastighet

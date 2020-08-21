@@ -7,6 +7,10 @@ Begin Web Test
 Check Start Page Loaded
     Location Should Be  https://test.skatteinformation.se/start
     Wait Until Element Is Visible  xpath://input[@id="edit-search"]
+
+Confirm Page Loaded
+    Location Should Be  https://test.skatteinformation.se
+    Wait Until Element Is Visible  xpath://input[@id="edit-search"]
 	
 Verify the user is able to navigate to Fastighetsmoms link
     Click Link              //*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[1]/form/div[1]/div[3]/div[2]/div/div/div[3]/a
@@ -86,6 +90,26 @@ Verify the user can access the wide search functionality in one click
 
 Test Click Kontakt
 		Click Link				//a[@href="mailto:skatteinformation@wolterskluwer.se?subject=Skatteinformation.se%3A%20Jag%20har%20en%20fr%C3%A5ga"]
+
+Verify The User Is Able To Show different Categories When Clicks On Dropdown Arrow
+    Click Element   xpath://*[@id="block-main-menu"]
+    Page Should Contain    Allmänt
+    Page Should Contain    Civilrätt och bokföring
+    Page Should Contain    Deklaration och förfarande
+
+Verify The User Is Able To Show Specific content of the selected Category
+    Click Element   xpath://*[@id="block-main-menu"]
+    Page Should Contain    Allmänt
+    Click Link  //*[@id="block-main-menu"]/ul/li[3]/ul/li[1]/a
+    Page Should contain     Beslut om slopad skattereduktion för fackföreningsavgifter
+
+Verify The User Is Able To hide the category list with one click
+    Click Element   xpath://*[@id="block-main-menu"]
+    Page Should Contain    Allmänt
+    Page Should Contain    Civilrätt och bokföring
+
+    Click Element   xpath://*[@id="block-main-menu"]
+    sleep  3s
 
 End Web Test
     Close Browser

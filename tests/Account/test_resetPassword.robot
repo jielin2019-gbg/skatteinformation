@@ -40,11 +40,11 @@ the user will get a popup and a email
    Call Method    ${options}     add_argument  ${userAgent}
         Call Method    ${options}    add_argument    headless
         Call Method    ${options}    add_argument    disable-gpu
-        Call Method    ${options}    add_argument    --start-maximized
+        #Call Method    ${options}    add_argument    --start-maximized
         Call Method    ${options}    add_argument    --allow-running-insecure-content
         Call Method    ${options}    add_argument    --disable-web-security
-        Call Method    ${options}    add_argument    --disable-dev-shm-usage
-        Call Method    ${options}    add_argument    --no-sandbox
+        #Call Method    ${options}    add_argument    --disable-dev-shm-usage
+        #Call Method    ${options}    add_argument    --no-sandbox
         Create WebDriver    Chrome    chrome_options=${options}
     
     Go to                               ${reset_email_service}
@@ -52,7 +52,7 @@ the user will get a popup and a email
    ${ele}      Get WebElement          //*[@id="identifierNext"]/div/button
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
     Sleep   6
-    Input Text                           xpath://input[@type= 'password' and @name= 'password']       ${RESET_EMAIL_PASSWORD}
+    Input Text                           name:password        ${RESET_EMAIL_PASSWORD}
     ${ele}      Get WebElement          //*[@id="passwordNext"]/div/button/div[2]
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
 

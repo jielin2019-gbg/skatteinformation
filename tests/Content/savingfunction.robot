@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test functionality of saving an article (automation)
 Library           SeleniumLibrary
+Library           String
 Resource	  ../Resources/login_keywords.robot
 Resource	  ../Resources/login_variables.robot
 Test Setup  Go To Page
@@ -31,8 +32,11 @@ Saving an article
     Click Element               id:edit-submit
     #Check if article is saved
     Wait Until Page Contains    Test artikel (Artikel) har skapats.
+    ${url} =                    Get Location
+    ${ID} =                     Get Substring  ${url}  42  47
+    Set Global Variable         ${ID}
     #Remove created article
-    Click Element               xpath://*[@id="block-skatteinfo-local-tasks"]/ul/li[3]/a
+    Go To                       https://test.skatteinformation.se/node/${ID}/delete
     Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel?
     Click Element               id:edit-submit
     Wait Until Page Contains    Artikel Test artikel har raderats.

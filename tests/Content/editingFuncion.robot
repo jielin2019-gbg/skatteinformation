@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation     test functionality for the editing on the edit page(automation)
 Library           SeleniumLibrary
+Library           String
 Resource	  ../Resources/login_keywords.robot
 Resource	  ../Resources/login_variables.robot
-Resource      ../Resources/content_keywords.robot
 Test Setup  Go To Page
 Test Teardown  Close page
 
@@ -14,6 +14,22 @@ ${BROWSER} =        headlesschrome
 Go To Page
    Open Browser  ${URL}  ${BROWSER}
    Set Window Size    ${1920}    ${1080}
+
+Create article
+    Go To                       https://test.skatteinformation.se/node/add/article
+    Input Text                  xpath://*[@id="edit-title-0-value"]     Test artikel
+    Click Element               id:edit-submit
+    Wait Until Page Contains    Test artikel (Artikel) har skapats.
+    ${url} =                    Get Location
+    ${ID} =                     Get Substring  ${url}  42  47
+    Set Global Variable         ${ID}
+
+Delete article
+    Go To                       https://test.skatteinformation.se/node/${ID}/delete
+    Wait Until Page Contains    Är du säker på att du vill radera content item
+    Click Element               id:edit-submit
+    Wait Until Page Contains    har raderats.
+
 Close page
    Close Browser
 

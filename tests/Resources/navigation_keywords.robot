@@ -111,6 +111,83 @@ Verify The User Is Able To hide the category list with one click
     Click Element   xpath://*[@id="block-main-menu"]
     sleep  3s
 
+Hover Over Logo
+      Mouse over	xpath://div[@id="block-sitebranding"]
+
+Click Logo
+       	Click Link	xpath://a[@title="Hem"]
+
+Process Links
+	[Arguments]	${value}
+      	Log To Console	Testing for ${value}
+       	Click Link	xpath://a[contains(@href,"${value}")]	
+       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]  timeout=15
+       	Click Logo
+#      	Wait Until Page Contains Element  xpath://input[@id="edit-search"]
+
+Process Links Intl Chars
+	[Arguments]	${value}	${value2}
+	Log To Console	Testing for ${value} and ${value2}
+       	Click Link	xpath://a[contains(@href,"${value2}")]	
+       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
+       	Click Logo
+
+Start From Shortcut
+	[Arguments]	${value}
+	Run Keyword If	'${value}'=='förmån'  Process Links Intl Chars	${value}  value2=f%C3%B6rm%C3%A5n
+	...  ELSE   	Process Links	      ${value}	
+
+Process Links After Scroll
+	[Arguments]	${value}
+      	Log To Console	Testing for ${value}
+       	Click Link	xpath://a[contains(@href,"${value}")]	
+       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
+	Scroll To Bottom
+       	Click Logo
+#       	Wait Until Page Contains Element  xpath://a[@id="edit-search"]	5	
+
+Process Links After Scroll Intl Chars
+	[Arguments]	${value}	${value2}
+	Log To Console	Testing for ${value} and ${value2}
+       	Click Link	xpath://a[contains(@href,"${value2}")]	
+       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
+	Scroll To Bottom
+       	Click Logo
+#       	Wait Until Page Contains Element  xpath://[@id="edit-search"]	5
+	
+Start From Shortcut After Scroll
+	[Arguments]	${value}
+	Run Keyword If	'${value}'=='förmån'  Process Links After Scroll Intl Chars	${value}  value2=f%C3%B6rm%C3%A5n
+	...  ELSE   	Process Links After Scroll	      ${value}	
+
+Scroll To Bottom
+	Scroll Element Into View	xpath://footer
+	Scroll Element Into View	xpath://div[@class="slogan"]
+
+Return After Menu Item	
+	[Arguments]	${value}	
+	Log To Console	Testing for ${value}
+       	Click Link	xpath://a[contains(@href,"${value}")]	
+#      	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
+       	Click Logo
+
+Return After Menu Item Sub
+	[Arguments]	${value}	
+	Set Selenium Speed 	    0.1
+	Log To Console	Testing for ${value}
+      	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
+	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
+	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
+      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${value}"]	
+       	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${value}"]	
+       	Click Logo
+
+Return From Mitt Konto
+	Click Link 			xpath://a[@href="/user/edit" and text()="Mitt konto"]
+	Page Should Contain		Personlig information
+       	Click Logo
+	
+
 End Web Test
     Close Browser
 

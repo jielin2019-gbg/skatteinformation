@@ -5,12 +5,14 @@ Library                                 ImapLibrary2
 Resource	                            ../Resources/login_keywords.robot
 Resource	                            ../Resources/login_variables.robot
 Resource                                ../Resources/setup_keywords.robot
+Resource                                ../Resources/browser_variables.robot
+
 Test Setup                              Skatteinformation Website Is Open
-Test Teardown                           Close All Browsers
+Test Teardown                           Logout And Close All
 
 *** Variables ***
-${BROWSER} =     Headless Chrome
-${reset_email_service} =         https://mail.google.com/mail/
+${BROWSER} =     ${HEADLESS_CHROME}
+
 *** Test Cases ***
 Going to the Återställ ditt lösenord page
     Given the Återställ ditt lösenord page is open
@@ -23,24 +25,24 @@ Going to the Återställ ditt lösenord page
 
 
 the Återställ ditt lösenord page is open
-    Location Should Contain	 https://test.skatteinformation.se/user/login?destination=/start
+    Location Should Contain	 ${URL}
     Page Should Contain     Återställ ditt lösenord
     Click Element   //*[@id="block-skatteinfo-local-tasks"]/ul/li[2]/a
     Location Should Contain	 https://test.skatteinformation.se/user/password
 
 user puts in emailadrees and presses submit
-    Input Text   //*[@id="edit-name"]   bobi.andreevski@iths.se
+    Input Text   //*[@id="edit-name"]   ${RESET_EMAIL_OUTLOOK}
     Click Button     //*[@id="edit-submit"]
 
 the user will get a popup and a email
 
     Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
-    Go to                               https://outlook.office.com/mail/inbox
+    Go to                               ${RESET_EMAIL_SERVICE}
     Wait Until Element Is Visible       //*[@id="i0116"]
-    Input Text                           //*[@id="i0116"]   bobi.andreevski@iths.se
+    Input Text                           //*[@id="i0116"]   ${RESET_EMAIL_OUTLOOK}
     Click Element                     //*[@id="idSIButton9"]
     Wait Until Element Is Visible       //*[@id="i0118"]
-    Input Text                        //*[@id="i0118"]   Optotech85
+    Input Text                        //*[@id="i0118"]   ${RESET_EMAIL_PASSWORD}
     Click Element                       //*[@id="idSIButton9"]
     Wait Until Element Is Visible       //*[@id="idBtn_Back"]
     Click Element                        //*[@id="idBtn_Back"]

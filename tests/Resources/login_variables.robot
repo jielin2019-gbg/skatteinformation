@@ -7,5 +7,5 @@ ${RESET_USERNAME} =  infotiv-user-reset
 ${RESET_PASSWORD} =  slimy-very-decorate-transit
 ${RESET_EMAIL} =  softvarutestare@gmail.com
 ${RESET_EMAIL_PASSWORD} =  slimy-very-decorate-transit
-
-
+${RESET_EMAIL_OUTLOOK} =   softvarutestare@outlook.com
+${RESET_EMAIL_SERVICE} =   https://outlook.office.com/mail/inbox

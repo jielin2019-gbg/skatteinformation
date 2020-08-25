@@ -7,7 +7,8 @@ Resource                login_variables.robot
 Open Browser To Start Page
         Open Browser                           ${URL}     ${BROWSER}
         Set Window Size                        1920       1080
-        Set Selenium Speed                     1
+        Wait Until Page Contains              Ange din e-postadress som användarnamn.
+
 
 
 Enter Search Text

@@ -41,6 +41,9 @@ Click delete end of page
 Page verifying deletion shown
     Page Should Contain                     Är du säker på att du vill radera content item
 
+Verify the Edit page
+    Page Should Contain                     Redigera Fråga/svar Q/A
+
 #*** Keywords *** (TIPG-719 'delete' button of the Q/A in the content page list)
 Q/A displays in content page list
      Login Editor
@@ -53,3 +56,7 @@ Filtering Q/A
 Clicks on delete button
     Click Element                          xpath://*[@class="dropbutton-arrow"]
     Click Element                          xpath://*[@class="delete dropbutton-action secondary-action"]
+
+#*** Keywords *** (TIPG-732 'Edit' button of the Q/A in the content page list)
+Clicks on Edit button
+    Click Element                          xpath://*[@class="edit dropbutton-action"]

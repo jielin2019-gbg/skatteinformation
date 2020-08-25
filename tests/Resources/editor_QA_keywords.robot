@@ -5,7 +5,7 @@ Editor logged in front page
     Verify logged in on editor page
 
 Verify logged in on editor page
-    Page Should Contain                 Hantera
+    Page Should Contain                     Hantera
 
 Begin at innehall page
     Editor logged in front page
@@ -13,10 +13,43 @@ Begin at innehall page
     Innehall page is shown
 
 Click innehall button
-    Click Element              xpath: //*[@id="toolbar-item-administration-tray"]/nav/div[1]/ul/li/a
+    Click Link                              Innehåll
 
 Innehall page is shown
-     ${url_Q/A}                              Get Location
-    Should Match                            ${url_Q/A}        https://test.skatteinformation.se/admin/content
+    ${url_Q/A}                              Get Location
+    Should Match                            ${url_Q/A}             https://test.skatteinformation.se/admin/content
+
+#*** Keywords *** (TIPG-721 - test functionality of delete button at end of editor page )
+Filter content
+    [Arguments]                             ${content_type}
+    Select From List By Label               edit-type              ${content_type}
+    Click Button                            id:edit-submit-content
+
+Edit article
+    [Arguments]                             ${article_name}
+    Click Link                              ${article_name}
+    Click Link                              Edit
+
+At editing page
+    Filter content                          Fråga/svar
+    Edit article                            Q/A test2
 
 
+Click delete end of page
+    Click Element                           id:edit-delete
+
+Page verifying deletion shown
+    Page Should Contain                     Är du säker på att du vill radera content item
+
+#*** Keywords *** (TIPG-719 'delete' button of the Q/A in the content page list)
+Q/A displays in content page list
+     Login Editor
+     Click innehall button
+     Filtering Q/A
+
+Filtering Q/A
+    Filter content                          Fråga/svar
+
+Clicks on delete button
+    Click Element                          xpath://*[@class="dropbutton-arrow"]
+    Click Element                          xpath://*[@class="delete dropbutton-action secondary-action"]

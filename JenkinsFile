@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Account') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Account'
+        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
       }
     }
     stage('Content') {
@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Navigation') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Navigation'
+        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/navigation'
       }
     }
   }

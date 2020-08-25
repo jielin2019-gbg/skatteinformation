@@ -3,27 +3,37 @@ pipeline {
   stages {
     stage('Account') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
+        }
       }
     }
     stage('Content') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Content'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Content'
+        }
       }
     }
     stage('QA') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/QA'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/QA'
+        }
       }
     }
     stage('Search') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
+        }
       }
     }
     stage('Navigation') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./tests/navigation'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/navigation'
+        }
       }
     }
   }

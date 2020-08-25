@@ -1,33 +1,38 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
+    stage('Account') {
       steps {
-        git 'https://github.com/viktornilssoninfotiv/skatteinformation'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
+        }
       }
     }
-    stage('robot') {
+    stage('Content') {
       steps {
-        sh 'robot -d results --variable BROWSER:headlesschrome ./Tests/infotiv.robot'
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Content'
+        }
       }
-      post {
-        always {
-          script {
-            step(
-              [
-                $class              : 'RobotPublisher',
-                outputPath          : 'results',
-                outputFileName      : '**/output.xml',
-                reportFileName      : '**/report.html',
-                logFileName         : '**/log.html',
-                disableArchiveOutput: false,
-                passThreshold       : 50,
-                unstableThreshold   : 40,
-                otherFiles          : "**/*.png,**/*.jpg",
-              ]
-            )
-          }
-          chuckNorris()
+    }
+    stage('QA') {
+      steps {
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/QA'
+        }
+      }
+    }
+    stage('Search') {
+      steps {
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
+        }
+      }
+    }
+    stage('Navigation') {
+      steps {
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/navigation'
         }
       }
     }

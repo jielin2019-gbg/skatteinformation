@@ -26,3 +26,11 @@ Delete button at end of page
      When At editing page
       And Click delete end of page
      Then Page verifying deletion shown
+
+Delete button for the Q/A in content page list
+     [Tags]                                     TIPG-719 'delete' button of the Q/A in the content page list)
+    Given Q/A displays in content page list
+     When Clicks on delete button
+     Then Page verifying deletion shown
+
+

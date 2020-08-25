@@ -34,9 +34,22 @@ At editing page
     Filter content                          Fråga/svar
     Edit article                            Q/A test2
 
+
 Click delete end of page
     Click Element                           id:edit-delete
 
 Page verifying deletion shown
     Page Should Contain                     Är du säker på att du vill radera content item
 
+#*** Keywords *** (TIPG-719 'delete' button of the Q/A in the content page list)
+Q/A displays in content page list
+     Login Editor
+     Click innehall button
+     Filtering Q/A
+
+Filtering Q/A
+    Filter content                          Fråga/svar
+
+Clicks on delete button
+    Click Element                          xpath://*[@class="dropbutton-arrow"]
+    Click Element                          xpath://*[@class="delete dropbutton-action secondary-action"]

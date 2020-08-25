@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation       This is test suite of search function verification of skatteinformation.se
-Resource            ../tests/Resources/search_keywords.robot
-Resource            ../tests/Resources/login_keywords.robot
-Resource            ../tests/Resources/setup_keywords.robot
-Resource            ../tests/Resources/teardown_keywords.robot
+Resource            ../Resources/search_keywords.robot
+Resource            ../Resources/login_keywords.robot
+Resource            ../Resources/setup_keywords.robot
+Resource            ../Resources/teardown_keywords.robot
 Library             SeleniumLibrary
 Test Setup          Skatteinformation Website Is Open
 Test Teardown       Logout And Close All

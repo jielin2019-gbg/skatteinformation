@@ -5,7 +5,7 @@ Begin Web Test
       #Maximize Browser Window
 
 End Web Test
-    Close Browser
+    Close All Browsers
 
 Begin at Q/A page
     User logged in front page

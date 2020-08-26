@@ -59,9 +59,18 @@ Check question with all fields displayed correctly
      and Show the whole question
      Then Verify correct question
 
+
 Save question with title only
     [Tags]                                      TIPG-720
      Given Begin at innehall page
      And Add question with only title
      When Save question
      Then Verify question on content page
+
+Page with delete alert message
+    [Tags]                                      TIPG-729
+    Given Begin at innehall page
+    Then Clicks on Edit button
+    And Delete on edit page
+    When Verify delete alert page
+

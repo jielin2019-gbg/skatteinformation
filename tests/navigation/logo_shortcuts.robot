@@ -26,30 +26,32 @@ Process Shortcut
 	Wait Until Element Is Visible	  xpath://input[@id="edit-search" and contains(@value,"${value2}")]  timeout=60
 	Wait Until Element Is Visible	  xpath://a[@href="/"]  timeout=60
     	Click Logo
-	Wait Until Location Is	https://test.skatteinformation.se/  timeout=60
+	Wait Until Location Is	${URL}  timeout=60
        	Wait Until Page Contains Element  xpath://a[contains(@href,"${value3}")]  timeout=60
 	Wait Until Element Is Visible  xpath://input[@id="edit-search"]  timeout=60
        	Wait Until Element Is Visible  xpath://a[contains(@href,"${value3}")]  timeout=60
-	Wait Until Location Is	https://test.skatteinformation.se/  timeout=2m
-	Location Should Be	https://test.skatteinformation.se/  timeout=60
+	Wait Until Location Is	${URL}  timeout=2m
+	Location Should Be	${URL}  timeout=60
+	Verify Start Page Loaded
+	
+Verify Initial Start Page Loaded
+	Location Should Be  ${URL}start
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]	
+	Page Should Contain  Senaste nytt
+	
+Verify Start Page Loaded
+	Location Should Be  ${URL}
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]	
+	Page Should Contain  Senaste nytt
 
 Browser Watershed
-       	[Arguments]	${value}	${value2}
-	Run Keyword If	'${BROWSER}'=='firefox'  Process Shortcut Firefox  ${value}  ${value2}
-	...  ELSE IF	'${BROWSER}'=='headlessfirefox'  Process Shortcut Firefox  ${value}  ${value2}
-	...  ELSE 	Process Shortcut Firefox  ${value}
+       	[Arguments]	${string}
+	Log To Console  ${string} ${URL}
+	Run Keyword If	'${BROWSER}'=='firefox'  Confirm Page Loaded2  ${string}/  
+	...  ELSE IF	'${BROWSER}'=='headlessfirefox'  Confirm Page Loaded2  ${string}/
+	...  ELSE 	Confirm Page Loaded
 
 *** Test Cases ***
-Try Start From Start
-     [Documentation]     Trying logo from initial start page
-     [Tags]              start
-     Login User
-     Check Start Page Loaded	
-     Hover Over Logo
-     Repeat Keyword	5	Click Logo
-     Location Should Be	https://test.skatteinformation.se/
-     Log Out
-
 # Return to start from shortcut page
 #     [Documentation]	Clicking logo from front page shortcut pages
 #     [Tags]		shortcuts
@@ -63,14 +65,6 @@ Try Start From Start
 #     Start From Shortcut  dek20	
 #     Log Out
 
-# Return to start after scrolling to bottom
-# 	[Documentation]
-# 	[Tags]		scroll
-# 	Login User
-# 	Check Start Page Loaded	
-# 	Scroll Element Into View	xpath://footer
-# 	Click Logo
-# 	Logout
 
 # Return to start after scrolling to bottom in shortcuts
 # 	[Documentation]
@@ -84,50 +78,25 @@ Try Start From Start
 # 	Start From Shortcut After Scroll	dek20			
 # 	Logout
 
-Return to start after using menu items
-	[Documentation]
-	[Tags]		menu-item
-	Login User
-	Check Start Page Loaded	
-	Return After Menu Item		sok
-	Return After Menu Item		fraga-och-svar
-	Return After Menu Item		tabeller
-	Logout			
-
-Return to start after using menu items with subcategories
-	[Documentation]
-	[Tags]		menu-item-sub
-	Login User
-	Check Start Page Loaded	
-	Return After Menu Item Sub	Allmänt
-	Return After Menu Item Sub	Civilrätt och bokföring	
-	Return After Menu Item Sub	Deklaration och förfarande	
-	Return After Menu Item Sub	Fastighet	
-	Return After Menu Item Sub	Internationell beskattning	
-	Return After Menu Item Sub	Kapital	
-	Return After Menu Item Sub	Mervärdesskatt och punktskatter	
-	Return After Menu Item Sub	Näringsverksamhet	
-	Return After Menu Item Sub	Tjänst	
-	Logout			
-
-Return to start from Mitt Konto
-	[Documentation]
-	[Tags]		mitt-konto
-	Login User
-	Check Start Page Loaded	
-	Return From Mitt Konto
-	Logout	
-
 Shortcuts 
     [Documentation]	Return to start page after clicking shortcut-links
     [Tags]		shortcuts
     Login User
-    Check Start Page Loaded	
+    Verify Initial Start Page Loaded	
     # Shortcut          nr	name		
     # ---------------------------------------------
     Process Shortcut	1	Corona
-    Process Shortcut	2	12-reglerna
+#    Process Shortcut	2	12-reglerna
     Process Shortcut	3	fastighet
     Process Shortcut	4	förmån
     Process Shortcut	5	dek20			
     Log Out
+
+asdf
+	[Tags]	asdf
+	Login User
+	Check Start Page Loaded
+	Process Shortcut  1  Corona
+	Browser Watershed  https://test.skatteinformation.se
+	Log Out
+

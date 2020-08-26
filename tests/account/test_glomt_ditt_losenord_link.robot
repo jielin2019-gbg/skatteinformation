@@ -19,7 +19,7 @@ Test Glömt Ditt Lösenord link
     The Page Should Navigate to Återställ Ditt Lösenord Page
     Submit Email Address
 
-Check link in Gmail
+Check link in Outlook
     Input Outlook Account
     Input Outlook Password
     Submit Outlook Credentials

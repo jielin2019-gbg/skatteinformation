@@ -1,14 +1,16 @@
 *** Settings ***
 Documentation       This is test suite of search function verification of skatteinformation.se
-Resource            ../Resources/TIPG-398-Search_keywords.robot
+Resource            ../Resources/search_keywords.robot
 Resource            ../Resources/login_keywords.robot
+Resource            ../Resources/setup_keywords.robot
+Resource            ../Resources/teardown_keywords.robot
 Library             SeleniumLibrary
-Test Setup          Open Browser To Start Page
-Test Teardown       End Web Test
+Test Setup          Skatteinformation Website Is Open
+Test Teardown       Logout And Close All
 
 
 *** Variables ***
-${BROWSER} =    headlesschrome
+${BROWSER} =  headlesschrome
 
 
 *** Test Cases ***
@@ -19,7 +21,6 @@ Verify Valid Search
         Enter Search Text                   moms
         Click Search
         Verify Search
-        Log Out
 
 
 Make Search With No Query
@@ -27,7 +28,7 @@ Make Search With No Query
         [Tags]                              TIPG-467
         Login User
         Search Empty
-        Log Out
+
 
 
 Verify Searchbar Clearing after Refresh
@@ -39,7 +40,7 @@ Verify Searchbar Clearing after Refresh
         Verify Search
         Click Refresh
         Verify Refresh Button
-        Log Out
+
 
 
 Verify Login and Invalid Search
@@ -49,4 +50,4 @@ Verify Login and Invalid Search
         Enter Search Text                   abcd
         Click Search
         Verify Search invalid
-        Log Out
+

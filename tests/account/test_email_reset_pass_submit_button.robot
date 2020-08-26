@@ -1,20 +1,24 @@
 *** Settings ***
 Documentation                            As a user I want to reset my password so that I can log in (when I have forgotten my password)
 Library                                 SeleniumLibrary
+Library                                 ImapLibrary2
 Resource	                            ../Resources/login_keywords.robot
 Resource	                            ../Resources/login_variables.robot
 Resource                                ../Resources/setup_keywords.robot
+Resource                                ../Resources/browser_variables.robot
+Resource                                ../Resources/teardown_keywords.robot
+
 Test Setup                              Skatteinformation Website Is Open
-Test Teardown                           Close All Browsers
+Test Teardown                           Logout And Close All
 
 *** Variables ***
-${BROWSER}                              chrome
-${reset_email_service} =         https://mail.google.com/mail/
+${BROWSER} =     ${HEADLESS_CHROME}
+
 *** Test Cases ***
 Going to the Återställ ditt lösenord page
-     Given the Återställ ditt lösenord page is open
-     when user puts in emailadrees and presses submit
-     then the user will get a popup and a email
+    Given the Återställ ditt lösenord page is open
+    when user puts in emailadrees and presses submit
+    then the user will get a popup and a email
 
 
 
@@ -22,44 +26,29 @@ Going to the Återställ ditt lösenord page
 
 
 the Återställ ditt lösenord page is open
-     Location Should Contain	 https://test.skatteinformation.se/user/login?destination=/start
-     Page Should Contain     Återställ ditt lösenord
-     Click Element   //*[@id="block-skatteinfo-local-tasks"]/ul/li[2]/a
-     Location Should Contain	 https://test.skatteinformation.se/user/password
+    Location Should Contain	 ${URL}
+    Page Should Contain     Återställ ditt lösenord
+    Click Element   //*[@id="block-skatteinfo-local-tasks"]/ul/li[2]/a
+    Location Should Contain	 https://test.skatteinformation.se/user/password
 
 user puts in emailadrees and presses submit
-     Input Text   //*[@id="edit-name"]   ${RESET_EMAIL}
-     Click Button     //*[@id="edit-submit"]
+    Input Text   //*[@id="edit-name"]   ${RESET_EMAIL_OUTLOOK}
+    Click Button     //*[@id="edit-submit"]
 
 the user will get a popup and a email
 
-     Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
-
-     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-     ${userAgent}=  set variable  --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
-     Call Method    ${options}     add_argument  ${userAgent}
-     Call Method    ${options}    add_argument    headless
-     Call Method    ${options}    add_argument    disable-gpu
-     #Call Method    ${options}    add_argument    --start-maximized
-     Call Method    ${options}    add_argument    --allow-running-insecure-content
-     Call Method    ${options}    add_argument    --disable-web-security
-     Call Method    ${options}    add_argument    --disable-dev-shm-usage
-     Call Method    ${options}    add_argument    --no-sandbox
-     Create WebDriver    Chrome    chrome_options=${options}
-
-     Go to                               ${reset_email_service}
-     Input Text                          id:identifierId    ${RESET_EMAIL}
-     ${ele}      Get WebElement          //*[@id="identifierNext"]/div/button
-     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
-     Sleep   6
-     Input Text                           name:password        ${RESET_EMAIL_PASSWORD}
-     ${ele}      Get WebElement          //*[@id="passwordNext"]/div/button/div[2]
-     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
-     Go to     https://mail.google.com/mail/u/0/?tab=gm#inbox
-     Sleep  10
-     Capture Page Screenshot         C:/Bobi/Projekts/PycharmProjects/Skatteinfo/skatteinformation/tests/Account/fel.png
-     ${ele}      Get WebElement          //*[@id=":31"]/span[2]
-     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
-     Sleep   6
-     Page Should Contain         Ersättande inloggningsuppgifter för infotiv-user-reset på Wolters Kluwer Skatteinformation
-     Click Element    //*[@id=":4"]/div[2]/div[1]/div/div[2]/div[3]
+    Page Should Contain     Ytterligare instruktioner har skickats till din e-postadress.
+    Go to                               ${RESET_EMAIL_SERVICE}
+    Wait Until Element Is Visible       //*[@id="i0116"]
+    Input Text                           //*[@id="i0116"]   ${RESET_EMAIL_OUTLOOK}
+    Click Element                     //*[@id="idSIButton9"]
+    Wait Until Element Is Visible       //*[@id="i0118"]
+    Input Text                        //*[@id="i0118"]   ${RESET_EMAIL_PASSWORD}
+    Click Element                       //*[@id="idSIButton9"]
+    Wait Until Element Is Visible       //*[@id="idBtn_Back"]
+    Click Element                        //*[@id="idBtn_Back"]
+    Wait Until Element Is Visible      xpath://span[@title='skatteinformation@wolterskluwer.se']   timeout=3 min
+    ${ele}      Get WebElement          xpath://span[@title='skatteinformation@wolterskluwer.se']
+    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
+    Page Should Contain                 En begäran om att återställa lösenordet för ditt kontot har gjorts på Wolters Kluwer Skatteinformation.
+    Click Element           //*[@id="app"]/div/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span

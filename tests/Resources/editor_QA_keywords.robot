@@ -111,3 +111,10 @@ Show the whole question
 Verify correct question
     Page Should Contain                     testquestion
     Page Should Contain                     testanswer
+
+#*** Keywords *** (TIPG-729 - Delete alert message page)
+Delete on edit page
+    Click Element       xpath://*[@id="block-seven-primary-local-tasks"]/nav/nav/ul/li[3]/a
+
+Verify delete alert page
+    Page Should Contain     Är du säker på att du vill radera content item testartikel?

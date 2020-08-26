@@ -58,3 +58,10 @@ Check question with all fields displayed correctly
      When Click on question with all fields filled
      and Show the whole question
      Then Verify correct question
+
+Page with delete alert message
+    [Tags]                                      TIPG-729
+    Given Begin at innehall page
+    Then Clicks on Edit button
+    And Delete on edit page
+    When Verify delete alert page

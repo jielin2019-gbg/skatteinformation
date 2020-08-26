@@ -60,3 +60,11 @@ Clicks on delete button
 #*** Keywords *** (TIPG-732 'Edit' button of the Q/A in the content page list)
 Clicks on Edit button
     Click Element                          xpath://*[@class="edit dropbutton-action"]
+
+#*** Keywords *** (TIPG-728 Fraga/Svar link)
+Go to skapa fraga/svar page
+    Click Element    xpath://*[@id="block-seven-local-actions"]/ul/li/a
+    Click Element    xpath://*[@id="block-seven-content"]/ul/li[3]/a/span
+
+Verify fraga/svar link
+    Page should contain Element     xpath://*[@id="block-seven-page-title"]/h1

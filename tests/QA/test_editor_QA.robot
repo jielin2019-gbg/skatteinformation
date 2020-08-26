@@ -39,3 +39,8 @@ Edit button in content page list
      When Clicks on Edit button
      Then Verify the Edit page
 
+Fraga/svar link
+    [Tags]                                     TIPG-728 - Test 'fråga/svar' link
+    Given Begin at innehall page
+    When Go to skapa fraga/svar page
+    Then Verify fraga/svar link

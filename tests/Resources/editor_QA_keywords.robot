@@ -26,13 +26,13 @@ Filter content
     Click Button                            id:edit-submit-content
 
 Edit article
-    [Arguments]                             ${article_name}
-    Click Link                              ${article_name}
     Click Link                              Edit
 
 At editing page
+    Begin at innehall page
     Filter content                          Fråga/svar
-    Edit article                            Q/A test2
+    Go to article                            Q/A testtitle
+    Edit article
 
 
 Click delete end of page
@@ -111,3 +111,18 @@ Show the whole question
 Verify correct question
     Page Should Contain                     testquestion
     Page Should Contain                     testanswer
+
+#*** Keywords *** (date keywords)
+Add time from todays date
+    [Arguments]                          ${day}
+    ${date}=                             Get Current Date
+    ${result_date}                       Add Time To Date             ${date}   ${day}
+    ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
+    Input Text                           id:edit-created-0-value-date            ${format_date}
+
+Subtract time from todays date
+    [Arguments]                          ${day}
+    ${date}=                             Get Current Date
+    ${result_date}                       Subtract Time From Date          ${date}   ${day}
+    ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
+    Input Text                           id:edit-created-0-value-date            ${format_date}

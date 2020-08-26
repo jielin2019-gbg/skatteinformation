@@ -58,3 +58,10 @@ Check question with all fields displayed correctly
      When Click on question with all fields filled
      and Show the whole question
      Then Verify correct question
+
+Save question with title only
+    [Tags]                                      TIPG-720
+     Given Begin at innehall page
+     And Add question with only title
+     When Save question
+     Then Verify question on content page

@@ -44,3 +44,10 @@ Fraga/svar link
     Given Begin at innehall page
     When Go to skapa fraga/svar page
     Then Verify fraga/svar link
+
+Save question with all fields filled
+    [Tags]                                      TIPG-723
+     Given Begin at innehall page
+     And Add question with title fraga and svar
+     When Save question
+     Then Verify question on content page

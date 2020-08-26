@@ -68,3 +68,29 @@ Go to skapa fraga/svar page
 
 Verify fraga/svar link
     Page should contain Element     xpath://*[@id="block-seven-page-title"]/h1
+
+#*** Keywords *** (TIPG-723 - test functionality of save button with all fields filled )
+Add question with title fraga and svar
+    Go to skapa fraga/svar page
+    Add random title
+    Add random fraga
+    Add random svar
+
+Add random title
+    Input text                              id:edit-title-0-value        Q/A testtitle
+
+Add random fraga
+    Input text                              id:edit-field-question-0-value      testquestion
+
+Add random svar
+    Select frame                            xpath://*[@id="cke_1_contents"]/iframe
+    Input text                              xpath:/html/body/p    testanswer
+    Unselect Frame
+
+Save question
+    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+    Wait Until Page Contains               Q/A testtitle (Fråga/svar) har skapats.
+
+Verify question on content page
+    Go To                           https://test.skatteinformation.se/admin/content
+    Wait Until Page Contains        Q/A testtitle

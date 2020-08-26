@@ -78,16 +78,16 @@ Click Log In
     click element                       xpath://input[contains (@class, 'submit')]
 
 Change Password
-    sleep    3
+    Wait Until Element Is Visible       id:edit-pass-pass1      timeout= 3 min
     Input Text      id:edit-pass-pass1   ${RESET_PASSWORD}
-    sleep    3
+    Wait Until Element Is Visible       id:edit-pass-pass1      timeout= 3 min
     Input Text      id:edit-pass-pass2   ${RESET_PASSWORD}
     ${ele}      Get WebElement           id:edit-submit
     Execute Javascript                   arguments[0].click();       ARGUMENTS    ${ele}
 
 Delete The Skatteinformation Email In Gmail
     Click Skatteinformation Email
-    sleep    3
+    Wait Until Element Is Visible        xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i      timeout= 3 min
     ${ele}      Get WebElement           xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i
     Execute Javascript                   arguments[0].click();       ARGUMENTS    ${ele}
 

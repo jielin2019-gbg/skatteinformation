@@ -51,3 +51,10 @@ Save question with all fields filled
      And Add question with title fraga and svar
      When Save question
      Then Verify question on content page
+
+Check question with all fields displayed correctly
+    [Tags]                                      TIPG-724
+     Given Begin at innehall page
+     When Click on question with all fields filled
+     and Show the whole question
+     Then Verify correct question

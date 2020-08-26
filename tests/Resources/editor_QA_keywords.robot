@@ -94,3 +94,20 @@ Save question
 Verify question on content page
     Go To                           https://test.skatteinformation.se/admin/content
     Wait Until Page Contains        Q/A testtitle
+
+#*** Keywords *** (TIPG-724 - test that question that was saved with title, fråga, svar inputs is dispayed correctly)
+
+Go to article
+    [Arguments]                             ${article_name}
+    Click Link                              ${article_name}
+
+Click on question with all fields filled
+    Filter content                          Fråga/svar
+    Go to article                           Q/A testtitle
+
+Show the whole question
+    Click Element                           xpath://*[@id="block-skatteinfo-content"]/article/div[1]/button
+
+Verify correct question
+    Page Should Contain                     testquestion
+    Page Should Contain                     testanswer

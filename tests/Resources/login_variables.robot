@@ -7,10 +7,4 @@ ${RESET_USERNAME} =  infotiv-user-reset
 ${RESET_PASSWORD} =  slimy-very-decorate-transit
 ${RESET_EMAIL} =  softvarutestare@gmail.com
 ${RESET_EMAIL_PASSWORD} =  slimy-very-decorate-transit
-<<<<<<< HEAD
-
-
-
-=======
-${NEW_RESET_EMAIL_PASSWORD} = Slimy-very-decorate-transit2
->>>>>>> dc90e0fdb132b8b28aeabe34afb244840c0c724a
+${NEW_RESET_EMAIL_PASSWORD} =  Slimy-very-decorate-transit2

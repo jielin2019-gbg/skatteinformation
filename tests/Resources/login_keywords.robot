@@ -16,11 +16,7 @@ Login ResetUser
 
 Log Out
 	# This keyword only works while window is maximized
-<<<<<<< HEAD
-	Click Link  xpath=//a[@href="/user/logout"]
-=======
 	Click Link  xpath=//a[@href="/user/logout"]
 
 Log Out Forced
 	Go To  https://test.skatteinformation.se/user/logout
->>>>>>> dc90e0fdb132b8b28aeabe34afb244840c0c724a

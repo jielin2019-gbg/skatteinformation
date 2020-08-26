@@ -49,8 +49,9 @@ Previous Page
 
 Link in QA Paragraph
     [Tags]                                      TIPG-554 Test link in paragraph
-    Given Begin at Q/A page
-      And User is on page 4 QA paragraph
+
+    Given Begin at search content page
+      And Search for the Question 'AGI och redovisning av bilförmån'
      When Clicks the link in QA paragraph
      Then Corresponding website should appear
 

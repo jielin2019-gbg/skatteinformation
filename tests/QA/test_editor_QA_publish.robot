@@ -11,11 +11,12 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  End Web Test
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                      chrome
 
 *** Test Cases ***
-
-Publish in future               #testing the date, not finished
+Test publish date                               #testing the date, not finished
+    set selenium speed                          1
     At editing page
-    Add time from todays date                  20 days
-    Subtract time from todays date             10 days
+    Publish date in future                      20 days
+    Publish date back in time                   10 days
+    Publish date current date

@@ -113,16 +113,22 @@ Verify correct question
     Page Should Contain                     testanswer
 
 #*** Keywords *** (date keywords)
-Add time from todays date
+Publish date in future
     [Arguments]                          ${day}
     ${date}=                             Get Current Date
     ${result_date}                       Add Time To Date             ${date}   ${day}
     ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
     Input Text                           id:edit-created-0-value-date            ${format_date}
 
-Subtract time from todays date
+Publish date back in time
     [Arguments]                          ${day}
     ${date}=                             Get Current Date
     ${result_date}                       Subtract Time From Date          ${date}   ${day}
     ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
     Input Text                           id:edit-created-0-value-date            ${format_date}
+
+Publish date current date
+    ${date}=                             Get Current Date
+    ${format_date}                       Convert Date    ${date}   result_format=%m.%d.%Y
+    Input Text                           id:edit-created-0-value-date            ${format_date}
+

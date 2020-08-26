@@ -61,17 +61,16 @@ Submit Outlook Credentials
     ${ele}      Get WebElement          id:idBtn_Back
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
 
-
 Click Skatteinformation Email
     Go To                               https://outlook.live.com/mail/0/inbox
+    Wait Until Element Is Visible       xpath://span[@title='skatteinformation@wolterskluwer.se']       timeout= 3 min
     ${ele}      Get WebElement          xpath://span[@title='skatteinformation@wolterskluwer.se']
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
 
-
 Click Link in Email
+    Wait Until Element Is Visible       xpath://a[contains(@href,'sendgrid')]       timeout= 3 min
     ${ele}      Get WebElement          xpath://a[contains(@href,'sendgrid')]
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
-
 
 Click Log In
     Switch Window                       title:Återställ lösenord | Skatteinformation
@@ -79,16 +78,17 @@ Click Log In
     click element                       xpath://input[contains (@class, 'submit')]
 
 Change Password
-    Sleep           3
+    sleep    3
     Input Text      id:edit-pass-pass1   ${RESET_PASSWORD}
-    Sleep           3
+    sleep    3
     Input Text      id:edit-pass-pass2   ${RESET_PASSWORD}
     ${ele}      Get WebElement           id:edit-submit
     Execute Javascript                   arguments[0].click();       ARGUMENTS    ${ele}
 
 Delete The Skatteinformation Email In Gmail
     Click Skatteinformation Email
-    ${ele}      Get WebElement           id:id__113
+    sleep    3
+    ${ele}      Get WebElement           xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i
     Execute Javascript                   arguments[0].click();       ARGUMENTS    ${ele}
 
 The Page Should Navigate to Change Password Page

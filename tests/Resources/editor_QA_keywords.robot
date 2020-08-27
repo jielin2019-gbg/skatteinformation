@@ -152,3 +152,13 @@ Verify delete alert page
     Page Should Contain     Är du säker på att du vill radera content item testartikel?
 
 
+#*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
+Publish question with current date
+    Add question with only title
+    Select Checkbox                         id:edit-status-value
+    Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+
+Verify question on topplist page
+    Click Element                           xpath://*[@id="block-main-menu"]/ul/li[1]/a
+    Execute Javascript                      window.scrollTo(0,900)
+    Page Should Contain		                Q/A testtitle ${RANDOMINT}

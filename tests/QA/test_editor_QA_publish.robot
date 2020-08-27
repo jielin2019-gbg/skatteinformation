@@ -20,3 +20,9 @@ Test publish date                               #testing the date, not finished
     Publish date in future                      20 days
     Publish date back in time                   10 days
     Publish date current date
+
+Publish todays date on topplist
+     [Tags]                                      TIPG-743
+     Given Begin at innehall page
+     When Publish question with current date
+     Then Verify question on topplist page

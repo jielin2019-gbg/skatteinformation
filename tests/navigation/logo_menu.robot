@@ -19,7 +19,7 @@ Click Menu Sub Item
       	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
 	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
 	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
-	Set Selenium Speed  0.1
+	Set Selenium Speed  0.2
       	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
 	Set Selenium Speed  0
        	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	

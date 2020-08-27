@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation       This is test suite of search function verification of skatteinformation.se
-Resource            ../Resources/TIPG-505-Search_keywords.robot
+Resource            ../Resources/search_keywords.robot
 Resource            ../Resources/login_keywords.robot
+Resource            ../Resources/setup_keywords.robot
+Resource            ../Resources/teardown_keywords.robot
 Library             SeleniumLibrary
-Test Setup          Open Browser To Start Page
-Test Teardown       End Web Test
+Test Setup          Skatteinformation Website Is Open
+Test Teardown       Logout And Close All
 
 
 *** Variables ***
@@ -21,8 +23,8 @@ Verify Fråga/svar content type in valid search
         Enter Search Text                   moms
         Click Search
         Verify Search
-        Verify content type questions/answer
-        Log Out
+        Verify content type Fråga/svar
+
 
 
 Verify Sök Innehåll On The Header
@@ -34,7 +36,7 @@ Verify Sök Innehåll On The Header
         Verify Search Button From Sök Innehåll Page
         Verify Search Button From Fråga/Svar Page
         Verify Search Button From Tabeller Page
-        Log Out
+
 
 
 Verify the search result by search content type Artikel
@@ -46,4 +48,3 @@ Verify the search result by search content type Artikel
         Click Search
         Verify Search
         Verify content type artikel
-        Log Out

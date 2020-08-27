@@ -151,4 +151,57 @@ Delete on edit page
 Verify delete alert page
     Page Should Contain     Är du säker på att du vill radera content item testartikel?
 
+#*** Keywords *** (TIPG-755 verify the information type 'legislation')
+Verify QA legislation
+      ${QA_legislation}                  Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/div[1]/h1/span
+      Log                               ${QA_legislation}
+      Should Be Equal                   ${QA_legislation}       Q/A testtitle ${RANDOMINT}
+
+User is on Skapa fraga/svar page
+    Login Editor
+    Click innehall button
+    Go to skapa fraga/svar page
+    Generate title
+    Add random title
+
+Publish with information type
+    Select Publish chekbox
+    Click on Save button
+    Click Link                             Sök innehåll
+
+Verify in Search content
+    Input text                             id:edit-search        Q/A testtitle ${RANDOMINT}
+    Click button                           id:edit-submit-search
+    Wait Until Page Contains               Vad söker du?
+    #sleep                                  4
+    Verify QA legislation
+
+Click on Save button
+    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+
+Select Publish chekbox
+    Select Checkbox                       id:edit-status-value
+
+Select information type legislation
+    Select from list by index           field_information_type          1
+
+Select Checkbox legislation
+    Select Checkbox                        id:informationstyp-108
+
+#*** Keywords *** (TIPG-760 verify the information type 'legal cases')
+Select information type legal cases
+    Select from list by index           field_information_type          2
+
+Select Checkbox legal cases
+    Select Checkbox                        id:informationstyp-109
+
+#*** Keywords *** (TIPG-761 verify the information type 'position taken')
+Select information type position taken
+    Select from list by index           field_information_type          3
+
+Select Checkbox position taken
+    Select Checkbox                        id:informationstyp-110
+
+
+
 

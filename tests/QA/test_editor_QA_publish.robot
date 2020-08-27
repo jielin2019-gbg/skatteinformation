@@ -6,6 +6,7 @@ Resource                                        ../Resources/editor_QA_keywords.
 Resource                                        ../Resources/QA_keywords.robot
 Library                                         SeleniumLibrary
 Library                                         DateTime
+Library                                         String
 Suite Setup                                     Begin Web Test
 Test Teardown                                   Log Out Forced
 Suite Teardown                                  End Web Test
@@ -21,6 +22,7 @@ Test publish date                               #testing the date, not finished
     Publish date back in time                   10 days
     Publish date current date
 
+<<<<<<< HEAD
 Test the information type 'legislation'
     [TAGS]                                      TIPG-755 Information type 'legislation'
     set selenium speed                          500ms
@@ -47,3 +49,22 @@ Test the information type 'position taken'
     Publish with information type
     Select Checkbox position taken
     Verify in Search content
+=======
+Publish todays date on topplist
+     [Tags]                                      TIPG-743
+     Given Begin at innehall page
+     When Publish question with current date
+     Then Verify question on topplist page
+
+Publish todays date on Q/A page
+     [Tags]                                     TIPG-744
+     Given Begin at innehall page
+     When Publish question with current date
+     Then Verify question on Q/A page
+
+Publish date and time blank
+     [Tags]                                     TIPG-745
+     Given Begin at innehall page
+     When Publish with question date and time blank
+     Then Verify question published with todays date
+>>>>>>> TIPG-559

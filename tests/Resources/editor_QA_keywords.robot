@@ -162,3 +162,8 @@ Verify question on topplist page
     Click Element                           xpath://*[@id="block-main-menu"]/ul/li[1]/a
     Execute Javascript                      window.scrollTo(0,900)
     Page Should Contain		                Q/A testtitle ${RANDOMINT}
+
+#*** Keywords *** (TIPG-744 - test that publishing question with today's date is on Q/A page)
+Verify question on Q/A page
+    Click Q/A button menu bar
+    Page Should Contain		                Q/A testtitle ${RANDOMINT}

@@ -26,3 +26,9 @@ Publish todays date on topplist
      Given Begin at innehall page
      When Publish question with current date
      Then Verify question on topplist page
+
+Publish todays date on Q/A page
+        [Tags]                                     TIPG-744
+     Given Begin at innehall page
+     When Publish question with current date
+     Then Verify question on Q/A page

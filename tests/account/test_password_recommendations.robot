@@ -5,11 +5,11 @@ Resource	                                            ../Resources/login_keywords
 Resource	                                            ../Resources/login_variables.robot
 Resource	                                            ../Resources/setup_keywords.robot
 Suite Setup                                             Testing Setup
-Suite Teardown                                          Close Browser     #{pass}
+Suite Teardown                                          Close Browser
 
 *** Variables ***
 ${BROWSER}                                              chrome
-${REC-BOX}                                              //div[@class='password-suggestions description']
+${REC_BOX}                                              //div[@class='password-suggestions description']
 
 
 *** Test Cases ***
@@ -25,13 +25,11 @@ Recommendation box all password tips showing
 
 Recommendation box 'atleast 12 characters' tip removal
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_1
     Enter password                                      123456789101           #12 characters
     Recommendation box should not contain               Make it at least 12 characters
 
 Recommendation box 'atleast 12 characters' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_2
     Enter password                                      123456789101           #12 characters
     Recommendation box should not contain               Make it at least 12 characters
     Clear Password
@@ -117,12 +115,12 @@ Enter password
 
 Recommendation box should not contain
     [Arguments]                                         ${text}
-    ${recommendations}                                  Get Text                ${REC-BOX}
+    ${recommendations}                                  Get Text                ${REC_BOX}
     Should Not Contain                                  ${recommendations}      ${text}
 
 Recommendation box should contain
     [Arguments]                                         ${text}
-    ${recommendations}                                  Get Text                ${REC-BOX}
+    ${recommendations}                                  Get Text                ${REC_BOX}
     Should Contain                                      ${recommendations}      ${text}
 
 Clear Password
@@ -130,5 +128,6 @@ Clear Password
     Scroll Element Into View                            id:edit-submit
     Click Element                                       id:edit-pass-pass1
     Press Keys                                          None      BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE
+    Sleep                                               1
 
 

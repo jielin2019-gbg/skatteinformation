@@ -32,7 +32,8 @@ Recommendation box 'atleast 12 characters' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
     Enter password                                      123456789101           #12 characters
     Recommendation box should not contain               Make it at least 12 characters
-    Clear Password
+    Enter password                                      .
+    #Clear Password
     Recommendation box should contain                   Make it at least 12 characters
 
 Recommendation box 'små bokstäver' tip removal
@@ -46,7 +47,8 @@ Recommendation box 'små bokstäver' tip reappearing
     [Tags]                                              test_4
     Enter password                                      qwerty
     Recommendation box should not contain               Lägg till små bokstäver
-    Clear password
+    Enter password                                      .
+    #Clear password
     Recommendation box should contain                   Lägg till små bokstäver
 
 Recommendation box 'versaler' tip removal
@@ -60,7 +62,8 @@ Recommendation box 'versaler' tip reappearing
     [Tags]                                              test_6
     Enter password                                      QWERTY
     Recommendation box should not contain               Lägg till versaler
-    Clear password
+    #Clear Password
+    Enter password                                      .
     Recommendation box should contain                   Lägg till versaler
 
 Recommendation box 'siffror' tip removal
@@ -74,7 +77,8 @@ Recommendation box 'siffror' tip reappearing
     [Tags]                                              test_8
     Enter password                                      123456
     Recommendation box should not contain               Lägg till siffror
-    Clear password
+    #Clear password
+    Enter password                                      .
     Recommendation box should contain                   Lägg till siffror
 
 Recommendation box 'skiljetecken' tip removal
@@ -88,7 +92,8 @@ Recommendation box 'skiljetecken' tip reappearing
     [Tags]                                              test_10
     Enter password                                      !-#%/!
     Recommendation box should not contain               Lägg till skiljetecken
-    Clear password
+    Enter password                                      a
+    #Clear password
     Recommendation box should contain                   Lägg till skiljetecken
 
 Recommendation box no password tips showing
@@ -126,8 +131,8 @@ Recommendation box should contain
 Clear Password
     #Function only removes 6 characters
     Scroll Element Into View                            id:edit-submit
-    Click Element                                       id:edit-pass-pass1
-    Press Keys                                          None      BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE
+    #Click Element                                       id:edit-pass-pass1
+    Press Keys                                          id:edit-pass-pass1      BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE
     Sleep                                               1
 
 

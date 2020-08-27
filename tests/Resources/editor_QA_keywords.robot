@@ -134,8 +134,7 @@ Publish date back in time
 
 Publish date current date
     ${date}=                             Get Current Date
-    ${format_date}                       Convert Date    ${date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
+    Input Text                           id:edit-created-0-value-date            ${date}
 
 #*** Keywords *** (TIPG-720 - test functionality of save button only title filled)
 
@@ -155,6 +154,7 @@ Verify delete alert page
 #*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
 Publish question with current date
     Add question with only title
+    Publish date current date
     Select Checkbox                         id:edit-status-value
     Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
 
@@ -167,3 +167,25 @@ Verify question on topplist page
 Verify question on Q/A page
     Click Q/A button menu bar
     Page Should Contain		                Q/A testtitle ${RANDOMINT}
+
+#*** Keywords *** (TIPG-745 - test that publishing question with date and time empty)
+Delete date
+    Input Text                              id:edit-created-0-value-date            ${EMPTY}
+
+Delete time
+    Input Text                              id:edit-created-0-value-time            ${EMPTY}
+
+Publish with question date and time blank
+    Add question with only title
+    Delete Date
+    Delete Time
+    Select Checkbox                         id:edit-status-value
+    Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+
+Verify question published with todays date
+     Click Q/A button menu bar
+     Page Should Contain		            Q/A testtitle ${RANDOMINT}
+     ${date}=                               Get Current Date
+     ${format_date}                         Convert Date       ${date}  result_format=%d %b %Y
+     ${lowercase_date}                      Convert to Lower Case                ${format_date}
+     Page Should contain				    ${lowercase_date}

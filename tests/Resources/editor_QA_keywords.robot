@@ -134,12 +134,9 @@ Publish date back in time
 
 Publish date current date
     ${date}=                             Get Current Date
-<<<<<<< HEAD
     ${format_date}                       Convert Date    ${date}   result_format=%m.%d.%Y
     Input Text                           id:edit-created-0-value-date            ${format_date}
-=======
     Input Text                           id:edit-created-0-value-date            ${date}
->>>>>>> TIPG-559
 
 #*** Keywords *** (TIPG-720 - test functionality of save button only title filled)
 
@@ -155,7 +152,6 @@ Delete on edit page
 Verify delete alert page
     Page Should Contain     Är du säker på att du vill radera content item testartikel?
 
-<<<<<<< HEAD
 #*** Keywords *** (TIPG-755 verify the information type 'legislation')
 Verify QA legislation
       ${QA_legislation}                  Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/div[1]/h1/span
@@ -207,10 +203,6 @@ Select information type position taken
 Select Checkbox position taken
     Select Checkbox                        id:informationstyp-110
 
-
-
-=======
->>>>>>> TIPG-559
 
 #*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
 Publish question with current date

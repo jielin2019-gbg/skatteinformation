@@ -22,7 +22,6 @@ Test publish date                               #testing the date, not finished
     Publish date back in time                   10 days
     Publish date current date
 
-<<<<<<< HEAD
 Test the information type 'legislation'
     [TAGS]                                      TIPG-755 Information type 'legislation'
     set selenium speed                          500ms
@@ -49,7 +48,7 @@ Test the information type 'position taken'
     Publish with information type
     Select Checkbox position taken
     Verify in Search content
-=======
+
 Publish todays date on topplist
      [Tags]                                      TIPG-743
      Given Begin at innehall page
@@ -67,4 +66,4 @@ Publish date and time blank
      Given Begin at innehall page
      When Publish with question date and time blank
      Then Verify question published with todays date
->>>>>>> TIPG-559
+

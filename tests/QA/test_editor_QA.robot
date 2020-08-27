@@ -10,7 +10,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  End Web Test
 
 *** Variables ***
-${BROWSER}                                      chrome
+${BROWSER}                                      headless chrome
 
 
 *** Test Cases ***
@@ -76,7 +76,8 @@ Page with delete alert message
 
 Creating QA Without title
     [Tags]                                      TIPG-733
-    Set selenium speed                          0.3
     Given Add QA with only fraga
-    When Save question
-    Then Alert should appear
+    When Click on save
+    Then Alert bubble should appear
+
+

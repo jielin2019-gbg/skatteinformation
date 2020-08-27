@@ -138,7 +138,10 @@ Add QA with only fraga
     Begin at innehall page
     Go to skapa fraga/svar page
     Verify fraga/svar link
-    Add random fraga
+    Input text                              id:edit-field-question-0-value      testquestion Gisela
 
-Alert should appear
-    Page Should Contain                     Fyll i det här fältet.
+Click on save
+    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+
+Alert bubble should appear
+    Wait Until Element Is Visible          css:.required:invalid

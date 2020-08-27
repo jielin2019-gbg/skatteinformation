@@ -49,10 +49,6 @@ Login to Skatteinformation and go to account settings
     Login ResetUser
     Go To                               https://test.skatteinformation.se/user/8629/edit
 
-Log in and go to account settings
-    Login ResetUser
-    Go To                               https://test.skatteinformation.se/user/8629/edit
-
 Click The Submit Button
     ${ele}                              Get WebElement              id=edit-submit
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}

@@ -47,6 +47,7 @@ the user will get a popup and a email
     Click Element                       //*[@id="idSIButton9"]
     Wait Until Element Is Visible       //*[@id="idBtn_Back"]
     Click Element                        //*[@id="idBtn_Back"]
+    Go to                                https://outlook.live.com/mail/0/inbox
     Wait Until Element Is Visible      xpath://span[@title='skatteinformation@wolterskluwer.se']   timeout=3 min
     ${ele}      Get WebElement          xpath://span[@title='skatteinformation@wolterskluwer.se']
     Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}

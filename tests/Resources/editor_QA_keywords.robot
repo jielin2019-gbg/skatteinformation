@@ -1,3 +1,4 @@
+
 *** Keywords ***
 
 Editor logged in front page
@@ -132,3 +133,12 @@ Delete on edit page
 Verify delete alert page
     Page Should Contain     Är du säker på att du vill radera content item testartikel?
 
+#*** Keywords *** (TIPG-733 - Create QA without title)
+Add QA with only fraga
+    Begin at innehall page
+    Go to skapa fraga/svar page
+    Verify fraga/svar link
+    Add random fraga
+
+Alert should appear
+    Page Should Contain                     Fyll i det här fältet.

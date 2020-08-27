@@ -10,7 +10,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  End Web Test
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                      chrome
 
 
 *** Test Cases ***
@@ -74,3 +74,9 @@ Page with delete alert message
     And Delete on edit page
     When Verify delete alert page
 
+Creating QA Without title
+    [Tags]                                      TIPG-733
+    Set selenium speed                          0.3
+    Given Add QA with only fraga
+    When Save question
+    Then Alert should appear

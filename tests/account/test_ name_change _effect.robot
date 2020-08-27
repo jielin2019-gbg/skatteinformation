@@ -7,7 +7,7 @@ Resource	                            ../Resources/login_variables.robot
 Resource                                ../Resources/setup_keywords.robot
 Resource                                ../Resources/browser_variables.robot
 Resource                                ../Resources/teardown_keywords.robot
-
+Resource                                ../Resources/goto_keywords.robot
 Test Setup                              Skatteinformation Website Is Open
 Test Teardown                           Logout And Close All
 
@@ -36,7 +36,7 @@ user changes the name on personlig information and press save
 
 when user tryes to login with the new name it dosent work
     Page Should Contain            Logga in
-    Input Text                     //*[@id="edit-name"]  Viktor Nilsson
+    Input Text                     //*[@id="edit-name"]  Viktor_Nilsson
     Input Text                     //*[@id="edit-pass"]  ${PASSWORD}
 	Click Button                   //*[@id="edit-submit"]
-    Alert Should Be Present        Unrecognized username or password. Forgot your password?
+    Page Should Contain        Unrecognized username or password. Forgot your password?

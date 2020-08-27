@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     test functionality for the editing on the edit page(automation)
 Library           SeleniumLibrary
+Library           String
 Resource	  ../Resources/login_keywords.robot
 Resource	  ../Resources/login_variables.robot
 Test Setup  Go To Page
@@ -13,6 +14,22 @@ ${BROWSER} =        headlesschrome
 Go To Page
    Open Browser  ${URL}  ${BROWSER}
    Set Window Size    ${1920}    ${1080}
+
+Create article
+    Go To                       https://test.skatteinformation.se/node/add/article
+    Input Text                  xpath://*[@id="edit-title-0-value"]     Test artikel
+    Click Element               id:edit-submit
+    Wait Until Page Contains    Test artikel (Artikel) har skapats.
+    ${url} =                    Get Location
+    ${ID} =                     Get Substring  ${url}  42  47
+    Set Global Variable         ${ID}
+
+Delete article
+    Go To                       https://test.skatteinformation.se/node/${ID}/delete
+    Wait Until Page Contains    Är du säker på att du vill radera content item
+    Click Element               id:edit-submit
+    Wait Until Page Contains    har raderats.
+
 Close page
    Close Browser
 
@@ -23,11 +40,13 @@ Saving an article
     # Login
     Login Editor
     Wait Until Page Contains    infotiv-editor
+    #Create test article
+    Create article
     #Go to content page
     Go to                       https://test.skatteinformation.se/admin/content
     #Edit article
-    Click Element               //a[contains(text(),'test artikel team 1')]/../../td[7]/div/div/ul/li[contains(@class, 'edit')]/a
-    Wait Until Page Contains    Redigera Artikel test artikel team 1
+    Click Element               //a[contains(text(),'Test artikel')]/../../td[7]/div/div/ul/li[contains(@class, 'edit')]/a
+    Wait Until Page Contains    Redigera Artikel Test artikel
     #Change Title
     Input Text                  xpath://*[@id="edit-title-0-value"]     Edited article test
     #Save article
@@ -35,8 +54,4 @@ Saving an article
     #Check if article is saved
     Wait Until Page Contains    Edited article test (Artikel) har uppdaterats.
     #Redo editing
-    Click Element               //a[contains(text(),'Edited article test')]/../../td[7]/div/div/ul/li[contains(@class, 'edit')]/a
-    Wait Until Page Contains    Redigera Artikel Edited article test
-    Input Text                  xpath://*[@id="edit-title-0-value"]     test artikel team 1
-    Click Element               id:edit-submit
-    Wait Until Page Contains    test artikel team 1 (Artikel) har uppdaterats.
+    Delete article

@@ -70,14 +70,19 @@ Verify fraga/svar link
     Page should contain Element     xpath://*[@id="block-seven-page-title"]/h1
 
 #*** Keywords *** (TIPG-723 - test functionality of save button with all fields filled )
+Generate title
+    ${RANDOMINT}=   Evaluate    random.randint(0, 10)    random
+    Set Global Variable        ${RANDOMINT}
+
 Add question with title fraga and svar
     Go to skapa fraga/svar page
+    Generate title
     Add random title
     Add random fraga
     Add random svar
 
 Add random title
-    Input text                              id:edit-title-0-value        Q/A testtitle
+    Input text                              id:edit-title-0-value        Q/A testtitle ${RANDOMINT}
 
 Add random fraga
     Input text                              id:edit-field-question-0-value      testquestion
@@ -89,7 +94,7 @@ Add random svar
 
 Save question
     Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
-    Wait Until Page Contains               Q/A testtitle (Fråga/svar) har skapats.
+    Wait Until Page Contains               Q/A testtitle ${RANDOMINT} (Fråga/svar) har skapats.
 
 Verify question on content page
     Go To                           https://test.skatteinformation.se/admin/content
@@ -131,4 +136,19 @@ Publish date current date
     ${date}=                             Get Current Date
     ${format_date}                       Convert Date    ${date}   result_format=%m.%d.%Y
     Input Text                           id:edit-created-0-value-date            ${format_date}
+
+#*** Keywords *** (TIPG-720 - test functionality of save button only title filled)
+
+Add question with only title
+    Go to skapa fraga/svar page
+    Generate title
+    Add random title
+
+#*** Keywords *** (TIPG-729 - Delete alert message page)
+Delete on edit page
+    Click Element       xpath://*[@id="block-seven-primary-local-tasks"]/nav/nav/ul/li[3]/a
+
+Verify delete alert page
+    Page Should Contain     Är du säker på att du vill radera content item testartikel?
+
 

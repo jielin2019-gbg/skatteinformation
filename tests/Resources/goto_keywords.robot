@@ -1,9 +1,10 @@
 *** Keywords ***
 Goto Start Page
-    Go To                                       https://test.skatteinformation.se/start
+    Go To                                       https://test.skatteinformation.se/user/login?destination=/start
     ${url}=                                     Get Location
-    Should Match                                ${url}      https://test.skatteinformation.se/start
+    Should Match                                ${url}      https://test.skatteinformation.se/user/login?destination=/start
 
 Goto Mitt Konto
     Go To                                       https://test.skatteinformation.se/user/8629/edit
-    Page Should Contain Element                 id=edit-field-mail-daily-digest-value
+    ${url}=                                     Get Location
+    Should Match                                ${url}      https://test.skatteinformation.se/user/8629/edit

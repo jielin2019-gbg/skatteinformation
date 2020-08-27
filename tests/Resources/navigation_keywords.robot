@@ -187,6 +187,47 @@ Return From Mitt Konto
 	Page Should Contain		Personlig information
        	Click Logo
 	
+Process Shortcut
+	[Arguments]	${value}	${value2}
+	[Timeout]	120
+	${value3}  Set Variable If  ${value}==4  f%C3%B6rm%C3%A5n  ${value2}
+      	Log To Console	Shortcut nr:${value} name:${value2} Char code:${value3} Using:${BROWSER}
+       	Wait Until Element Is Visible  xpath://a[contains(@href,"${value3}")]  timeout=60
+	Click Element   xpath://div[@class="cell small-4 large-2"][${value}]
+      	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value2}")]  timeout=60
+	Wait Until Element Is Visible	  xpath://input[@id="edit-search" and contains(@value,"${value2}")]  timeout=60
+	Wait Until Element Is Visible	  xpath://a[@href="/"]  timeout=60
+    	Click Logo
+	Wait Until Location Is	${URL}  timeout=60
+       	Wait Until Page Contains Element  xpath://a[contains(@href,"${value3}")]  timeout=60
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]  timeout=60
+       	Wait Until Element Is Visible  xpath://a[contains(@href,"${value3}")]  timeout=60
+	Wait Until Location Is	${URL}  timeout=2m
+	Location Should Be	${URL}  timeout=60
+	Verify Start Page Loaded
+	
+Verify Initial Start Page Loaded
+	Location Should Be  ${URL}start
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]	
+	Page Should Contain  Senaste nytt
+	
+Verify Start Page Loaded
+	Location Should Be  ${URL}
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]	
+	Page Should Contain  Senaste nytt
+
+Verify Specific Page Loaded
+	[Arguments]  ${string}
+	Wait Until Location Is	${string}  timeout=2m
+	Location Should Be  ${string}
+
+Browser Watershed
+       	[Arguments]	${string}
+	Log To Console  ${string} ${URL}
+	Run Keyword If	'${BROWSER}'=='firefox'  Confirm Page Loaded2  ${string}/  
+	...  ELSE IF	'${BROWSER}'=='headlessfirefox'  Confirm Page Loaded2  ${string}/
+	...  ELSE 	Confirm Page Loaded
+
 
 End Web Test
     Close Browser

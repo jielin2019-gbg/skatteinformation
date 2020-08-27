@@ -15,3 +15,27 @@ Test Teardown                           Logout And Close All
 ${BROWSER} =    chrome
 
 *** Test Cases ***
+Given the user is signed in and is on mitt konto page
+When user changes the name on personlig information and press save
+Then when user tryes to login with the new name it dosent work
+
+
+*** Keywords ***
+
+the user is signed in and is on mitt konto page
+    Login ResetUser
+    Goto Mitt Konto
+
+user changes the name on personlig information and press save
+    Wait Until Element Is Visible   //*[@id="edit-field-name-0-value"]
+    Input text                      //*[@id="edit-field-name-0-value"]       Viktor_Nilsson
+    ${ele}      Get WebElement      //*[@id="edit-submit"]
+    Execute Javascript              arguments[0].click();       ARGUMENTS    ${ele}
+    Log Out Forced
+
+when user tryes to login with the new name it dosent work
+    Page Should Contain            Logga in
+    Input Text                     //*[@id="edit-name"]  Viktor Nilsson
+    Input Text                     //*[@id="edit-pass"]  ${PASSWORD}
+	Click Button                   //*[@id="edit-submit"]
+    Alert Should Be Present        Unrecognized username or password. Forgot your password?

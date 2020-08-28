@@ -109,7 +109,7 @@ Go to article
 
 Click on question with all fields filled
     Filter content                          Fråga/svar
-    Go to article                           Q/A testtitle
+    Go to article                           Q/A testtitle 3
 
 Show the whole question
     Click Element                           xpath://*[@id="block-skatteinfo-content"]/article/div[1]/button
@@ -123,21 +123,13 @@ Publish date in future
     [Arguments]                          ${day}
     ${date}=                             Get Current Date
     ${result_date}                       Add Time To Date             ${date}   ${day}
-    ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
+    Input Text                           id:edit-created-0-value-date            ${result_date}
 
 Publish date back in time
     [Arguments]                          ${day}
     ${date}=                             Get Current Date
     ${result_date}                       Subtract Time From Date          ${date}   ${day}
-    ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
-
-Publish date current date
-    ${date}=                             Get Current Date
-    ${format_date}                       Convert Date    ${date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
-    Input Text                           id:edit-created-0-value-date            ${date}
+    Input Text                           id:edit-created-0-value-date            ${result_date}
 
 #*** Keywords *** (TIPG-720 - test functionality of save button only title filled)
 

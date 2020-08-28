@@ -256,3 +256,16 @@ Click on save
 
 Alert bubble should appear
     Wait Until Element Is Visible          css:.required:invalid
+
+Begin at Edit Page
+    Editor logged in front page
+    Click innehall button
+    Click Element                          id:block-seven-local-actions
+    Click Element                          id:block-seven-content
+    Click Element                          xpath://*[@class="edit dropbutton-action"]
+
+Verify Error Popup Message
+    Click Element                       id:edit-status-value
+    Click Element                       id:edit-submit
+    Sleep                               2s
+    Alert Should be Present             text=Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet   action=ACCEPT

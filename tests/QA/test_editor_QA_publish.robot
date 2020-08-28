@@ -67,3 +67,9 @@ Publish date and time blank
      When Publish with question date and time blank
      Then Verify question published with todays date
 
+Leave date blank to Publish
+    [Tags]                              TIPG-751
+    Given Begin at Edit Page
+    Then Delete Date
+    When Verify Error Popup Message
+

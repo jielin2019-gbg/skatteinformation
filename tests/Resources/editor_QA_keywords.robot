@@ -1,3 +1,4 @@
+
 *** Keywords ***
 
 Editor logged in front page
@@ -242,3 +243,16 @@ Verify question published with todays date
      ${format_date}                         Convert Date       ${date}  result_format=%d %b %Y
      ${lowercase_date}                      Convert to Lower Case                ${format_date}
      Page Should contain				    ${lowercase_date}
+
+#*** Keywords *** (TIPG-733 - Create QA without title)
+Add QA with only fraga
+    Begin at innehall page
+    Go to skapa fraga/svar page
+    Verify fraga/svar link
+    Input text                              id:edit-field-question-0-value      testquestion Gisela
+
+Click on save
+    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+
+Alert bubble should appear
+    Wait Until Element Is Visible          css:.required:invalid

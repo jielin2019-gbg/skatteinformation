@@ -74,3 +74,10 @@ Page with delete alert message
     And Delete on edit page
     When Verify delete alert page
 
+Creating QA Without title
+    [Tags]                                      TIPG-733
+    Given Add QA with only fraga
+    When Click on save
+    Then Alert bubble should appear
+
+

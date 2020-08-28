@@ -107,16 +107,24 @@ Go to article
     [Arguments]                             ${article_name}
     Click Link                              ${article_name}
 
+Save question with all fields filled
+    Begin at innehall page
+    Add question with title fraga and svar
+    Save question
+
 Click on question with all fields filled
+    Click innehall button
     Filter content                          Fråga/svar
-    Go to article                           Q/A testtitle
+    Go to article                           Q/A testtitle ${RANDOMINT}
 
 Show the whole question
     Click Element                           xpath://*[@id="block-skatteinfo-content"]/article/div[1]/button
 
 Verify correct question
+    Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
     Page Should Contain                     testquestion
     Page Should Contain                     testanswer
+
 
 
 #*** Keywords *** (TIPG-720 - test functionality of save button only title filled)

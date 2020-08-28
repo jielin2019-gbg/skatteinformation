@@ -8,24 +8,6 @@ Resource	  ../Resources/navigation_variables.robot
 Test Setup	  Begin Web Test
 Test Teardown	  End Web Test
 	
-*** Keywords *** 
-Click Menu Item	
-	[Arguments]	${menu-item}	
-       	Click Link	xpath://a[contains(@href,"${menu-item}")]	
-	Location Should Be  ${URL}${menu-item}
-
-Click Menu Sub Item
-	[Arguments]	${sub-item}	
-      	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
-	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
-	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
-	Set Selenium Speed  0.2
-      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
-	Set Selenium Speed  0
-       	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
-	Wait Until Page Contains Element  xpath://span[@class="facet-item__value"]
-	Page Should Contain  ${sub-item}
-
 *** Test Cases ***
 Return to start after menu item; Sök Innehåll
 	[Documentation]	   Click Logo at page "Sök Innehåll"

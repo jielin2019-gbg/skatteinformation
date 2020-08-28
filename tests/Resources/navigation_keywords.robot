@@ -130,7 +130,24 @@ Click Shortcut
 	Wait Until Element Is Visible  xpath://a[contains(@href,"${name_intl}")]  timeout=2m
 	Click Element   xpath://div[@class="cell small-4 large-2"][${number}]
 	Verify Shortcut Page Loaded  ${name}
-	
+
+Click Menu Item	
+	[Arguments]	${menu-item}	
+       	Click Link	xpath://a[contains(@href,"${menu-item}")]	
+	Location Should Be  ${URL}${menu-item}
+
+Click Menu Sub Item
+	[Arguments]	${sub-item}	
+      	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
+	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
+	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
+	Set Selenium Speed  0.2
+      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
+	Set Selenium Speed  0
+       	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
+	Wait Until Page Contains Element  xpath://span[@class="facet-item__value"]
+	Page Should Contain  ${sub-item}
+
 Verify Initial Start Page Loaded
 	Location Should Be  ${URL}start
 	Wait Until Element Is Visible  xpath://input[@id="edit-search"]	

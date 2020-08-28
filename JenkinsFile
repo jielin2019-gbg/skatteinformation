@@ -4,14 +4,14 @@ pipeline {
     stage('Account') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlessfirefox ./tests/account'
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
         }
       }
     }
     stage('Content') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlessfirefox ./tests/Content'
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Content'
         }
       }
     }
@@ -25,14 +25,14 @@ pipeline {
     stage('Search') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlessfirefox ./tests/Search'
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
         }
       }
     }
     stage('Navigation') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlessfirefox ./tests/navigation'
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/navigation'
         }
       }
     }

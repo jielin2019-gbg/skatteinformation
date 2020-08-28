@@ -7,7 +7,7 @@ Resource	                            ../Resources/login_variables.robot
 Resource                                ../Resources/setup_keywords.robot
 Resource                                ../Resources/browser_variables.robot
 Resource                                ../Resources/teardown_keywords.robot
-
+Resource                                ../Resources/goto_keywords.robot
 Test Setup                              Skatteinformation Website Is Open
 Test Teardown                           Logout And Close All
 
@@ -15,9 +15,11 @@ Test Teardown                           Logout And Close All
 ${BROWSER} =    chrome
 
 *** Test Cases ***
-Given the user is signed in and is on mitt konto page
-When user changes the name on personlig information to the current password and press save
-Then a messege shuld should apear saying Ändringarna har sparats
+
+Test if the user can change the name to the password name
+    Given the user is signed in and is on mitt konto page
+    When user changes the name on personlig information to the current password and press save
+    Then messege shuld should apear saying Ändringarna har sparats
 
 
 *** Keywords ***
@@ -26,7 +28,7 @@ the user is signed in and is on mitt konto page
     Login ResetUser
     Goto Mitt Konto
 
-user changes the name on personlig information and press save
+user changes the name on personlig information to the current password and press save
     Wait Until Element Is Visible   //*[@id="edit-field-name-0-value"]
     Input text                      //*[@id="edit-field-name-0-value"]       ${PASSWORD}
     ${ele}      Get WebElement      //*[@id="edit-submit"]
@@ -34,4 +36,4 @@ user changes the name on personlig information and press save
 
 
 messege shuld should apear saying Ändringarna har sparats
-    Element Should Contain      /html/body/div[2]/div/div/main/div[1]/div[2]    Ändringarna har sparats.
+    Page Should Contain         Ändringarna har sparats.

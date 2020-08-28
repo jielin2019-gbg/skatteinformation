@@ -145,3 +145,7 @@ Click on save
 
 Alert bubble should appear
     Wait Until Element Is Visible          css:.required:invalid
+
+#*** Keywords *** (TIPG-734 - Execute delete on confirmation page)
+Create and delete QA
+

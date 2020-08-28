@@ -80,4 +80,6 @@ Creating QA Without title
     When Click on save
     Then Alert bubble should appear
 
-
+Executing delete when confirmation is asked
+    [Tags]                                      TIPG-734
+    Given

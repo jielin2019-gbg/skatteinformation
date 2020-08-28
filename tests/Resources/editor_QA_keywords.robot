@@ -99,7 +99,7 @@ Save question
 
 Verify question on content page
     Go To                           https://test.skatteinformation.se/admin/content
-    Wait Until Page Contains        Q/A testtitle
+    Wait Until Page Contains        Q/A testtitle ${RANDOMINT}
 
 #*** Keywords *** (TIPG-724 - test that question that was saved with title, fråga, svar inputs is dispayed correctly)
 
@@ -148,4 +148,19 @@ Alert bubble should appear
 
 #*** Keywords *** (TIPG-734 - Execute delete on confirmation page)
 Create and delete QA
+    Begin at innehall page
+    Add question with title fraga and svar
+    Save question
+    Verify question on content page
+    Clicks on delete button
+    Page verifying deletion shown
+
+Click on final delete
+    Click Element                           id:edit-submit
+
+Delete verification
+    Page Should contain                     Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
+
+
+
 

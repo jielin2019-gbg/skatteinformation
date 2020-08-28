@@ -82,4 +82,6 @@ Creating QA Without title
 
 Executing delete when confirmation is asked
     [Tags]                                      TIPG-734
-    Given
+    Given Create and delete QA
+    When Click on final delete
+    Then Delete verification

@@ -80,7 +80,7 @@ Begin at search content page
 Search for the Question 'AGI och redovisning av bilförmån'
      Input text                            id:edit-search       AGI och redovisning av bilförmån
      Click Button                          id:edit-submit-search
-           Sleep                           15s
+           Sleep                           10s
      Verify QA text
 
 Verify QA text

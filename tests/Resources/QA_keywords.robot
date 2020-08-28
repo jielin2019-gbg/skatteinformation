@@ -80,14 +80,12 @@ Begin at search content page
 Search for the Question 'AGI och redovisning av bilförmån'
      Input text                            id:edit-search       AGI och redovisning av bilförmån
      Click Button                          id:edit-submit-search
-           Sleep                           4s
-     Execute Javascript                    window.scrollTo(0,2000)
-           Sleep                           4s
+           Sleep                           7s
      Verify QA text
 
 Verify QA text
       ${QA_text}                         Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div/article/div/div[1]/h1
-      Log                                ${QA_text}
+      Log to console                     ${QA_text}
       Should Be Equal                    ${QA_text}      AGI och redovisning av bilförmån
 
 Clicks the link in QA paragraph

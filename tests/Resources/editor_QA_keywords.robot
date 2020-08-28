@@ -33,7 +33,7 @@ Edit article
 
 At editing page
     Filter content                          Fråga/svar
-    Edit article                            Q/A test2
+    Edit article                            Q/A testtitle ${RANDOMINT}
 
 
 Click delete end of page
@@ -131,7 +131,7 @@ Delete on edit page
     Click Element       xpath://*[@id="block-seven-primary-local-tasks"]/nav/nav/ul/li[3]/a
 
 Verify delete alert page
-    Page Should Contain     Är du säker på att du vill radera content item testartikel?
+    Page Should Contain     Är du säker på att du vill radera content item
 
 #*** Keywords *** (TIPG-733 - Create QA without title)
 Add QA with only fraga

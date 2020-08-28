@@ -19,6 +19,12 @@ Innehall page is shown
     ${url_Q/A}                              Get Location
     Should Match                            ${url_Q/A}             https://test.skatteinformation.se/admin/content
 
+Test teardown delete
+    Clicks on delete button
+    Page verifying deletion shown
+    Click on final delete
+    Delete verification
+
 #*** Keywords *** (TIPG-721 - test functionality of delete button at end of editor page )
 Filter content
     [Arguments]                             ${content_type}
@@ -161,4 +167,3 @@ Click on final delete
 
 Delete verification
     Page Should contain                     Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
-

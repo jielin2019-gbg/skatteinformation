@@ -10,7 +10,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  End Web Test
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                      chrome
 
 
 *** Test Cases ***
@@ -51,6 +51,7 @@ Save question with all fields filled
      And Add question with title fraga and svar
      When Save question
      Then Verify question on content page
+     Test teardown delete
 
 Check question with all fields displayed correctly
     [Tags]                                      TIPG-724
@@ -58,14 +59,17 @@ Check question with all fields displayed correctly
      When Click on question with all fields filled
      and Show the whole question
      Then Verify correct question
-
+     Click innehall button
+     Test teardown delete
 
 Save question with title only
     [Tags]                                      TIPG-720
+     Set selenium speed                          0.3
      Given Begin at innehall page
      And Add question with only title
      When Save question
      Then Verify question on content page
+     Test teardown delete
 
 Page with delete alert message
     [Tags]                                      TIPG-729

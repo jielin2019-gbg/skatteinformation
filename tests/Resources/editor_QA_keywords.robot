@@ -264,8 +264,8 @@ Begin at Edit Page
     Click Element                          id:block-seven-content
     Click Element                          xpath://*[@class="edit dropbutton-action"]
 
-Verify Error Popup Message
+Verify Error Message
     Click Element                       id:edit-status-value
     Click Element                       id:edit-submit
-    Sleep                               2s
-    Alert Should be Present             text=Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet   action=ACCEPT
+    Page Should Contain                 Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
+    

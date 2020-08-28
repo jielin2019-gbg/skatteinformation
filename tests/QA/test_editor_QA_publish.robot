@@ -71,5 +71,5 @@ Leave date blank to Publish
     [Tags]                              TIPG-751
     Given Begin at Edit Page
     Then Delete Date
-    When Verify Error Popup Message
+    When Verify Error Message
 

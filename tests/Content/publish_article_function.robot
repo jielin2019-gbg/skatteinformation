@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Test publish article function (automation)
+Documentation     Test publish and unpublish article function (automation)
 Library           SeleniumLibrary
 Library           String
 Resource	  ../Resources/login_keywords.robot
@@ -19,30 +19,39 @@ Close page
 
 *** Test Cases ***
 Saving an article
-    [Documentation]     Test publish article function
+    [Documentation]     Test publish and unpublish article function
     # Login
     Login Editor
     Wait Until Page Contains    infotiv-editor
     #Go to Create Article
     Go to                       https://test.skatteinformation.se/node/add/article
     #Input text in Title
-    Input Text                  xpath://*[@id="edit-title-0-value"]     Test artikel
+    Input Text                  xpath://*[@id="edit-title-0-value"]     Test publish
     #Save article
     Click Element               id:edit-submit
     #Check if article is saved
-    Wait Until Page Contains    Test artikel (Artikel) har skapats.
+    Wait Until Page Contains    Test publish (Artikel) har skapats.
     ${url} =                    Get Location
     ${ID} =                     Get Substring  ${url}  42  47
     Set Global Variable         ${ID}
     #Go to administrate page
     Go To                       https://test.skatteinformation.se/node/${ID}/edit?destination=/admin/content
-    #Click publish checkbox
+    #Check publish checkbox
     Select Checkbox             //*[@id="edit-status-value"]
+    Click Element               //*[@id="edit-submit"]
     Go To                       https://test.skatteinformation.se/
     #Check if article is publish
-    Wait Until Page Contains     testartikel
+    Wait Until Page Contains     Test publish
+    #Go to administrate page
+    Go To                       https://test.skatteinformation.se/node/${ID}/edit?destination=/admin/content
+    #Uncheck publish checkbox
+    Unselect Checkbox           //*[@id="edit-status-value"]
+    Click Element               //*[@id="edit-submit"]
+    Go To                       https://test.skatteinformation.se/
+    #Check if article is unpublish
+    Page Should Not Contain     Test publish
     #Remove created article
     Go To                       https://test.skatteinformation.se/node/${ID}/delete
-    Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel?
+    Wait Until Page Contains    Är du säker på att du vill radera content item Test publish?
     Click Element               id:edit-submit
-    Wait Until Page Contains    Artikel Test artikel har raderats.
+    Wait Until Page Contains    Artikel Test publish har raderats.

@@ -2,13 +2,14 @@
 Documentation
 Resource                                        ../Resources/login_keywords.robot
 Resource                                        ../Resources/login_variables.robot
-Resource                                        ../Resources/QA_keywords.robot
+Resource                                        ../Resources/q&a_keywords.robot
 Resource                                        ../Resources/setup_keywords.robot
 Resource                                        ../Resources/teardown_keywords.robot
 Library                                         SeleniumLibrary
 Suite Setup                                     Skatteinformation Website Is Open
 Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
+
 *** Variables ***
 ${BROWSER}                                      headless chrome
 

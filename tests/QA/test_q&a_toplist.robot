@@ -1,18 +1,17 @@
 *** Settings ***
 Documentation
 Resource                                        ../Resources/login_keywords.robot
-Resource                                        ../Resources/QA_keywords.robot
+Resource                                        ../Resources/login_variables.robot
+Resource                                        ../Resources/q&a_keywords.robot
+Resource                                        ../Resources/setup_keywords.robot
+Resource                                        ../Resources/teardown_keywords.robot
 Library                                         SeleniumLibrary
-Suite Setup                                     Begin Web Test
-Test Teardown                                   Log Out
-Suite Teardown                                  End Web Test
+Suite Setup                                     Skatteinformation Website Is Open
+Test Teardown                                   Log Out Forced
+Suite Teardown                                  Logout And Close All
 
 *** Variables ***
 ${BROWSER}                                      headless chrome
-${URL}                                          https://test.skatteinformation.se/
-${USERNAME_USER}                                infotiv-user
-${USERNAME_EDITOR}                              infotiv-editor
-${PASSWORD}                                     slimy-very-decorate-transit
 
 *** Test Cases ***
 Test the Q/A Toplistan section

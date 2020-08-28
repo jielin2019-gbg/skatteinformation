@@ -51,7 +51,7 @@ Click 'Visa' Button
     Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button/span[1]
 
 Verify answer is visible
-    Page Should Contain Element             xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div/div/div[3]
+    Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
 
 #*** Keywords *** (TIPG-550 - test functionality of 'Next/Previous page' button )
 Click Next page button

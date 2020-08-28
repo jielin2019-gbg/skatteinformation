@@ -51,7 +51,7 @@ Click 'Visa' Button
     Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button/span[1]
 
 Verify answer is visible
-    Page Should Contain Element             xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div/div/div[3]
+    Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
 
 #*** Keywords *** (TIPG-550 - test functionality of 'Next/Previous page' button )
 Click Next page button
@@ -73,20 +73,25 @@ On Next page
     Next page is shown
 
 #*** Keywords *** (TIPG-554 - test the functionality of the link in QA Paragraph )
+Begin at search content page
+     Login User
+     Click Link                             Sök innehåll
 
-User is on page 4 QA paragraph
-    Execute Javascript                      window.scrollTo(0,600)
-    Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[2]/a
-        Sleep                               500ms
-    Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[3]/a
-        Sleep                               500ms
-    Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/nav/ul/li[3]/a/span[2]
-        Sleep                               500ms
-    Click Button                            xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[6]/article/div[1]/button
-        Sleep                               500ms
+Search for the Question 'AGI och redovisning av bilförmån'
+     Input text                             id:edit-search       AGI och redovisning av bilförmån
+     Click Button                           id:edit-submit-search
+     Sleep                                  9s
+     Verify QA text
+
+Verify QA text
+      ${QA_text}                            Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div/article/div/div[1]/h1
+      Should Be Equal                       ${QA_text}      AGI och redovisning av bilförmån
 
 Clicks the link in QA paragraph
-    Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[6]/article/div[2]/div/div/div[4]/p/a
+     Click Element                           xpath://div[@class='view-content']//div[1]//article[1]//div[1]//button[1]
+     Sleep                                   500ms
+     Click Link                              Skatteverkets ställningstagande med dnr 202 155257-18/111
+
 
 #**************** TIPG-555 testing the filtering option
 
@@ -153,5 +158,5 @@ Q/A paragraph is shown
 #*** Keywords *** TIPG-597 - Test the link on Topplistan goes to QA page
 
 Go to QA Page from topplistan section
-    Click Element   xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/a/span
+    Click Element                           xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/a/span
 

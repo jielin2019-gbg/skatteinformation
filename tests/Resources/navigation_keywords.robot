@@ -117,76 +117,65 @@ Hover Over Logo
 Click Logo
        	Click Link	xpath://a[@title="Hem"]
 
-Process Links
-	[Arguments]	${value}
-      	Log To Console	Testing for ${value}
-       	Click Link	xpath://a[contains(@href,"${value}")]	
-       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]  timeout=15
-       	Click Logo
-#      	Wait Until Page Contains Element  xpath://input[@id="edit-search"]
-
-Process Links Intl Chars
-	[Arguments]	${value}	${value2}
-	Log To Console	Testing for ${value} and ${value2}
-       	Click Link	xpath://a[contains(@href,"${value2}")]	
-       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
-       	Click Logo
-
-Start From Shortcut
-	[Arguments]	${value}
-	Run Keyword If	'${value}'=='förmån'  Process Links Intl Chars	${value}  value2=f%C3%B6rm%C3%A5n
-	...  ELSE   	Process Links	      ${value}	
-
-Process Links After Scroll
-	[Arguments]	${value}
-      	Log To Console	Testing for ${value}
-       	Click Link	xpath://a[contains(@href,"${value}")]	
-       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
-	Scroll To Bottom
-       	Click Logo
-#       	Wait Until Page Contains Element  xpath://a[@id="edit-search"]	5	
-
-Process Links After Scroll Intl Chars
-	[Arguments]	${value}	${value2}
-	Log To Console	Testing for ${value} and ${value2}
-       	Click Link	xpath://a[contains(@href,"${value2}")]	
-       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
-	Scroll To Bottom
-       	Click Logo
-#       	Wait Until Page Contains Element  xpath://[@id="edit-search"]	5
-	
-Start From Shortcut After Scroll
-	[Arguments]	${value}
-	Run Keyword If	'${value}'=='förmån'  Process Links After Scroll Intl Chars	${value}  value2=f%C3%B6rm%C3%A5n
-	...  ELSE   	Process Links After Scroll	      ${value}	
-
-Scroll To Bottom
-	Scroll Element Into View	xpath://footer
-	Scroll Element Into View	xpath://div[@class="slogan"]
-
-Return After Menu Item	
-	[Arguments]	${value}	
-	Log To Console	Testing for ${value}
-       	Click Link	xpath://a[contains(@href,"${value}")]	
-#      	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
-       	Click Logo
-
-Return After Menu Item Sub
-	[Arguments]	${value}	
-	Set Selenium Speed 	    0.1
-	Log To Console	Testing for ${value}
-      	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
-	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
-	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
-      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${value}"]	
-       	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${value}"]	
-       	Click Logo
-
 Return From Mitt Konto
 	Click Link 			xpath://a[@href="/user/edit" and text()="Mitt konto"]
 	Page Should Contain		Personlig information
        	Click Logo
 	
+Click Shortcut
+	[Arguments]	${number}	${name}
+	${name_intl}  Set Variable If  ${number}==4  f%C3%B6rm%C3%A5n
+	...  ${number}==2  3%3A12-reglerna  ${name}
+#	Log To Console	Shortcut nr:${number} name:${name} name_intl:${name_intl} Using:${BROWSER}
+	Wait Until Element Is Visible  xpath://a[contains(@href,"${name_intl}")]  timeout=2m
+	Click Element   xpath://div[@class="cell small-4 large-2"][${number}]
+	Verify Shortcut Page Loaded  ${name}
+
+Click Menu Item	
+	[Arguments]	${menu-item}	
+       	Click Link	xpath://a[contains(@href,"${menu-item}")]	
+	Location Should Be  ${URL}${menu-item}
+
+Click Menu Sub Item
+	[Arguments]	${sub-item}	
+      	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
+	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
+	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
+	Set Selenium Speed  0.2
+      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
+	Set Selenium Speed  0
+       	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
+	Wait Until Page Contains Element  xpath://span[@class="facet-item__value"]
+	Page Should Contain  ${sub-item}
+
+Verify Initial Start Page Loaded
+	Location Should Be  ${URL}start
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]	
+	Page Should Contain  Senaste nytt
+	
+Verify Start Page Loaded
+	Wait Until Location Is	${URL}  timeout=25
+	Wait Until Element Is Visible  xpath://input[@id="edit-search"]
+	Location Should Be	${URL}  
+	Page Should Contain  Senaste nytt
+
+Verify Shortcut Page Loaded
+	[Arguments]  ${name}
+	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${name}")]  timeout=50
+	Page Should Contain Element  xpath://input[@id="edit-search" and contains(@value,"${name}")]  timeout=10
+	Wait Until Page Contains Element  xpath://a[@href="/"]
+	
+Browser Watershed
+	[Arguments]	${string}
+	Log To Console  ${string} ${URL}
+	Run Keyword If	'${BROWSER}'=='firefox'  Confirm Page Loaded2  ${string}/  
+	...  ELSE IF	'${BROWSER}'=='headlessfirefox'  Confirm Page Loaded2  ${string}/
+	...  ELSE 	Confirm Page Loaded
+
+Scroll To Bottom
+	Execute Javascript  window.scrollTo(384000,216000)
+	Click Element  xpath://footer[@class="footer"]
+	Sleep  0.5
 
 End Web Test
     Close Browser

@@ -51,7 +51,7 @@ Click 'Visa' Button
     Click Element                           xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[1]/button/span[1]
 
 Verify answer is visible
-    Page Should Contain Element             xpath://*[@id="block-skatteinfo-content"]/div/div/div/div[1]/article/div[2]/div/div/div[3]
+    Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
 
 #*** Keywords *** (TIPG-550 - test functionality of 'Next/Previous page' button )
 Click Next page button
@@ -78,17 +78,14 @@ Begin at search content page
      Click Link                             Sök innehåll
 
 Search for the Question 'AGI och redovisning av bilförmån'
-     Input text                            id:edit-search       AGI och redovisning av bilförmån
-     Click Button                          id:edit-submit-search
-           Sleep                           4s
-     Execute Javascript                    window.scrollTo(0,2000)
-           Sleep                           4s
+     Input text                             id:edit-search       AGI och redovisning av bilförmån
+     Click Button                           id:edit-submit-search
+     Sleep                                  9s
      Verify QA text
 
 Verify QA text
-      ${QA_text}                         Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div/article/div/div[1]/h1
-      Log                                ${QA_text}
-      Should Be Equal                    ${QA_text}      AGI och redovisning av bilförmån
+      ${QA_text}                            Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div/article/div/div[1]/h1
+      Should Be Equal                       ${QA_text}      AGI och redovisning av bilförmån
 
 Clicks the link in QA paragraph
      Click Element                           xpath://div[@class='view-content']//div[1]//article[1]//div[1]//button[1]
@@ -161,5 +158,5 @@ Q/A paragraph is shown
 #*** Keywords *** TIPG-597 - Test the link on Topplistan goes to QA page
 
 Go to QA Page from topplistan section
-    Click Element   xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/a/span
+    Click Element                           xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/a/span
 

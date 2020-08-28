@@ -26,15 +26,9 @@ Filter content
     Select From List By Label               edit-type              ${content_type}
     Click Button                            id:edit-submit-content
 
-Edit article
-    Click Link                              Edit
-
 At editing page
-    Begin at innehall page
     Filter content                          Fråga/svar
-    Go to article                            Q/A testtitle
-    Edit article
-
+    Clicks on Edit button
 
 Click delete end of page
     Click Element                           id:edit-delete
@@ -55,25 +49,25 @@ Filtering Q/A
     Filter content                          Fråga/svar
 
 Clicks on delete button
-    Click Element                          xpath://*[@class="dropbutton-arrow"]
-    Click Element                          xpath://*[@class="delete dropbutton-action secondary-action"]
+    Click Element                           xpath://*[@class="dropbutton-arrow"]
+    Click Element                           xpath://*[@class="delete dropbutton-action secondary-action"]
 
 #*** Keywords *** (TIPG-732 'Edit' button of the Q/A in the content page list)
 Clicks on Edit button
-    Click Element                          xpath://*[@class="edit dropbutton-action"]
+    Click Element                           xpath://*[@class="edit dropbutton-action"]
 
 #*** Keywords *** (TIPG-728 Fraga/Svar link)
 Go to skapa fraga/svar page
-    Click Element    xpath://*[@id="block-seven-local-actions"]/ul/li/a
-    Click Element    xpath://*[@id="block-seven-content"]/ul/li[3]/a/span
+    Click Element                           xpath://*[@id="block-seven-local-actions"]/ul/li/a
+    Click Element                           xpath://*[@id="block-seven-content"]/ul/li[3]/a/span
 
 Verify fraga/svar link
-    Page should contain Element     xpath://*[@id="block-seven-page-title"]/h1
+    Page should contain Element             xpath://*[@id="block-seven-page-title"]/h1
 
 #*** Keywords *** (TIPG-723 - test functionality of save button with all fields filled )
 Generate title
-    ${RANDOMINT}=   Evaluate    random.randint(0, 10)    random
-    Set Global Variable        ${RANDOMINT}
+    ${RANDOMINT}=   Evaluate               random.randint(0, 10)    random
+    Set Global Variable                    ${RANDOMINT}
 
 Add question with title fraga and svar
     Go to skapa fraga/svar page
@@ -94,12 +88,12 @@ Add random svar
     Unselect Frame
 
 Save question
-    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
-    Wait Until Page Contains               Q/A testtitle ${RANDOMINT} (Fråga/svar) har skapats.
+    Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+    Wait Until Page Contains                Q/A testtitle ${RANDOMINT} (Fråga/svar) har skapats.
 
 Verify question on content page
-    Go To                           https://test.skatteinformation.se/admin/content
-    Wait Until Page Contains        Q/A testtitle
+    Go To                                   https://test.skatteinformation.se/admin/content
+    Wait Until Page Contains                Q/A testtitle
 
 #*** Keywords *** (TIPG-724 - test that question that was saved with title, fråga, svar inputs is dispayed correctly)
 
@@ -107,37 +101,23 @@ Go to article
     [Arguments]                             ${article_name}
     Click Link                              ${article_name}
 
+Save question with all fields filled
+    Begin at innehall page
+    Add question with title fraga and svar
+    Save question
+
 Click on question with all fields filled
+    Click innehall button
     Filter content                          Fråga/svar
-    Go to article                           Q/A testtitle
+    Go to article                           Q/A testtitle ${RANDOMINT}
 
 Show the whole question
     Click Element                           xpath://*[@id="block-skatteinfo-content"]/article/div[1]/button
 
 Verify correct question
+    Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
     Page Should Contain                     testquestion
     Page Should Contain                     testanswer
-
-#*** Keywords *** (date keywords)
-Publish date in future
-    [Arguments]                          ${day}
-    ${date}=                             Get Current Date
-    ${result_date}                       Add Time To Date             ${date}   ${day}
-    ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
-
-Publish date back in time
-    [Arguments]                          ${day}
-    ${date}=                             Get Current Date
-    ${result_date}                       Subtract Time From Date          ${date}   ${day}
-    ${format_date}                       Convert Date    ${result_date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
-
-Publish date current date
-    ${date}=                             Get Current Date
-    ${format_date}                       Convert Date    ${date}   result_format=%m.%d.%Y
-    Input Text                           id:edit-created-0-value-date            ${format_date}
-    Input Text                           id:edit-created-0-value-date            ${date}
 
 #*** Keywords *** (TIPG-720 - test functionality of save button only title filled)
 
@@ -148,16 +128,50 @@ Add question with only title
 
 #*** Keywords *** (TIPG-729 - Delete alert message page)
 Delete on edit page
-    Click Element       xpath://*[@id="block-seven-primary-local-tasks"]/nav/nav/ul/li[3]/a
+    Click Element                           xpath://*[@id="block-seven-primary-local-tasks"]/nav/nav/ul/li[3]/a
 
 Verify delete alert page
-    Page Should Contain     Är du säker på att du vill radera content item testartikel?
+    Page Should Contain                     Är du säker på att du vill radera content item
+
+#*** Keywords *** (TIPG-733 - Create QA without title)
+Add QA with only fraga
+    Begin at innehall page
+    Go to skapa fraga/svar page
+    Verify fraga/svar link
+    Input text                              id:edit-field-question-0-value      testquestion Gisela
+
+Click on save
+    Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+
+Alert bubble should appear
+    Wait Until Element Is Visible           css:.required:invalid
+
+#*** Keywords *** (date keywords)
+Publish date in future
+    [Arguments]                             ${day}
+    ${date}=                                Get Current Date
+    ${result_date}                          Add Time To Date             ${date}   ${day}
+    ${format_date}                          Convert Date    ${result_date}   result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
+
+Publish date back in time
+    [Arguments]                             ${day}
+    ${date}=                                Get Current Date
+    ${result_date}                          Subtract Time From Date          ${date}   ${day}
+    ${format_date}                          Convert Date    ${result_date}   result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
+
+Publish date current date
+    ${date}=                                Get Current Date
+    ${format_date}                          Convert Date    ${date}   result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
+    Input Text                              id:edit-created-0-value-date            ${date}
 
 #*** Keywords *** (TIPG-755 verify the information type 'legislation')
 Verify QA legislation
-      ${QA_legislation}                  Get Text       xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/div[1]/h1/span
-      Log                               ${QA_legislation}
-      Should Be Equal                   ${QA_legislation}       Q/A testtitle ${RANDOMINT}
+      ${QA_legislation}                     Get Text                xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/div[1]/h1/span
+      Log                                   ${QA_legislation}
+      Should Be Equal                       ${QA_legislation}       Q/A testtitle ${RANDOMINT}
 
 User is on Skapa fraga/svar page
     Login Editor
@@ -169,40 +183,39 @@ User is on Skapa fraga/svar page
 Publish with information type
     Select Publish chekbox
     Click on Save button
-    Click Link                             Sök innehåll
+    Click Link                              Sök innehåll
 
 Verify in Search content
-    Input text                             id:edit-search        Q/A testtitle ${RANDOMINT}
-    Click button                           id:edit-submit-search
-    Wait Until Page Contains               Vad söker du?
-    #sleep                                  4
+    Input text                              id:edit-search        Q/A testtitle ${RANDOMINT}
+    Click button                            id:edit-submit-search
+    Wait Until Page Contains                Vad söker du?
     Verify QA legislation
 
 Click on Save button
-    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+    Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
 
 Select Publish chekbox
-    Select Checkbox                       id:edit-status-value
+    Select Checkbox                         id:edit-status-value
 
 Select information type legislation
-    Select from list by index           field_information_type          1
+    Select from list by index               field_information_type          1
 
 Select Checkbox legislation
-    Select Checkbox                        id:informationstyp-108
+    Select Checkbox                         id:informationstyp-108
 
 #*** Keywords *** (TIPG-760 verify the information type 'legal cases')
 Select information type legal cases
-    Select from list by index           field_information_type          2
+    Select from list by index               field_information_type          2
 
 Select Checkbox legal cases
-    Select Checkbox                        id:informationstyp-109
+    Select Checkbox                         id:informationstyp-109
 
 #*** Keywords *** (TIPG-761 verify the information type 'position taken')
 Select information type position taken
-    Select from list by index           field_information_type          3
+    Select from list by index               field_information_type          3
 
 Select Checkbox position taken
-    Select Checkbox                        id:informationstyp-110
+    Select Checkbox                         id:informationstyp-110
 
 
 #*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
@@ -244,28 +257,4 @@ Verify question published with todays date
      ${lowercase_date}                      Convert to Lower Case                ${format_date}
      Page Should contain				    ${lowercase_date}
 
-#*** Keywords *** (TIPG-733 - Create QA without title)
-Add QA with only fraga
-    Begin at innehall page
-    Go to skapa fraga/svar page
-    Verify fraga/svar link
-    Input text                              id:edit-field-question-0-value      testquestion Gisela
 
-Click on save
-    Click Element                          xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
-
-Alert bubble should appear
-    Wait Until Element Is Visible          css:.required:invalid
-
-Begin at Edit Page
-    Editor logged in front page
-    Click innehall button
-    Click Element                          id:block-seven-local-actions
-    Click Element                          id:block-seven-content
-    Click Element                          xpath://*[@class="edit dropbutton-action"]
-
-Verify Error Message
-    Click Element                       id:edit-status-value
-    Click Element                       id:edit-submit
-    Page Should Contain                 Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
-    

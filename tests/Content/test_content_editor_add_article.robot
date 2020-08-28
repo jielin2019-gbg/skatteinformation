@@ -18,7 +18,7 @@ Generate Title
 
 Go to Webpage
     Open Browser  ${URL}  ${BROWSER}
-    Set Window Size    ${1400}    ${600}
+    Set Window Size    ${1920}    ${1080}
     Wait Until Page Contains        Du behöver vara inloggad
 
 Go to Content Page
@@ -39,10 +39,19 @@ Add random test article name
 Create article
     Click Button                    xpath://html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
     Wait Until Page Contains        test article ${RANDOMSTRING} (Artikel) har skapats.
+    ${url} =                        Get Location
+    ${ID} =                         Get Substring  ${url}  42  47
+    Set Global Variable             ${ID}
 
 See if article was created
     Go To                           https://test.skatteinformation.se/admin/content
     Wait Until Page Contains        test article ${RANDOMSTRING}
+
+Delete test article
+    Go To                       https://test.skatteinformation.se/node/${ID}/delete
+    Wait Until Page Contains    Är du säker på att du vill radera content item
+    Click Element               id:edit-submit
+    Wait Until Page Contains    har raderats.
 
 Given that the editor is on content type page after logging in
     Login Editor
@@ -56,6 +65,8 @@ Then an article can be added to the content page
     Add random test article name
     Create article
     See if article was created
+    Delete test article
+
 
 Close Webpage
     Close Browser

@@ -8,15 +8,14 @@ Library                                         SeleniumLibrary
 Library                                         DateTime
 Library                                         String
 Suite Setup                                     Begin Web Test
-Test Teardown                                   Log Out Forced
 Suite Teardown                                  End Web Test
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                       headless chrome
 
 *** Test Cases ***
 Test publish date                               #testing the date, not finished
-    set selenium speed                          1
+    #set selenium speed                          1
     At editing page
     Publish date in future                      20 days
     Publish date back in time                   10 days

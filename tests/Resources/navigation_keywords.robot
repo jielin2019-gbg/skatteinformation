@@ -117,39 +117,6 @@ Hover Over Logo
 Click Logo
        	Click Link	xpath://a[@title="Hem"]
 
-Process Links
-	[Arguments]	${value}
-      	Log To Console	Testing for ${value}
-       	Click Link	xpath://a[contains(@href,"${value}")]	
-       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]  timeout=15
-       	Click Logo
-#      	Wait Until Page Contains Element  xpath://input[@id="edit-search"]
-
-Process Links Intl Chars
-	[Arguments]	${value}	${value2}
-	Log To Console	Testing for ${value} and ${value2}
-       	Click Link	xpath://a[contains(@href,"${value2}")]	
-       	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
-       	Click Logo
-
-Return After Menu Item	
-	[Arguments]	${value}	
-	Log To Console	Testing for ${value}
-       	Click Link	xpath://a[contains(@href,"${value}")]	
-#      	Wait Until Page Contains Element  xpath://input[@id="edit-search" and contains(@value,"${value}")]
-       	Click Logo
-
-Return After Menu Item Sub
-	[Arguments]	${value}	
-	Set Selenium Speed 	    0.1
-	Log To Console	Testing for ${value}
-      	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
-	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
-	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
-      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${value}"]	
-       	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${value}"]	
-       	Click Logo
-
 Return From Mitt Konto
 	Click Link 			xpath://a[@href="/user/edit" and text()="Mitt konto"]
 	Page Should Contain		Personlig information

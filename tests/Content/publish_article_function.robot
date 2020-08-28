@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Test functionality of saving an article (automation)
+Documentation     Test publish article function (automation)
 Library           SeleniumLibrary
 Library           String
 Resource	  ../Resources/login_keywords.robot
@@ -19,8 +19,7 @@ Close page
 
 *** Test Cases ***
 Saving an article
-    [Documentation]     Test saving function in edit page
-    [Tags]              saving
+    [Documentation]     Test publish article function
     # Login
     Login Editor
     Wait Until Page Contains    infotiv-editor
@@ -36,11 +35,12 @@ Saving an article
     ${ID} =                     Get Substring  ${url}  42  47
     Set Global Variable         ${ID}
     #Go to administrate page
-    Go To                       https://test.skatteinformation.se/node/17616/edit?destination=/admin/content
-    #Klick publish checkbox
-    Select Checkbox             /html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[1]/div/div/input
-
-
+    Go To                       https://test.skatteinformation.se/node/${ID}/edit?destination=/admin/content
+    #Click publish checkbox
+    Select Checkbox             //*[@id="edit-status-value"]
+    Go To                       https://test.skatteinformation.se/
+    #Check if article is publish
+    Wait Until Page Contains     testartikel
     #Remove created article
     Go To                       https://test.skatteinformation.se/node/${ID}/delete
     Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel?

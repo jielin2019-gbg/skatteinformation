@@ -13,15 +13,16 @@ ${REC_BOX}                                              //div[@class='password-s
 
 
 *** Test Cases ***
-#Recommendation box all password tips showing
-#    [Documentation]                                     Checking all recommendations are showing when password field is left empty
-#    Enter password                                      qwerty
-#    Clear Password
-#    Recommendation box should contain                   Make it at least 12 characters
-#    Recommendation box should contain                   Lägg till små bokstäver
-#    Recommendation box should contain                   Lägg till versaler
-#    Recommendation box should contain                   Lägg till siffror
-#    Recommendation box should contain                   Lägg till skiljetecken
+Recommendation box all password tips showing
+    [Documentation]                                     Checking all recommendations are showing when password field is left empty
+    [Tags]                                              qwerty
+    Enter password                                      qwerty
+    Clear Password Test
+    Recommendation box should contain                   Make it at least 12 characters
+    Recommendation box should contain                   Lägg till små bokstäver
+    Recommendation box should contain                   Lägg till versaler
+    Recommendation box should contain                   Lägg till siffror
+    Recommendation box should contain                   Lägg till skiljetecken
 
 #    Commented out since Clear Password doesn´t work on Jenkins server
 
@@ -139,3 +140,5 @@ Clear Password
 
 
 
+Clear Password Test
+    Input Text                                          id:edit-pass-pass1    ${EMPTY}

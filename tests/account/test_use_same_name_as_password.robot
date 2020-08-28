@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation                           Test if the name change effects the login name
 Library                                 SeleniumLibrary
-Library                                 ImapLibrary2
 Resource	                            ../Resources/login_keywords.robot
 Resource	                            ../Resources/login_variables.robot
 Resource                                ../Resources/setup_keywords.robot

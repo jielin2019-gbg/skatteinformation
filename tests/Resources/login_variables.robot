@@ -10,3 +10,5 @@ ${RESET_EMAIL_PASSWORD} =  slimy-very-decorate-transit
 ${RESET_EMAIL_OUTLOOK} =   softvarutestare@outlook.com
 ${RESET_EMAIL_SERVICE} =  https://login.live.com/
 ${NEW_RESET_EMAIL_PASSWORD} =   Slimy-very-decorate-transit2
+${USERNAME} =  Viktor Nilsson
+

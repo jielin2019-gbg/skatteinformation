@@ -1,6 +1,6 @@
 *** Settings ***
 
-Documentation                                           Change daily email, weekly email settings in Mitt Konto
+Documentation                                           Testing to see the password strenght changes correctly
 Library                                                 SeleniumLibrary
 Resource	                                            ../Resources/login_keywords.robot
 Resource	                                            ../Resources/login_variables.robot

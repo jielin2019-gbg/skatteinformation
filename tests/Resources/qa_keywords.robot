@@ -13,6 +13,12 @@ Begin at Toplist
 Scrolling down the page
     Execute Javascript                      window.scrollTo(0,900)
 
+Test teardown delete
+    Clicks on delete button
+    Page verifying deletion shown
+    Click on final delete
+    Delete verification
+
 #*** Keywords *** (TIPG-543 - test functionality of Q/A button )
 
 User logged in front page

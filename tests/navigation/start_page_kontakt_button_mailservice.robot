@@ -14,17 +14,13 @@ Resource       ../Resources/navigation_variables.robot
 Test Kontakt button Logged in as User
     [Documentation]  Test Kontakt button at StartPage Confirm Mail Service appears
     [Tags]           TIPG-430
-	Login User					
-	Check Start Page Loaded
-	Test Click Kontakt
-	
+	  Login User
+	  Check Start Page Loaded
+	  Test Click Kontakt
+
 Test Kontakt button Logged in as Editor
     [Documentation]  Test Kontakt button at StartPage Confirm Mail Service appears
     [Tags]           TIPG-793
-	Login Editor					
-	Check Start Page Loaded
-	Test Click Kontakt	
-	
-	
-
- 
+    Login Editor
+	  Check Start Page Loaded
+	  Test Click Kontakt

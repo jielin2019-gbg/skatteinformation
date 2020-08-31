@@ -412,5 +412,12 @@ Select information type position taken
 Select Checkbox position taken
     Select Checkbox                         id:informationstyp-110
 
+#*** Keywords *** (TIPG-751 verify the error message after publish date or time blank)
+Click on publish and save
+    Click element                           id:edit-status-value
+    Click element                           id:edit-submit
+
+Verify error message
+    Page should contain                     Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
 
 

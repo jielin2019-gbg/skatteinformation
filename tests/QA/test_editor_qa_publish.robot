@@ -72,3 +72,17 @@ Publish date and time blank
      Then Verify question published with todays date
      Click innehall button
      Test teardown delete
+
+Publish date blank
+    [Tags]                                      TIPG-751
+    Given User is on Skapa fraga/svar page
+    When Delete date
+    And Click on publish and save
+    Then Verify error message
+
+Publish time blank
+    [Tags]                                      TIPG-751
+    Given User is on Skapa fraga/svar page
+    When Delete time
+    And Click on publish and save
+    Then Verify error message

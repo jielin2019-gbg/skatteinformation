@@ -65,7 +65,6 @@ Check question with all fields displayed correctly
 
 Save question with title only
     [Tags]                                      TIPG-720
-     Set selenium speed                          0.3
      Given Begin at innehall page
      And Add question with only title
      When Save question
@@ -75,9 +74,9 @@ Save question with title only
 Page with delete alert message
     [Tags]                                      TIPG-729
     Given Begin at innehall page
-    Then Clicks on Edit button
+    When Clicks on Edit button
     And Delete on edit page
-    When Verify delete alert page
+    Then Verify delete alert page
 
 Creating QA Without title
     [Tags]                                      TIPG-733

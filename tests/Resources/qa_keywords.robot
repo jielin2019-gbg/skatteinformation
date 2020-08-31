@@ -144,11 +144,9 @@ Q/A topplistan section is shown
 #*** Keywords *** (TIPG-601 - test QA paragraph in the top list is shown when mousing over questions )
 
 Mouse over question
-    Mouse Over                              xpath:/html[1]/body[1]/div[2]/div[1]/div[1]/main[1]/div[3]/div[1]/article[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]
-
+    Mouse Over                              xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[1]/article/div[1]
 Q/A paragraph is shown
-    Page Should Contain Element             xpath://div[@class='paragraph paragraph--faq-toplist paragraph--view-mode--default']//div[@class='views-element-container']//div[1]//article[1]//div[2]//div[1]//div[1]
-
+    Page Should Contain Element             xpath://*[@id="block-skatteinfo-content"]/article/div/div/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[1]/article/div[2]
 #*** Keywords *** TIPG-597 - Test the link on Topplistan goes to QA page
 
 Go to QA Page from topplistan section

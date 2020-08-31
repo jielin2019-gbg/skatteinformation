@@ -72,3 +72,12 @@ Publish date and time blank
      Then Verify question published with todays date
      Click innehall button
      Test teardown delete
+
+Publish with previous date
+     [Tags]                                     TIPG-753 Publishing for the previous date
+     User is on Skapa fraga/svar page
+     Verify previous date
+     Click innehall button
+     Test teardown delete
+
+

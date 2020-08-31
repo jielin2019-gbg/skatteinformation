@@ -365,6 +365,19 @@ Verify question published with todays date
      ${lowercase_date}                      Convert to Lower Case                ${format_date}
      Page Should contain				    ${lowercase_date}
 
+#*** Keywords *** (TIPG-753 Publishing for the previous date)
+
+Verify previous date
+     Click Element               xpath://*[@id="edit-created-0-value-date"]
+     ${format_date}              Convert Date     2014-06-11       result_format=%Y-%m-%d
+     Input Text                  id:edit-created-0-value-date            ${format_date}
+     Select Publish chekbox
+     Click on Save button
+     Click Link                   Start
+     ${toplistan_date}            Get WebElements           class:meta-item__data
+     Log                          ${toplistan_date}
+     Should Not Be Equal          ${format_date}            ${toplistan_date}
+
 #*** Keywords *** (TIPG-755 verify the information type 'legislation')
 Verify QA legislation
       ${QA_legislation}                     Get Text                xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/div[1]/h1/span

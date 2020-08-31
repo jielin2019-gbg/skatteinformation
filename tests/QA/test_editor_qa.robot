@@ -89,3 +89,4 @@ Executing delete when confirmation is asked
     Given Create and delete QA
     When Click on final delete
     Then Delete verification
+

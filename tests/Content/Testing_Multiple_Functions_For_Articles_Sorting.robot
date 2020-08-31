@@ -14,7 +14,7 @@ Begain Web Test
     Set Window Size    ${1920}    ${1080}
 
 Open The Content Page
-    Go To                            https://test.skatteinformation.se/admin/content?title=artikel&type=All&status=All&sticky=All&uid=
+    Go To                            https://test.skatteinformation.se/admin/content
     Wait Until Page Contains         infotiv-editor
 
 End Web Test
@@ -26,8 +26,10 @@ User is able to sort articles title
     [Tags]                    Sort_desc
     Login Editor
     Open The Content Page
-	Click Element                     xpath://*[@id="view-title-table-column"]/a
-    Wait Until Page Contains          Innehåll
+	Click Element                       xpath://*[@id="view-title-table-column"]/a
+    Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid&order=title&sort=asc
+    Click Element                       xpath://*[@id="view-title-table-column"]/a
+    Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=title&sort=desc
 
 
 User is able to sort the content type list alphabatically

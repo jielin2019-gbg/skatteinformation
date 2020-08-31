@@ -6,8 +6,6 @@ Send Reset Email
     Submit Email Address                                ${email}
 
 The Page Should Navigate to Återställ Ditt Lösenord Page
-    ${url}=      Get Location
-    Should Match    ${url}                              https://test.skatteinformation.se/user/password
     Page Should Contain                                 Återställ ditt lösenord
 
 Submit Email Address
@@ -28,9 +26,9 @@ Click Log In
 
 Change Password
     Scroll Element Into View                            id:edit-pass-pass1
-    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 3 min
+    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 20 s
     Input Text                                          id:edit-pass-pass1   ${RESET_PASSWORD}
-    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 3 min
+    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 20 s
     Scroll Element Into View                            id:edit-pass-pass2
     Input Text                                          id:edit-pass-pass2   ${RESET_PASSWORD}
     ${ele}      Get WebElement                          id:edit-submit

@@ -24,6 +24,8 @@ Test the information type 'legislation'
      Publish with information type
      Select Checkbox legislation
      Verify in Search content
+     Click innehall button
+     Test teardown delete
 
 Test the information type 'legal Cases'
      [Tags]                                      TIPG-760 Information type 'legal cases'
@@ -52,8 +54,6 @@ Publish todays date on topplist
      Given Begin at innehall page
      When Publish question with current date
      Then Verify question on topplist page
-     Click innehall button
-     Test teardown delete
      Click innehall button
      Test teardown delete
 

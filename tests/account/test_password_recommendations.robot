@@ -137,5 +137,3 @@ Clear Password
     Click Element                                       id:edit-pass-pass1
     Press Keys                                          None     BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE
 
-
-

@@ -59,7 +59,7 @@ Submit Outlook Credentials
 
 Click Skatteinformation Email
     Go To                                               https://outlook.live.com/mail/0/inbox
-    Wait Until Element Is Visible                       xpath://span[@title='skatteinformation@wolterskluwer.se']       timeout= 3 min
+    Wait Until Element Is Visible                       xpath://span[@title='skatteinformation@wolterskluwer.se']       timeout= 20 s
     ${ele}      Get WebElement                          xpath://span[@title='skatteinformation@wolterskluwer.se']
     Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
 

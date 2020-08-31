@@ -15,7 +15,7 @@ Scrolling down the page
 
 Test teardown delete
     Clicks on delete button
-    Page verifying deletion shown
+    Verify delete alert page
     Click on final delete
     Delete verification
 

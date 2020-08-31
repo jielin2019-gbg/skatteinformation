@@ -299,6 +299,11 @@ Verify fraga/svar link
 Delete on edit page
     Click Element                           xpath://*[@id="block-seven-primary-local-tasks"]/nav/nav/ul/li[3]/a
 #*** Keywords *** (TIPG-732 'Edit' button of the Q/A in the content page list)
+Save question for editing
+    Begin at innehall page
+    Add question with only title
+    Save question
+    Click innehall button
 #*** Keywords *** (TIPG-733 - Create QA without title)
 Add QA with only fraga
     Begin at innehall page

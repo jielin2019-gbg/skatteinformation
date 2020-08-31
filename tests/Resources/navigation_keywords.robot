@@ -141,8 +141,8 @@ Click Menu Sub Item
       	Wait Until Page Contains Element  xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]		
 	Mouse Over	//*[@id="block-main-menu"]/ul/li[3]
 	Click Element	xpath://span[@class="menu-link menu-link--main" and text()="Kategorier "]
-	Set Selenium Speed  0.2
-      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
+	Set Selenium Speed  1
+      	Wait Until Page Contains Element  xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]  timeout=1m
 	Set Selenium Speed  0
        	Click Link	xpath://a[@class="menu-link menu-link--main" and text()="${sub-item}"]	
 	Wait Until Page Contains Element  xpath://span[@class="facet-item__value"]
@@ -154,7 +154,7 @@ Verify Initial Start Page Loaded
 	Page Should Contain  Senaste nytt
 	
 Verify Start Page Loaded
-	Wait Until Location Is	${URL}  timeout=25
+	Wait Until Location Is	${URL}  timeout=1m
 	Wait Until Element Is Visible  xpath://input[@id="edit-search"]
 	Location Should Be	${URL}  
 	Page Should Contain  Senaste nytt

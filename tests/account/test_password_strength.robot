@@ -12,7 +12,7 @@ Suite Teardown                                          Logout And Close All
 
 *** Variables ***
 
-${BROWSER}                                              headlesschrome
+${BROWSER}                                             chrome
 ${PASS_STRENGTH}                                        //div[@class='password-strength']
 ${NEW_PASS_ID}                                          id:edit-pass-pass1
 
@@ -62,6 +62,12 @@ Test password all requisites
     Input Text                                          ${NEW_PASS_ID}       4gC#!1mn9P6_
     Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Stark
 
+Test password all requisites then just 1
+    Input Text                                          ${NEW_PASS_ID}       abc123DEF!"#
+    Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Stark
+    Clear Password
+    Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Svag
+
 
 *** Keywords ***
 
@@ -73,3 +79,8 @@ Testing Setup
 Log in and go to account settings
     Log in ResetUser
     Go To                                               https://test.skatteinformation.se/user/8629/edit
+
+Clear Password
+    Scroll Element Into View                            id:edit-submit
+    Click Element                                       id:edit-pass-pass1
+    Press Keys                                          None     BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE

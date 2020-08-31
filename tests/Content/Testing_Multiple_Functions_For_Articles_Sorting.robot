@@ -49,7 +49,7 @@ User is able to sort authors list alphabetically
 	Click Element                    xpath://*[@id="view-name-table-column"]/a
     Wait Until Location Contains     https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=name&sort=asc
     Click Element                    xpath://*[@id="view-name-table-column"]/a
-    Wait Until Location Contains     https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=type&sort=desc
+    Wait Until Location Contains     https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=name&sort=desc
 
 User is able to check if the article is published or not published
     [Documentation]          Sorting article status

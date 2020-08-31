@@ -22,7 +22,7 @@ Test Kontakt button Logged in as Editor
     [Documentation]  Test Kontakt button at StartPage Confirm Mail Service appears
     [Tags]           TIPG-793
 	Login Editor					
-    Check Start Page Loaded
+	Check Start Page Loaded
 	Test Click Kontakt	
 	
 	

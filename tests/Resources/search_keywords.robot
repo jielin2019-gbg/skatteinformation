@@ -109,19 +109,19 @@ Verification of Allmänt
 
 
 Verify Kategori Civilrätt och bokföring
-	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]   timeout=10
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[2]/a
         Page Should Contain            Civilrätt och bokföring
 
 
 Verification of Civilrätt
-    ${link_text} =                          Get Text            xpath://*[@id="block-facet-search-summary"]/ul/li[2]/a/span[2]
-    Page Should Contain                     ${link_text}        Civilrätt och bokföring
+       ${link_text} =                          Get Text            xpath://*[@id="block-facet-search-summary"]/ul/li[2]/a/span[2]
+       Page Should Contain                     ${link_text}        Civilrätt och bokföring
 
 
 Verify Kategori Deklaration och förfarande
-	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]    timeout=10
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[3]/a
         Page Should Contain            Deklaration och förfarande
@@ -133,7 +133,7 @@ Verification of Deklaration
 
 
 Verify Kategori Fastighet
-	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]    timeout=10
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[4]/a
         Page Should Contain            Fastighet
@@ -145,7 +145,7 @@ Verification of Fastighet
 
 
 Verify Kategori Internationell beskattning
-	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]   timeout=10
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[5]/a
         Page Should Contain            Internationell beskattning
@@ -157,7 +157,7 @@ Verification of Internationell beskattning
 
 
 Verify Kategori Kapital
-	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]   timeout=10
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[6]/a
         Page Should Contain            Kapital
@@ -169,7 +169,7 @@ Verification of Kapital
 
 
 Verify Kategori Mervärdesskatt och punktskatter
-	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]    timeout=10
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[7]/a
         Page Should Contain            Mervärdesskatt och punktskatter

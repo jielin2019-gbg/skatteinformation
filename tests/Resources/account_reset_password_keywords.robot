@@ -65,9 +65,3 @@ Click Skatteinformation Email
     ${ele}      Get WebElement                          xpath://span[@title='skatteinformation@wolterskluwer.se']
     Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
 
-Delete The Skatteinformation Email In Gmail
-    Click Skatteinformation Email
-    Wait Until Element Is Visible                       xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i      timeout= 3 min
-    ${ele}      Get WebElement                          xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i
-    Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
-

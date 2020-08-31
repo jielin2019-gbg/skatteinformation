@@ -48,7 +48,6 @@ Check link in Outlook
     Click Log In
     Change Password
     The Password Should Be Changed Successfully
-    Delete The Skatteinformation Email In Gmail
 
 *** Keywords ***
 Click Återställ ditt lösenord

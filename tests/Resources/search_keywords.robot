@@ -107,6 +107,7 @@ Verification of Allmänt
     Page Should Contain                     ${link_text}        Allmänt
 
 Verify Kategori Civilrätt och bokföring
+	Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
         Click Element                  xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                     xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[2]/a
         Page Should Contain            Civilrätt och bokföring

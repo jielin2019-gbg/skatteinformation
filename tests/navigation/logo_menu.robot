@@ -39,9 +39,6 @@ Return to start after menu item; Tabeller
 	Verify Start Page Loaded
 	Logout			
 
-# ==============================================================
-# Gettin inexplicable errors on ithsjenkins-sever, works well locally though!
-# ==============================================================
 Return to start after using menu item; Kategorier
 	[Documentation]	    Explore all subcategories under "Kategorier"
 	[Tags]		    menu-item-kategorier

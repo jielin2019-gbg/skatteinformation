@@ -105,7 +105,7 @@ Corresponding website should appear
     Should Match                            ${website_link}     https://www4.skatteverket.se/rattsligvagledning/369260.html
     Go Back
 
-#*** Keywords *** (TIPG-567 - test functionality of selecting more than one filtering tag)
+#*** Keywords *** (TIPG-567 - test functionality of selecting more than one filtering tag)a
 
 User select more than one filetring tag
     Click Button                            xpath://*[@id="block-facet-category-term-name"]/div/button

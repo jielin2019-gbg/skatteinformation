@@ -11,7 +11,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
-${BROWSER}                                      chrome
+${BROWSER}                                      headless chrome
 
 
 *** Test Cases ***

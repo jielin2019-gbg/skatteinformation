@@ -10,6 +10,7 @@ Enter Search Text
 
 
 Click Search
+     Wait Until Element Is Visible         id:edit-submit-search            timeout=10
      Click Button                          id:edit-submit-search
 
 
@@ -49,27 +50,47 @@ Verify Search invalid
 
 
 Verify Search Button From Startpage
-        Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
-        Click Element                           xpath://*[@id="block-main-menu"]/ul/li[2]/a
-        Wait Until Page Contains                Vad söker du?
+    Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
+    Click Element                           xpath://*[@id="block-main-menu"]/ul/li[2]/a
+    Wait Until Page Contains                Vad söker du?
 
 
 Verify Search Button From Sök Innehåll Page
-        Click Element                           xpath://*[@id="block-main-menu"]/ul/li[2]/a
-        Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
+    Click Element                           xpath://*[@id="block-main-menu"]/ul/li[2]/a
+    Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
 
 
 Verify Search Button From Fråga/Svar Page
-        Click Element                           xpath://*[@id="block-main-menu"]/ul/li[4]/a
-        Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
+    Click Element                           xpath://*[@id="block-main-menu"]/ul/li[4]/a
+    Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
 
 
 Verify Search Button From Tabeller Page
-        Click Element                           xpath://*[@id="block-main-menu"]/ul/li[5]/a
-        Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
+    Click Element                           xpath://*[@id="block-main-menu"]/ul/li[5]/a
+    Wait Until Page Contains Element        xpath://*[@id="block-main-menu"]/ul/li[2]/a
 
 
 Verify content type artikel
-        ${Results_Artikel}=                    Get text                        xpath://*[@id="block-facet-search-content-type"]/div/ul/li[2]/a/span[1]
-        should be equal                        Artikel                          ${Results_Artikel}
+    ${Results_Artikel}=                     Get text                         xpath://*[@id="block-facet-search-content-type"]/div/ul/li[2]/a/span[1]
+    should be equal                         Artikel                          ${Results_Artikel}
+
+
+Select Filter Kammarrätten i Göteborg
+    Select Checkbox                         id:kalla-26
+    Wait until page contains                Visar 240 träffar på             timeout=10
+
+
+Verify filter appeared in search result
+    ${filter_selected}=                     Get Text                         xpath:/html/body/div[2]/div/div/main/div[3]/div/div/div[2]/div/div[2]/ul/li[2]/a/span[2]
+    should be equal                         Kammarrätten i Göteborg          ${filter_selected}
+
+
+Click Again Search
+    Wait Until Element Is Visible           id:edit-submit-search            timeout=10
+    Click Button                            id:edit-submit-search
+
+
+Unmatched Filter Result Appeared
+     Wait until page contains                Visar 240 träffar på             timeout=10
+
 

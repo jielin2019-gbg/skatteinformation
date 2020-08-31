@@ -1,12 +1,9 @@
 *** Keywords ***
-Test Glömt Ditt Lösenord link
+Send Reset Email
+    [Arguments]                                         ${email}
     Click Link Glömt Ditt Lösenord
     The Page Should Navigate to Återställ Ditt Lösenord Page
-    Submit Email Address                ${RESET_EMAIL_OUTLOOK}
-
-Click Link Glömt Ditt Lösenord
-    ${ele}      Get WebElement                          xpath://a[contains(text(),'glömt ditt lösenord')]
-    Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
+    Submit Email Address                                ${email}
 
 The Page Should Navigate to Återställ Ditt Lösenord Page
     ${url}=      Get Location
@@ -20,9 +17,9 @@ Submit Email Address
     Page Should Contain                                 Ytterligare instruktioner har skickats till din e-postadress.
 
 Click Link in Email
-    Wait Until Element Is Visible       xpath://a[contains(@href,'sendgrid')]       timeout= 3 min
-    ${ele}      Get WebElement          xpath://a[contains(@href,'sendgrid')]
-    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
+    Wait Until Element Is Visible                       xpath://a[contains(@href,'sendgrid')]       timeout= 3 min
+    ${ele}      Get WebElement                          xpath://a[contains(@href,'sendgrid')]
+    Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
 
 Click Log In
     Switch Window                                       title:Återställ lösenord | Skatteinformation

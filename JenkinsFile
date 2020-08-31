@@ -4,35 +4,54 @@ pipeline {
     stage('Account') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
+          sh 'robot -d results/account --variable BROWSER:headlesschrome ./tests/account'
         }
       }
     }
     stage('Content') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Content'
+          sh 'robot -d results/Content --variable BROWSER:headlesschrome ./tests/Content'
         }
       }
     }
     stage('QA') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/QA'
+          sh 'robot -d results/QA --variable BROWSER:headlesschrome ./tests/QA'
         }
       }
     }
     stage('Search') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/Search'
+          sh 'robot -d results/Search --variable BROWSER:headlesschrome ./tests/Search'
         }
       }
     }
     stage('Navigation') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/navigation'
+          sh 'robot -d results/navigation --variable BROWSER:headlesschrome ./tests/navigation'
+        }
+      }
+    }
+    stage('Robot Results') {
+      steps {
+        script {
+          step(
+            [
+              $class              : 'RobotPublisher',
+              outputPath          : 'results',
+              outputFileName      : '**/output.xml',
+              reportFileName      : '**/report.html',
+              logFileName         : '**/log.html',
+              disableArchiveOutput: false,
+              passThreshold       : 50,
+              unstableThreshold   : 40,
+              otherFiles          : "**/*.png,**/*.jpg",
+            ]
+          )
         }
       }
     }

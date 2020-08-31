@@ -11,7 +11,7 @@ Test Teardown     Logout And Close All
 
 
 *** Variables ***
-${BROWSER} =      chrome
+${BROWSER} =      headlesschrome
 
 
 *** Test Case ***

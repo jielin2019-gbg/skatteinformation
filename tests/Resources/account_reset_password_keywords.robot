@@ -1,16 +1,11 @@
 *** Keywords ***
-Test Glömt Ditt Lösenord link
+Send Reset Email
+    [Arguments]                                         ${email}
     Click Link Glömt Ditt Lösenord
     The Page Should Navigate to Återställ Ditt Lösenord Page
-    Submit Email Address                ${RESET_EMAIL_OUTLOOK}
-
-Click Link Glömt Ditt Lösenord
-    ${ele}      Get WebElement                          xpath://a[contains(text(),'glömt ditt lösenord')]
-    Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
+    Submit Email Address                                ${email}
 
 The Page Should Navigate to Återställ Ditt Lösenord Page
-    ${url}=      Get Location
-    Should Match    ${url}                              https://test.skatteinformation.se/user/password
     Page Should Contain                                 Återställ ditt lösenord
 
 Submit Email Address
@@ -20,9 +15,9 @@ Submit Email Address
     Page Should Contain                                 Ytterligare instruktioner har skickats till din e-postadress.
 
 Click Link in Email
-    Wait Until Element Is Visible       xpath://a[contains(@href,'sendgrid')]       timeout= 3 min
-    ${ele}      Get WebElement          xpath://a[contains(@href,'sendgrid')]
-    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}
+    Wait Until Element Is Visible                       xpath://a[contains(@href,'sendgrid')]       timeout= 3 min
+    ${ele}      Get WebElement                          xpath://a[contains(@href,'sendgrid')]
+    Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
 
 Click Log In
     Switch Window                                       title:Återställ lösenord | Skatteinformation
@@ -31,9 +26,9 @@ Click Log In
 
 Change Password
     Scroll Element Into View                            id:edit-pass-pass1
-    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 3 min
+    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 20 s
     Input Text                                          id:edit-pass-pass1   ${RESET_PASSWORD}
-    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 3 min
+    Wait Until Element Is Visible                       id:edit-pass-pass1      timeout= 20 s
     Scroll Element Into View                            id:edit-pass-pass2
     Input Text                                          id:edit-pass-pass2   ${RESET_PASSWORD}
     ${ele}      Get WebElement                          id:edit-submit
@@ -64,13 +59,7 @@ Submit Outlook Credentials
 
 Click Skatteinformation Email
     Go To                                               https://outlook.live.com/mail/0/inbox
-    Wait Until Element Is Visible                       xpath://span[@title='skatteinformation@wolterskluwer.se']       timeout= 3 min
+    Wait Until Element Is Visible                       xpath://span[@title='skatteinformation@wolterskluwer.se']       timeout= 20 s
     ${ele}      Get WebElement                          xpath://span[@title='skatteinformation@wolterskluwer.se']
-    Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
-
-Delete The Skatteinformation Email In Gmail
-    Click Skatteinformation Email
-    Wait Until Element Is Visible                       xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i      timeout= 3 min
-    ${ele}      Get WebElement                          xpath://*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div/div/div[1]/div[1]/button/span/i
     Execute Javascript                                  arguments[0].click();       ARGUMENTS    ${ele}
 

@@ -329,6 +329,14 @@ Click on final delete
 Delete verification
     Page Should contain                     Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
 
+#*** Keywords *** (TIPG-743 - Clickick avbryt on delete confirmation page)
+Click on avbryt
+    Click Element                           id:edit-cancel
+
+Verify question still on content page
+    Verify question on content page
+
+
 #*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
 Publish question with current date
     Add question with only title

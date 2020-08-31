@@ -96,5 +96,5 @@ Clickick avbryt on delete confirmation page
     [Tags]                                      TIPG-736
     Given Create and delete QA
     When Click on avbryt
-    Then Verify question on content page ?
+    Then Verify question still on content page
     Test teardown delete

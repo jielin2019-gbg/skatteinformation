@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation     This is test suite to verify Kategorier so that I can test my search result by Selecting the categories in dropdown menu.
 Library           SeleniumLibrary
-Resource	      ./Resources/login_keywords.robot
-Resource	      ./Resources/login_variables.robot
-Resource          ../tests/Resources/search_keywords.robot
-Resource          ../tests/Resources/teardown_keywords.robot
-Resource          ../tests/Resources/setup_keywords.robot
+Resource	  ../Resources/login_keywords.robot
+Resource	  ../Resources/login_variables.robot
+Resource          ../Resources/search_keywords.robot
+Resource          ../Resources/teardown_keywords.robot
+Resource          ../Resources/setup_keywords.robot
 Test Setup        Skatteinformation Website Is Open
 Test Teardown     Logout And Close All
 

@@ -35,8 +35,15 @@ Saving an article
     ${url} =                    Get Location
     ${ID} =                     Get Substring  ${url}  42  47
     Set Global Variable         ${ID}
+    #Go to administrate page
+    Go To                       https://test.skatteinformation.se/node/17616/edit?destination=/admin/content
+    #Klick publish checkbox
+    Select Checkbox             /html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[1]/div/div/input
+
+
     #Remove created article
     Go To                       https://test.skatteinformation.se/node/${ID}/delete
+
     Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel?
     Click Element               id:edit-submit
     Wait Until Page Contains    Artikel Test artikel har raderats.

@@ -13,6 +13,12 @@ Begin at Toplist
 Scrolling down the page
     Execute Javascript                      window.scrollTo(0,900)
 
+Test teardown delete
+    Clicks on delete button
+    Verify delete alert page
+    Click on final delete
+    Delete verification
+
 #*** Keywords *** (TIPG-543 - test functionality of Q/A button )
 
 User logged in front page
@@ -105,7 +111,7 @@ Corresponding website should appear
     Should Match                            ${website_link}     https://www4.skatteverket.se/rattsligvagledning/369260.html
     Go Back
 
-#*** Keywords *** (TIPG-567 - test functionality of selecting more than one filtering tag)
+#*** Keywords *** (TIPG-567 - test functionality of selecting more than one filtering tag)a
 
 User select more than one filetring tag
     Click Button                            xpath://*[@id="block-facet-category-term-name"]/div/button

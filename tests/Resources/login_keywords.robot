@@ -20,3 +20,8 @@ Log Out
 
 Log Out Forced
 	Go To  https://test.skatteinformation.se/user/logout
+
+
+Log Out Editor mode 
+	Click Link  //*[@id="block-utility-menu"]/ul/li[3]/a
+	

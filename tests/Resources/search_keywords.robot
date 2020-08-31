@@ -97,6 +97,7 @@ Unmatched Filter Result Appeared
 # Testing Kategorier Header and its dropdown categories TIPG-570
 
 Verification of Kategorier samt Allmänt
+	Set Selenium Speed                  1
         Wait Until Page Contains Element    xpath:/html/body/div[2]/div/div/header/div[2]/div/div/div[1]
         Click Element                       xpath://*[@id="block-main-menu"]/ul/li[3]/span
         Click Link                          xpath://*[@id="block-main-menu"]/ul/li[3]/ul/li[1]/a

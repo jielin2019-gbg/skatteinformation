@@ -38,16 +38,17 @@ User is able to sort the content type list alphabatically
     Login Editor
     Open The Content Page
 	Click Element                       xpath://*[@id="view-type-table-column"]/a
-	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=type&sort=asc
+	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid&order=type&sort=asc
     Click Element                       xpath://*[@id="view-type-table-column"]/a
 	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=type&sort=desc
+
 User is able to sort authors list alphabetically
-    [Documentation]          Sorting Authors list
-    [Tags]                    Sorting_Authors_List_asc_desc
+    [Documentation]            Sorting Authors list
+    [Tags]                     Sorting_Authors_List_asc_desc
     Login Editor
     Open The Content Page
 	Click Element                    xpath://*[@id="view-name-table-column"]/a
-    Wait Until Location Contains     https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=name&sort=asc
+    Wait Until Location Contains     https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid&order=name&sort=asc
     Click Element                    xpath://*[@id="view-name-table-column"]/a
     Wait Until Location Contains     https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=name&sort=desc
 
@@ -57,7 +58,7 @@ User is able to check if the article is published or not published
     Login Editor
     Open The Content Page
 	Click Element                       xpath://*[@id="view-status-table-column"]/a
-	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=status&sort=asc
+	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid&order=status&sort=asc
 	Click Element                       xpath://*[@id="view-status-table-column"]/a
 	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=status&sort=desc
 
@@ -77,9 +78,9 @@ User is able to sort previously updated articles
     Login Editor
     Open The Content Page
 	Click Element                       xpath://*[@id="view-changed-table-column"]/a
-	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=changed&sort=desc
+	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid&order=changed&sort=asc
     Click Element                       xpath://*[@id="view-changed-table-column"]/a
-	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=changed&sort=asc
+	Wait Until Location Contains        https://test.skatteinformation.se/admin/content?title=&type=All&status=All&sticky=All&uid=&order=changed&sort=desc
 
 
 

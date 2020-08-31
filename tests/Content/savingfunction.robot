@@ -43,6 +43,7 @@ Saving an article
 
     #Remove created article
     Go To                       https://test.skatteinformation.se/node/${ID}/delete
+
     Wait Until Page Contains    Är du säker på att du vill radera content item Test artikel?
     Click Element               id:edit-submit
     Wait Until Page Contains    Artikel Test artikel har raderats.

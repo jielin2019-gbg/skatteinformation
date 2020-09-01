@@ -433,4 +433,12 @@ Click on publish and save
 Verify error message
     Page should contain                     Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
 
+#*** Keywords *** (TIPG-807 verify newly Q/A is displayed on 'Start' page)
+Editor check newly published Q/A is displayed on "Start" page
+      Input text                            id:edit-search  ${Q/A_title}
+      Click Button                          id:edit-submit-search
+      Execute Javascript                    window.scrollBy(1000,9000)
+      Sleep                                 1s
 
+Verify newly Q/A is displayed
+    Page Should Contain		                Q/A testtitle

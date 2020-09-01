@@ -272,7 +272,7 @@ Add random fraga
 
 Add random svar
     Select frame                            xpath://*[@id="cke_1_contents"]/iframe
-    Input text                              xpath:/html/body/p    testanswer
+    Input text                              xpath:/html/body    testanswer
     Unselect Frame
 
 Save question

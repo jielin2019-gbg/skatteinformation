@@ -16,7 +16,7 @@ Logout And Close All
 
 # Imports: login_keywords
 Change Back Name With Same Name And Logout
-    Input Text    xpath://input[contains(@class,'js-text-full')]       timeout= 3 min
+    Input Text     xpath://input[contains(@class,'js-text-full')]       timeout= 3 min
     #Input Text    id=edit-field-name-0-value    ${USERNAME}
     ${ele}      Get WebElement                  id=edit-submit
     Execute Javascript                          arguments[0].click();       ARGUMENTS    ${ele}

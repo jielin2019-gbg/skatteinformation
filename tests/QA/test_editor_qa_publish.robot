@@ -24,6 +24,8 @@ Test the information type 'legislation'
      Publish with information type
      Select Checkbox legislation
      Verify in Search content
+     Click innehall button
+     Test teardown delete
 
 Test the information type 'legal Cases'
      [Tags]                                      TIPG-760 Information type 'legal cases'
@@ -90,5 +92,10 @@ Publish with future date on Q/A page
     Given Begin at innehall page
      When Publish question with current date
      Then Verify question on Q/A page
+
+Publish with previous date
+     [Tags]                                     TIPG-753 Publishing for the previous date
+     User is on Skapa fraga/svar page
+     Verify previous date
      Click innehall button
      Test teardown delete

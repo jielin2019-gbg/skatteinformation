@@ -17,7 +17,7 @@ ${BROWSER}                                       headless chrome
 
 *** Test Cases ***
 Test the information type 'legislation'
-     [Tags]                                      TIPG-755 Information type 'legislation'
+     [Tags]                                      TIPG-755
      User is on Skapa fraga/svar page
      Select information type legislation
      Publish with information type
@@ -27,7 +27,7 @@ Test the information type 'legislation'
      Test teardown delete
 
 Test the information type 'legal Cases'
-     [Tags]                                      TIPG-760 Information type 'legal cases'
+     [Tags]                                      TIPG-760
      User is on Skapa fraga/svar page
      Select information type legal cases
      Publish with information type
@@ -37,7 +37,7 @@ Test the information type 'legal Cases'
      Test teardown delete
 
 Test the information type 'position taken'
-     [Tags]                                      TIPG-761 Information type 'position taken'
+     [Tags]                                      TIPG-761 
      User is on Skapa fraga/svar page
      Select information type position taken
      Publish with information type
@@ -85,7 +85,7 @@ Publish time blank
     Then Verify error message
 
 Publish with previous date
-     [Tags]                                     TIPG-753 Publishing for the previous date
+     [Tags]                                     TIPG-753
      User is on Skapa fraga/svar page
      Verify previous date
      Click innehall button
@@ -96,5 +96,13 @@ Publish with future date on Q/A page
     Given User is on Skapa fraga/svar page
      When Publish question with future date     200 days
      Then Verify question on topplist page
+     Click innehall button
+     Test teardown delete
+
+Publish with author field blank
+    [Tags]                                      TIPG-800
+    Given User is on Skapa fraga/svar page
+     When Publish question blank author
+     Then Verify author
      Click innehall button
      Test teardown delete

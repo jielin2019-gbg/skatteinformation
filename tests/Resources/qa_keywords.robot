@@ -204,6 +204,9 @@ Publish question
     Click element                           id:edit-status-value
     Click element                           id:edit-submit
 
+Go to content page
+    Go To                                   https://test.skatteinformation.se/admin/content
+
 #*** Keywords *** (date keywords)
 Publish date in future
     [Arguments]                             ${day}
@@ -276,7 +279,7 @@ Save question
     Click on Save button
     Wait Until Page Contains                Q/A testtitle ${RANDOMINT} (Fråga/svar) har skapats.
 Verify question on content page
-    Go To                                   https://test.skatteinformation.se/admin/content
+    Go to content page
     Wait Until Page Contains                Q/A testtitle
 
 #*** Keywords *** (TIPG-724 - test that question that was saved with title, fråga, svar inputs is dispayed correctly)
@@ -448,6 +451,21 @@ Publish question with future date
     [Arguments]                             ${day}
     Publish date in future                  ${day}
     Publish question
+
+#*** Keywords *** (TIPG-800 Publish qa with author field blank)
+Delete author
+    Input Text                              id:edit-uid-0-target-id         ${EMPTY}
+
+Publish question blank author
+    Delete author
+    Publish question
+
+Verify author
+    Go to content page
+    Wait until page contains                Gäst (ej verifierad)
+
+
+
 
 
 

@@ -12,7 +12,6 @@ Suite Teardown                                  Logout And Close All
 
 *** Variables ***
 ${BROWSER}                                      headless chrome
-${Q/A_title}                     testtitle
 
 
 *** Test Cases ***
@@ -90,9 +89,3 @@ Executing delete when confirmation is asked
     Given Create and delete QA
     When Click on final delete
     Then Delete verification
-
-Check newly published Q&A on Start page
-    [Tags]                                      TIPG-807
-    Given Editor logged in front page
-    When Editor check newly published Q/A is displayed on "Start" page
-    Then Verify newly Q/A is displayed

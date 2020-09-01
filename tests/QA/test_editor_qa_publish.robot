@@ -14,6 +14,7 @@ Suite Teardown                                  Logout And Close All
 
 *** Variables ***
 ${BROWSER}                                      headless chrome
+${Q/A_title}                     testtitle
 
 *** Test Cases ***
 Test the information type 'legislation'
@@ -93,3 +94,9 @@ Publish with previous date
      Verify previous date
      Click innehall button
      Test teardown delete
+
+Check newly published Q&A on Start page
+    [Tags]                                      TIPG-807
+    Given Editor logged in front page
+    When Editor check newly published Q/A is displayed on "Start" page
+    Then Verify newly Q/A is displayed

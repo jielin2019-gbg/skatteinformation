@@ -27,7 +27,8 @@ Test the user name with empty string
     User login and in mitt konto
     Enter new name                                      ${EMPTY}
     Click The Submit Button
-    Element Attribute Value Should Be                   id=edit-field-name-0-value  aria-required   true
+    Element Attribute Value Should Be                   xpath://input[contains(@class,'js-text-full')]   aria-required   true
+    #Element Attribute Value Should Be                   id=edit-field-name-0-value  aria-required   true
 
 
 *** Keywords ***
@@ -38,7 +39,8 @@ User login and in mitt konto
 
 Enter new name
     [Arguments]                                         ${name}
-    Input Text                                          id:edit-field-name-0-value        ${name}
+    Input Text                                          xpath://input[contains(@class,'js-text-full')]   ${name}
+    #Input Text                                          id:edit-field-name-0-value
 
 Click The Submit Button
     ${ele}      Get WebElement                          id=edit-submit

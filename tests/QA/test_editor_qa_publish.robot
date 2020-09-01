@@ -13,7 +13,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                       headless chrome
 
 *** Test Cases ***
 Test the information type 'legislation'
@@ -52,8 +52,6 @@ Publish todays date on topplist
      Given Begin at innehall page
      When Publish question with current date
      Then Verify question on topplist page
-     Click innehall button
-     Test teardown delete
      Click innehall button
      Test teardown delete
 

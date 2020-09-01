@@ -327,7 +327,7 @@ Click on final delete
     Click Element                           id:edit-submit
 
 Delete verification
-    Page Should contain                     Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
+    Wait Until Page Contains                     Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
 
 #*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
 Publish question with current date
@@ -339,12 +339,12 @@ Publish question with current date
 Verify question on topplist page
     Click Element                           xpath://*[@id="block-main-menu"]/ul/li[1]/a
     Execute Javascript                      window.scrollTo(0,900)
-    Page Should Contain		                Q/A testtitle ${RANDOMINT}
+    Wait Until Page Contains                Q/A testtitle ${RANDOMINT}
 
 #*** Keywords *** (TIPG-744 - test that publishing question with today's date is on Q/A page)
 Verify question on Q/A page
     Click Q/A button menu bar
-    Page Should Contain		                Q/A testtitle ${RANDOMINT}
+    Wait Until Page Contains		                Q/A testtitle ${RANDOMINT}
 
 #*** Keywords *** (TIPG-745 - test that publishing question with date and time empty)
 Delete date
@@ -362,11 +362,11 @@ Publish with question date and time blank
 
 Verify question published with todays date
      Click Q/A button menu bar
-     Page Should Contain		            Q/A testtitle ${RANDOMINT}
+     Wait Until Page Contains	            Q/A testtitle ${RANDOMINT}
      ${date}=                               Get Current Date
-     ${format_date}                         Convert Date       ${date}  result_format=%d %b %Y
+     ${format_date}                         Convert Date       ${date}  result_format=%-d %b %Y
      ${lowercase_date}                      Convert to Lower Case                ${format_date}
-     Page Should contain				    ${lowercase_date}
+     Wait Until Page contains			    ${lowercase_date}
 
 #*** Keywords *** (TIPG-755 verify the information type 'legislation')
 Verify QA legislation
@@ -421,6 +421,6 @@ Click on publish and save
     Click element                           id:edit-submit
 
 Verify error message
-    Page should contain                     Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
+    Wait Until Page contains                Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
 
 

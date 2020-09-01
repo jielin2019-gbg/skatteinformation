@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     test functionality for the editing of Notis
 Library           SeleniumLibrary
+Library           String
 Resource	  ../Resources/login_keywords.robot
 Resource	  ../Resources/login_variables.robot
 Test Setup  Go To Page
@@ -29,6 +30,9 @@ Saving an article
     Input Text                  xpath://*[@id="edit-title-0-value"]      Test Notice
     Click Element               id:edit-submit
     Wait Until Page Contains    Test Notice
+    ${url} =                    Get Location
+    ${ID} =                     Get Substring  ${url}  40  45
+    Set Global Variable         ${ID}
 
     #Go to content page to edit the Notis
     Go to                       https://test.skatteinformation.se/admin/content
@@ -43,4 +47,9 @@ Saving an article
     Click Element               id:edit-submit
     Wait Until Page Contains    Test Notice (Notis) har uppdaterats.
 
-    
+    #Delete notice
+    Go To                       https://test.skatteinformation.se/node/${ID}/delete
+    Wait Until Page Contains    Är du säker på att du vill radera content item
+    Click Element               id:edit-submit
+    Wait Until Page Contains    har raderats.
+

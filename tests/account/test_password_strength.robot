@@ -10,13 +10,15 @@ Suite Teardown                                          Logout And Close All
 
 
 *** Variables ***
-${BROWSER}                                              headlesschrome
+${BROWSER}                                              chrome
 ${PASS_STRENGTH}                                        //div[@class='password-strength']
 ${NEW_PASS_ID}                                          id:edit-pass-pass1
 
 
 *** Test Cases ***
 Test password less than 10char
+    [Documentation]                                     Verifying less than 10 characters in passwordfield generates
+    ...                                                 between 0%-50% width password strength bar and displays 'Svag' password strength.
     [Tags]                                              PASSWEAK
     Input Text                                          ${NEW_PASS_ID}       aaAA99!!
     Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Svag
@@ -31,6 +33,9 @@ Test password less than 10char
     Check Strength Meter                                0
 
 Test password 12char of one type
+    [Documentation]                                     Verifying 12 characters of one type in passwordfield generates
+    ...                                                 60% width password strength bar and displays 'Tillräcklig' password strength.
+    [Tags]                                              PASSADEQUATE
     Input Text                                          ${NEW_PASS_ID}       abcdefghijkl
     Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Tillräcklig
     Check Strength Meter                                60
@@ -44,6 +49,9 @@ Test password 12char of one type
     Check Strength Meter                                60
 
 Test password 12char + 2 other requisites
+    [Documentation]                                     Verifying 12 characters and 2 other requisites in passwordfield generates
+    ...                                                 75% width password strength bar and displays 'Bra' password strength.
+    [Tags]                                              PASSGOOD
     Input Text                                          ${NEW_PASS_ID}       123abc456def
     Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Bra
     Check Strength Meter                                75
@@ -53,6 +61,9 @@ Test password 12char + 2 other requisites
     Check Strength Meter                                75
 
 Test password 12char + 3 other requisites
+    [Documentation]                                     Verifying 12 characters and 3 other requisites in passwordfield generates
+    ...                                                 between 87.5%-100% width password strength bar and displays 'Stark' password strength.
+    [Tags]                                              PASSSTRONG
     Input Text                                          ${NEW_PASS_ID}       123abc456DEF
     Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Stark
     Check Strength Meter                                87.5
@@ -62,6 +73,9 @@ Test password 12char + 3 other requisites
     Check Strength Meter                                87.5
 
 Test password all requisites
+    [Documentation]                                     Verifying all requisites in passwordfield generates 100% width
+    ...                                                 password strength bar and displays 'Stark' password strength.
+    [Tags]                                              PASSSTRONG
     Input Text                                          ${NEW_PASS_ID}       abc123DEF!"#
     Element Should Contain                              ${PASS_STRENGTH}     Lösenordsstyrka: Stark
     Check Strength Meter                                100

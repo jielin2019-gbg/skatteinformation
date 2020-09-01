@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Testing the Edit Button
 Library           SeleniumLibrary
+Library           String
 Resource	  ../Resources/login_keywords.robot
 Resource	  ../Resources/login_variables.robot
 Test Setup	     Begain Web Test
@@ -22,6 +23,22 @@ User is able to edit the article
        Login Editor
        Wait Until Page Contains        infotiv-editor
        Go To                          https://test.skatteinformation.se/admin/content
-	   Click Element                  xpath://a[contains(text(),'testartikel')]
+       #Go to Create Article
+       Go to                          https://test.skatteinformation.se/node/add/article
+       #Input text in Title
+       Input Text                     xpath://*[@id="edit-title-0-value"]     Test artikel
+       #Save article
+       Click Element                  id:edit-submit
+       #Check if article is saved
+       Wait Until Page Contains       Test artikel (Artikel) har skapats.
+       ${url} =                       Get Location
+       ${ID} =                        Get Substring  ${url}  42  47
+       Set Global Variable            ${ID}
+	   Click Element                  xpath://a[contains(text(),'Test artikel')]
 	   Click Element                  xpath://*[@id="block-skatteinfo-local-tasks"]/ul/li[2]/a
-       Wait Until Page Contains       Redigera Artikel testartikel
+       Wait Until Page Contains       Redigera Artikel Test artikel
+       #Remove created article
+       Go To                          https://test.skatteinformation.se/node/${ID}/delete
+       Wait Until Page Contains       Är du säker på att du vill radera content item Test artikel?
+       Click Element                  id:edit-submit
+       Wait Until Page Contains       Artikel Test artikel har raderats.

@@ -161,7 +161,7 @@ Editor logged in front page
     Verify logged in on editor page
 
 Verify logged in on editor page
-    Page Should Contain                     Hantera
+    Wait Until Page Contains                Hantera
 
 Innehall page is shown
     ${url_Q/A}                              Get Location
@@ -189,10 +189,10 @@ Click on Save button
     Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
 
 Verify delete alert page
-    Page Should Contain                     Är du säker på att du vill radera content item
+    Wait Until Page Contains                Är du säker på att du vill radera content item
 
 Verify the Edit page
-    Page Should Contain                     Redigera Fråga/svar Q/A
+    Wait Until Page Contains                Redigera Fråga/svar Q/A
 
 Go to article
     [Arguments]                             ${article_name}
@@ -293,8 +293,8 @@ Show the whole question
 
 Verify correct question
     Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
-    Page Should Contain                     testquestion
-    Page Should Contain                     testanswer
+    Wait Until Page Contains                testquestion
+    Wait Until Page Contains                testanswer
 
 #*** Keywords *** (TIPG-728 Fraga/Svar link)
 Verify fraga/svar link
@@ -372,7 +372,7 @@ Verify question published with todays date
 
 Verify previous date
      Click Element               xpath://*[@id="edit-created-0-value-date"]
-     ${format_date}              Convert Date     2014-06-11       result_format=%Y-%m-%d
+     ${format_date}              Convert Date     2014-06-11       result_format=%m.%d.%Y
      Input Text                  id:edit-created-0-value-date            ${format_date}
      Select Publish chekbox
      Click on Save button

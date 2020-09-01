@@ -17,5 +17,4 @@ User can be able to navigate to 3:12 link
     [Tags]           Test_3-12
     Login User
     Check Start Page Loaded
-    Verify the user is able to navigate to 3:12 link
-    Verify the user is able to navigate when clicks on any of the popular topic of 3:12 link
+    Process Shortcut For Links   2   12-reglerna

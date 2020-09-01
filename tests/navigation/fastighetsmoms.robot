@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation  Checking navigation link 3:12
+Documentation  Checking navigation link fastighetsmoms link
 Resource       ../Resources/navigation_keywords.robot
 Resource       ../Resources/navigation_variables.robot
 Resource       ../Resources/login_keywords.robot
@@ -15,6 +15,5 @@ User can navigate to Fastighetsmoms link
     [Tags]           Test_Fastighetsmoms
     Login User
     Check Start Page Loaded
-    Verify the user is able to navigate to Fastighetsmoms link
-    Verify the user is able to navigate when clicks on any of the popular topic of Fastighetsmoms link
+    Process Shortcut For Links   3   fastighet
 

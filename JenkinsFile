@@ -4,7 +4,7 @@ pipeline {
    stage('Account') {
       steps {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-          sh 'echo here will be robot -d results --variable BROWSER:headlesschrome ./tests/account'
+          sh 'robot -d results --variable BROWSER:headlesschrome ./tests/account'
         }
       }
     }

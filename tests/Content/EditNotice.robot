@@ -25,16 +25,22 @@ Saving an article
     Login Editor
     Wait Until Page Contains    infotiv-editor
 
+    Go to                       https://test.skatteinformation.se/node/add/short_story
+    Input Text                  xpath://*[@id="edit-title-0-value"]      Test Notice
+    Click Element               id:edit-submit
+    Wait Until Page Contains    Test Notice
+
     #Go to content page to edit the Notis
     Go to                       https://test.skatteinformation.se/admin/content
-    Click Link                  test notice
+    Click Link                  Test Notice
     Click Element               xpath://*[@id="block-skatteinfo-local-tasks"]/ul/li[2]/a
-    Wait Until Page Contains    Redigera Notis test notice
+    Wait Until Page Contains    Redigera Notis Test Notice
 
     # Edit the notice description
     Input Text                  xpath://*[@id="edit-field-preamble-0-value"]     Description of test notice has been changed.
 
     #Save the edited Notice
     Click Element               id:edit-submit
-    Wait Until Page Contains    test notice (Notis) har uppdaterats.
+    Wait Until Page Contains    Test Notice (Notis) har uppdaterats.
 
+    

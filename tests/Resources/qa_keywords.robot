@@ -443,7 +443,7 @@ Select information type position taken
 Select Checkbox position taken
     Select Checkbox                         id:informationstyp-110
 
-#*** Keywords *** (TIPG-799 verify the error message after publish date or time blank)
+#*** Keywords *** (TIPG-799 Publish qa with date in the future)
 Publish question with future date
     [Arguments]                             ${day}
     Publish date in future                  ${day}

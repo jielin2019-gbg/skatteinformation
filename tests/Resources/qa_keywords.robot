@@ -207,17 +207,20 @@ Publish date in future
     [Arguments]                             ${day}
     ${date}=                                Get Current Date
     ${result_date}                          Add Time To Date             ${date}   ${day}
-    Input Text                              id:edit-created-0-value-date            ${result_date}
+    ${format_date}                          Convert Date       ${date}    result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
 
 Publish date back in time
     [Arguments]                             ${day}
     ${date}=                                Get Current Date
     ${result_date}                          Subtract Time From Date          ${date}   ${day}
-    Input Text                              id:edit-created-0-value-date            ${result_date}
+    ${format_date}                          Convert Date       ${date}    result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
 
 Publish date current date
     ${date}=                                Get Current Date
-    Input Text                              id:edit-created-0-value-date            ${date}
+    ${format_date}                          Convert Date       ${date}    result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
 
 #*** Keywords *** (TIPG-719 'delete' button of the Q/A in the content page list)
 Q/A displays in content page list

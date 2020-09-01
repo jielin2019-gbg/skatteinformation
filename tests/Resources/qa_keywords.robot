@@ -442,3 +442,4 @@ Editor check newly published Q/A is displayed on "Start" page
 
 Verify newly Q/A is displayed
     Page Should Contain		                Q/A testtitle
+

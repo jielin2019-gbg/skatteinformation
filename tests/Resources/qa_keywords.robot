@@ -159,7 +159,7 @@ Editor logged in front page
     Verify logged in on editor page
 
 Verify logged in on editor page
-    Page Should Contain                     Hantera
+    Wait Until Page Contains                Hantera
 
 Innehall page is shown
     ${url_Q/A}                              Get Location
@@ -187,10 +187,10 @@ Click on Save button
     Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
 
 Verify delete alert page
-    Page Should Contain                     Är du säker på att du vill radera content item
+    Wait Until Page Contains                Är du säker på att du vill radera content item
 
 Verify the Edit page
-    Page Should Contain                     Redigera Fråga/svar Q/A
+    Wait Until Page Contains                Redigera Fråga/svar Q/A
 
 Go to article
     [Arguments]                             ${article_name}
@@ -200,22 +200,32 @@ Go to skapa fraga/svar page
     Click Element                           xpath://*[@id="block-seven-local-actions"]/ul/li/a
     Click Element                           xpath://*[@id="block-seven-content"]/ul/li[3]/a/span
 
+Publish question
+    Click element                           id:edit-status-value
+    Click element                           id:edit-submit
+
+Go to content page
+    Go To                                   https://test.skatteinformation.se/admin/content
+
 #*** Keywords *** (date keywords)
 Publish date in future
     [Arguments]                             ${day}
     ${date}=                                Get Current Date
     ${result_date}                          Add Time To Date             ${date}   ${day}
-    Input Text                              id:edit-created-0-value-date            ${result_date}
+    ${format_date}                          Convert Date       ${result_date}    result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
 
 Publish date back in time
     [Arguments]                             ${day}
     ${date}=                                Get Current Date
     ${result_date}                          Subtract Time From Date          ${date}   ${day}
-    Input Text                              id:edit-created-0-value-date            ${result_date}
+    ${format_date}                          Convert Date       ${resulet_date}    result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
 
 Publish date current date
     ${date}=                                Get Current Date
-    Input Text                              id:edit-created-0-value-date            ${date}
+    ${format_date}                          Convert Date       ${date}    result_format=%m.%d.%Y
+    Input Text                              id:edit-created-0-value-date            ${format_date}
 
 #*** Keywords *** (TIPG-719 'delete' button of the Q/A in the content page list)
 Q/A displays in content page list
@@ -269,7 +279,7 @@ Save question
     Click on Save button
     Wait Until Page Contains                Q/A testtitle ${RANDOMINT} (Fråga/svar) har skapats.
 Verify question on content page
-    Go To                                   https://test.skatteinformation.se/admin/content
+    Go to content page
     Wait Until Page Contains                Q/A testtitle
 
 #*** Keywords *** (TIPG-724 - test that question that was saved with title, fråga, svar inputs is dispayed correctly)
@@ -288,8 +298,8 @@ Show the whole question
 
 Verify correct question
     Page Should Contain Element             xpath://*[@class='faq__content js-faq__content']
-    Page Should Contain                     testquestion
-    Page Should Contain                     testanswer
+    Wait Until Page Contains                testquestion
+    Wait Until Page Contains                testanswer
 
 #*** Keywords *** (TIPG-728 Fraga/Svar link)
 Verify fraga/svar link
@@ -327,7 +337,7 @@ Click on final delete
     Click Element                           id:edit-submit
 
 Delete verification
-    Page Should contain                     Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
+    Wait Until Page Contains                Fråga/svar Q/A testtitle ${RANDOMINT} har raderats.
 
 #*** Keywords *** (TIPG-743 - Clickick avbryt on delete confirmation page)
 Click on avbryt
@@ -336,23 +346,21 @@ Click on avbryt
 Verify question still on content page
     Verify question on content page
 
-
 #*** Keywords *** (TIPG-743 - test that publishing question with today's date is on topplist page)
 Publish question with current date
     Add question with only title
     Publish date current date
-    Select Checkbox                         id:edit-status-value
-    Click Element                           xpath:/html/body/div[2]/div/main/div[3]/div/form/div/div[3]/div/div[2]/input
+    Publish question
 
 Verify question on topplist page
     Click Element                           xpath://*[@id="block-main-menu"]/ul/li[1]/a
     Execute Javascript                      window.scrollTo(0,900)
-    Page Should Contain		                Q/A testtitle ${RANDOMINT}
+    Wait Until Page Contains                Q/A testtitle ${RANDOMINT}
 
 #*** Keywords *** (TIPG-744 - test that publishing question with today's date is on Q/A page)
 Verify question on Q/A page
     Click Q/A button menu bar
-    Page Should Contain		                Q/A testtitle ${RANDOMINT}
+    Wait Until Page Contains		        Q/A testtitle ${RANDOMINT}
 
 #*** Keywords *** (TIPG-745 - test that publishing question with date and time empty)
 Delete date
@@ -370,16 +378,31 @@ Publish with question date and time blank
 
 Verify question published with todays date
      Click Q/A button menu bar
-     Page Should Contain		            Q/A testtitle ${RANDOMINT}
+     Wait Until Page Contains	            Q/A testtitle ${RANDOMINT}
      ${date}=                               Get Current Date
-     ${format_date}                         Convert Date       ${date}  result_format=%d %b %Y
+     ${format_date}                         Convert Date       ${date}  result_format=%-d %b %Y
      ${lowercase_date}                      Convert to Lower Case                ${format_date}
-     Page Should contain				    ${lowercase_date}
+     Wait Until Page contains			    ${lowercase_date}
+
+#*** Keywords *** (TIPG-751 verify the error message after publish date or time blank)
+
+Verify error message
+    Wait Until Page contains                Datumet Författad är ogiltigt. Var vänlig ange ett datum på formatet
+
+#*** Keywords *** (TIPG-753 Publishing for the previous date)
+
+Verify previous date
+     Click Element                          xpath://*[@id="edit-created-0-value-date"]
+     ${format_date}                         Convert Date     2014-06-11       result_format=%m.%d.%Y
+     Input Text                             id:edit-created-0-value-date            ${format_date}
+     Publish question
+     Click Link                             Start
+     ${toplistan_date}                      Get WebElements           class:meta-item__data
+     Should Not Be Equal                    ${format_date}            ${toplistan_date}
 
 #*** Keywords *** (TIPG-755 verify the information type 'legislation')
 Verify QA legislation
       ${QA_legislation}                     Get Text                xpath://*[@id="block-skatteinfo-content"]/div/div/div/div/div[1]/article/div/div[1]/h1/span
-      Log                                   ${QA_legislation}
       Should Be Equal                       ${QA_legislation}       Q/A testtitle ${RANDOMINT}
 
 User is on Skapa fraga/svar page
@@ -422,6 +445,27 @@ Select information type position taken
 
 Select Checkbox position taken
     Select Checkbox                         id:informationstyp-110
+
+#*** Keywords *** (TIPG-799 Publish qa with date in the future)
+Publish question with future date
+    [Arguments]                             ${day}
+    Publish date in future                  ${day}
+    Publish question
+
+#*** Keywords *** (TIPG-800 Publish qa with author field blank)
+Delete author
+    Input Text                              id:edit-uid-0-target-id         ${EMPTY}
+
+Publish question blank author
+    Delete author
+    Publish question
+
+Verify author
+    Go to content page
+    Wait until page contains                Gäst (ej verifierad)
+
+
+
 
 
 

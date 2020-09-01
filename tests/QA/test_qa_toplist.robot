@@ -11,7 +11,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
-${BROWSER}                                      headless chrome
+${BROWSER}                                      headless fiefox
 
 *** Test Cases ***
 Test the Q/A Toplistan section
@@ -22,6 +22,7 @@ Test the Q/A Toplistan section
 
 Test Q/A Toplist paragraph
     [Tags]                                      TIPG-601   Test Q/A Toplist paragraph
+    Maximize Browser Window
     Given Begin at Toplist
     When Mouse over question
     Then Q/A paragraph is shown

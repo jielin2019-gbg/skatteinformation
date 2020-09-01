@@ -18,7 +18,6 @@ ${BROWSER}                                       headless chrome
 *** Test Cases ***
 Test the information type 'legislation'
      [Tags]                                      TIPG-755 Information type 'legislation'
-     #set selenium speed                          500ms
      User is on Skapa fraga/svar page
      Select information type legislation
      Publish with information type
@@ -29,7 +28,6 @@ Test the information type 'legislation'
 
 Test the information type 'legal Cases'
      [Tags]                                      TIPG-760 Information type 'legal cases'
-     #set selenium speed                          500ms
      User is on Skapa fraga/svar page
      Select information type legal cases
      Publish with information type
@@ -40,7 +38,6 @@ Test the information type 'legal Cases'
 
 Test the information type 'position taken'
      [Tags]                                      TIPG-761 Information type 'position taken'
-     #set selenium speed                          500ms
      User is on Skapa fraga/svar page
      Select information type position taken
      Publish with information type
@@ -77,25 +74,27 @@ Publish date blank
     [Tags]                                      TIPG-751
     Given User is on Skapa fraga/svar page
     When Delete date
-    And Click on publish and save
+     And Publish question
     Then Verify error message
 
 Publish time blank
     [Tags]                                      TIPG-751
     Given User is on Skapa fraga/svar page
     When Delete time
-    And Click on publish and save
+     And Publish question
     Then Verify error message
-
-Publish with future date on Q/A page
-    [Tags]                                      TIPG-799
-    Given Begin at innehall page
-     When Publish question with current date
-     Then Verify question on Q/A page
 
 Publish with previous date
      [Tags]                                     TIPG-753 Publishing for the previous date
      User is on Skapa fraga/svar page
      Verify previous date
+     Click innehall button
+     Test teardown delete
+
+Publish with future date on Q/A page
+    [Tags]                                      TIPG-799
+    Given User is on Skapa fraga/svar page
+     When Publish question with future date     200 days
+     Then Verify question on topplist page
      Click innehall button
      Test teardown delete

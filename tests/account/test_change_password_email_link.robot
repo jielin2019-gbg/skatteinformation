@@ -1,6 +1,5 @@
 *** Settings ***
-Documentation                                           As a user I want to reset my password through registered gmail so that I can log in
-...                                                     (when I have forgotten my password)
+Documentation                                           Reset my password through registered gmail
 Library                                                 SeleniumLibrary
 Library                                                 ImapLibrary2
 Library                                                 String
@@ -13,7 +12,7 @@ Test Setup                                              Delete All Old Emails
 Test Teardown                                           Logout And Close All
 
 *** Variables ***
-${BROWSER} =                                            chrome
+${BROWSER}                                              chrome
 ${mailbox_host}                                         imap.gmail.com
 
 *** Test Cases ***

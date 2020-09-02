@@ -465,10 +465,17 @@ Verify author
     Wait until page contains                Gäst (ej verifierad)
 
 #*** Keywords *** (TIPG-807 verify newly Q/A is displayed on 'Start' page)
+Publish new Q/A and go to Start page
+    Begin at innehall page
+    Publish with question date and time blank
+    Click Link                            Start
 Editor check newly published Q/A is displayed on "Start" page
-    Input text                              id:edit-search  ${Q/A_title}
-    Click Button                            id:edit-submit-search
-    Execute Javascript                      window.scrollBy(1000,9000)
-    Sleep                                   1s
+    Input text                            id:edit-search        Q/A testtitle ${RANDOMINT}
+    Click Button                          id:edit-submit-search
+    Execute Javascript                    window.scrollBy(1000,9000)
+    Sleep                                 1s
+
+Verify newly Q/A is displayed
+    Page Should Contain		              Q/A testtitle ${RANDOMINT}
 
 

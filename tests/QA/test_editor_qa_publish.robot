@@ -109,7 +109,10 @@ Publish with author field blank
 
 Check newly published Q&A on Start page
     [Tags]                                      TIPG-807
-    Given Editor logged in front page
+    Given Publish new Q/A and go to Start page
     When Editor check newly published Q/A is displayed on "Start" page
     Then Verify newly Q/A is displayed
+    Click innehall button
+    Test teardown delete
+
 

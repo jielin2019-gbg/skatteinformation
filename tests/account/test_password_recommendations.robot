@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation                                           Change daily email, weekly email settings in Mitt Konto
+Documentation                                           Change daily email and weekly email settings in Mitt Konto
 Library                                                 SeleniumLibrary
 Resource	                                            ../Resources/login_keywords.robot
 Resource	                                            ../Resources/login_variables.robot
@@ -27,12 +27,14 @@ ${REC_BOX}                                              //div[@class='password-s
 
 Recommendation box 'atleast 12 characters' tip removal
     [Documentation]                                     Checking the visual text in the password recommendations
-    Enter password                                      123456789101           #12 characters
+    [Tags]                                              REQBOX
+    Enter password                                      123456789101
     Recommendation box should not contain               Make it at least 12 characters
 
 Recommendation box 'atleast 12 characters' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
-    Enter password                                      123456789101           #12 characters
+    [Tags]                                              REQBOX
+    Enter password                                      123456789101
     Recommendation box should not contain               Make it at least 12 characters
     Enter password                                      .
     #Clear Password
@@ -40,13 +42,13 @@ Recommendation box 'atleast 12 characters' tip reappearing
 
 Recommendation box 'små bokstäver' tip removal
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_3
+    [Tags]                                              REQBOX
     Enter password                                      qwerty
     Recommendation box should not contain               Lägg till små bokstäver
 
 Recommendation box 'små bokstäver' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_4
+    [Tags]                                              REQBOX
     Enter password                                      qwerty
     Recommendation box should not contain               Lägg till små bokstäver
     Enter password                                      .
@@ -55,13 +57,13 @@ Recommendation box 'små bokstäver' tip reappearing
 
 Recommendation box 'versaler' tip removal
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_5
+    [Tags]                                              REQBOX
     Enter password                                      QWERTY
     Recommendation box should not contain               Lägg till versaler
 
 Recommendation box 'versaler' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_6
+    [Tags]                                              REQBOX
     Enter password                                      QWERTY
     Recommendation box should not contain               Lägg till versaler
     #Clear Password
@@ -70,13 +72,13 @@ Recommendation box 'versaler' tip reappearing
 
 Recommendation box 'siffror' tip removal
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_7
+    [Tags]                                              REQBOX
     Enter password                                      123456
     Recommendation box should not contain               Lägg till siffror
 
 Recommendation box 'siffror' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_8
+    [Tags]                                              REQBOX
     Enter password                                      123456
     Recommendation box should not contain               Lägg till siffror
     #Clear password
@@ -85,13 +87,13 @@ Recommendation box 'siffror' tip reappearing
 
 Recommendation box 'skiljetecken' tip removal
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_9
+    [Tags]                                              REQBOX
     Enter password                                      !-#%/!
     Recommendation box should not contain               Lägg till skiljetecken
 
 Recommendation box 'skiljetecken' tip reappearing
     [Documentation]                                     Checking the visual text in the password recommendations
-    [Tags]                                              test_10
+    [Tags]                                              REQBOX
     Enter password                                      !-#%/!
     Recommendation box should not contain               Lägg till skiljetecken
     Enter password                                      a
@@ -100,7 +102,7 @@ Recommendation box 'skiljetecken' tip reappearing
 
 Recommendation box no password tips showing
     [Documentation]                                     Checking that no recommendations are showing when all recommends are fulfilled
-    [Tags]                                              test_11
+    [Tags]                                              REQBOX
     Enter password                                      Qwerty123456!
     Recommendation box should not contain               Make it at least 12 characters
     Recommendation box should not contain               Lägg till små bokstäver
@@ -136,4 +138,3 @@ Clear Password
     Scroll Element Into View                            id:edit-submit
     Click Element                                       id:edit-pass-pass1
     Press Keys                                          None     BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE+BACKSPACE
-

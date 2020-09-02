@@ -13,12 +13,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
-<<<<<<< HEAD
 ${BROWSER}                                       headless chrome
-=======
-${BROWSER}                                      headless chrome
-${Q/A_title}                     testtitle
->>>>>>> b756d7392899ea62c3722f83d21ff9a00d249528
 
 *** Test Cases ***
 Test the information type 'legislation'

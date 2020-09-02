@@ -464,10 +464,6 @@ Verify author
     Go to content page
     Wait until page contains                Gäst (ej verifierad)
 
-
-
-
-
 #*** Keywords *** (TIPG-807 verify newly Q/A is displayed on 'Start' page)
 Editor check newly published Q/A is displayed on "Start" page
     Input text                              id:edit-search  ${Q/A_title}
@@ -475,6 +471,4 @@ Editor check newly published Q/A is displayed on "Start" page
     Execute Javascript                      window.scrollBy(1000,9000)
     Sleep                                   1s
 
-Verify newly Q/A is displayed
-    Page Should Contain		                Q/A testtitle
 

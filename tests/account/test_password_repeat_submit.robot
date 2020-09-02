@@ -9,8 +9,8 @@ Test Setup                                                      Skatteinformatio
 Test Teardown                                                   Logout And Close All
 
 *** Variables ***
-${BROWSER} =                                                    chrome
-
+${BROWSER}                                                      headlesschrome
+# If you need to run this test manually without headless then uncomment line 43
 
 *** Test Cases ***
 Enter The Same Password In "Lösenord" And "Bekräfta lösenord"
@@ -40,31 +40,30 @@ The User Visit Mitt Konto Settings
     Click Link                                                  link:Mitt konto
 
 Enter The Current Password In Nuvarande lösenord Input Field
-    Wait Until Element Is Visible                               id:edit-current-pass     timeout= 3 min
-    Input Text                                                  id:edit-current-pass            ${RESET_PASSWORD}
+#    Sleep                                                       3
+    Input Text                                                  id:edit-current-pass    ${PASSWORD}
 
 Enter The New Password In Lösenord Input Field
-    Wait Until Element Is Visible                               id:edit-pass-pass1      timeout= 3 min
-    Input Text      id:edit-pass-pass1                          ${RESET_PASSWORD}
+    Scroll Element Into View                                    id:edit-pass-pass1
+    Input Text                                                  id:edit-pass-pass1      ${PASSWORD}
 
 Enter A Different Password In Bekräfta lösenord Input Field
-    Wait Until Element Is Visible                               id:edit-pass-pass2      timeout= 3 min
-    Input Text      id:edit-pass-pass2                          ${NEW_RESET_EMAIL_PASSWORD}
+    Scroll Element Into View                                    id:edit-pass-pass2
+    Input Text                                                  id:edit-pass-pass2      ${NEW_RESET_EMAIL_PASSWORD}
 
 Enter The Same Password In Bekräfta lösenord Input Field
-    Wait Until Element Is Visible                               id:edit-pass-pass2      timeout= 3 min
-    Input Text      id:edit-pass-pass2                          ${RESET_PASSWORD}
+    Scroll Element Into View                                    id:edit-pass-pass2
+    Input Text                                                  id:edit-pass-pass2      ${PASSWORD}
 
 Save The Changes Of Password
     [Arguments]  ${repeated_password}
     Page Should Contain                                         Lösenorden stämmer överens: ${repeated_password}
     ${ele}      Get WebElement                                  id:edit-submit
-    Execute Javascript                                          arguments[0].click();       ARGUMENTS    ${ele}
+    Execute Javascript                                          arguments[0].click();   ARGUMENTS    ${ele}
 
 Successfully Change The Password
-    sleep       1
+    Sleep                                                       2
     Page Should Contain                                         Ändringarna har sparats
 
 Fail To Change The Password
     Page Should Contain                                         De angivna lösenorden stämmer inte överens
-

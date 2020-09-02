@@ -6,6 +6,7 @@ Resource	                            ../Resources/login_keywords.robot
 Resource	                            ../Resources/login_variables.robot
 Resource                                ../Resources/setup_keywords.robot
 Resource                                ../Resources/teardown_keywords.robot
+Resource                                ../Resources/buttons_keywords.robot
 Suite Setup                             Login to Skatteinformation and go to account settings
 Suite Teardown                          Logout And Close All
 
@@ -35,7 +36,7 @@ No password change when fields is left empty
     Clear Element Text                  ${PASSWORD_FIELD_ID}
     Input Text                          ${CONFIRM_PASSWORD_FIELD_ID}    fighter
     Clear Element Text                  ${CONFIRM_PASSWORD_FIELD_ID}
-    Click The Submit Button
+    Click Submit Button
     Log Out Forced
 
     #To confirm no change to password relog with default password
@@ -43,12 +44,7 @@ No password change when fields is left empty
     Location Should Contain             ${URL}start
 
 *** Keywords ***
-
 Login to Skatteinformation and go to account settings
     Skatteinformation Website Is Open
     Login ResetUser
     Go To                               https://test.skatteinformation.se/user/8629/edit
-
-Click The Submit Button
-    ${ele}                              Get WebElement              id=edit-submit
-    Execute Javascript                  arguments[0].click();       ARGUMENTS    ${ele}

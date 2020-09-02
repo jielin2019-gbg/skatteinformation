@@ -41,11 +41,11 @@ The User Visit Mitt Konto Settings
 
 Enter The Current Password In Nuvarande lösenord Input Field
     Wait Until Element Is Visible                               id:edit-current-pass     timeout= 3 min
-    Input Text                                                  id:edit-current-pass            ${RESET_PASSWORD}
+    Input Text                                                  id:edit-current-pass            ${PASSWORD}
 
 Enter The New Password In Lösenord Input Field
     Wait Until Element Is Visible                               id:edit-pass-pass1      timeout= 3 min
-    Input Text      id:edit-pass-pass1                          ${RESET_PASSWORD}
+    Input Text      id:edit-pass-pass1                          ${PASSWORD}
 
 Enter A Different Password In Bekräfta lösenord Input Field
     Wait Until Element Is Visible                               id:edit-pass-pass2      timeout= 3 min
@@ -53,7 +53,7 @@ Enter A Different Password In Bekräfta lösenord Input Field
 
 Enter The Same Password In Bekräfta lösenord Input Field
     Wait Until Element Is Visible                               id:edit-pass-pass2      timeout= 3 min
-    Input Text      id:edit-pass-pass2                          ${RESET_PASSWORD}
+    Input Text      id:edit-pass-pass2                          ${PASSWORD}
 
 Save The Changes Of Password
     [Arguments]  ${repeated_password}

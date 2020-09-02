@@ -7,7 +7,7 @@ Test Setup                              Skatteinformation Website Is Open
 Test Teardown                           Close All Browsers
 
 *** Variables ***
-${BROWSER} =                            chrome
+${BROWSER}                              chrome
 
 *** Test Cases ***
 Check if återställ mitt lösenord button works

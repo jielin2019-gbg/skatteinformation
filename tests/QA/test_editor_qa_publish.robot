@@ -13,7 +13,12 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
+<<<<<<< HEAD
 ${BROWSER}                                       headless chrome
+=======
+${BROWSER}                                      headless chrome
+${Q/A_title}                     testtitle
+>>>>>>> b756d7392899ea62c3722f83d21ff9a00d249528
 
 *** Test Cases ***
 Test the information type 'legislation'
@@ -106,3 +111,10 @@ Publish with author field blank
      Then Verify author
      Click innehall button
      Test teardown delete
+
+Check newly published Q&A on Start page
+    [Tags]                                      TIPG-807
+    Given Editor logged in front page
+    When Editor check newly published Q/A is displayed on "Start" page
+    Then Verify newly Q/A is displayed
+

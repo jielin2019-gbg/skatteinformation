@@ -487,7 +487,7 @@ Editor check newly published Q/A is displayed on "Sök innehåll" page
     Input text                            id:edit-search        Q/A testtitle ${RANDOMINT}
     Click Button                          id:edit-submit-search
     Execute Javascript                    window.scrollBy(1000,9000)
-    Sleep                                 1s
+    Sleep                                 2s
 
 Verify newly Q/A is displayed on Sök innehåll page
     Page Should Contain		              Q/A testtitle ${RANDOMINT}

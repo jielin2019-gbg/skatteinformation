@@ -13,7 +13,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
-${BROWSER}                                       headless chrome
+${BROWSER}                                        chrome
 
 *** Test Cases ***
 Test the information type 'legislation'
@@ -115,4 +115,11 @@ Check newly published Q&A on Start page
     Click innehall button
     Test teardown delete
 
+Check newly published Q&A on Sök innehåll page
+    [Tags]                                       TIPG-809
+    Given Publish new Q/A and go to Sök innehåll page
+    When Editor check newly published Q/A is displayed on "Sök innehåll" page
+    Then Verify newly Q/A is displayed on Sök innehåll page
+    Click innehall button
+    Test teardown delete
 

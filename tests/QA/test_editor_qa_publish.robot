@@ -13,7 +13,7 @@ Test Teardown                                   Log Out Forced
 Suite Teardown                                  Logout And Close All
 
 *** Variables ***
-${BROWSER}                                        chrome
+${BROWSER}                                        headlesschrome
 
 *** Test Cases ***
 Test the information type 'legislation'
@@ -37,7 +37,7 @@ Test the information type 'legal Cases'
      Test teardown delete
 
 Test the information type 'position taken'
-     [Tags]                                      TIPG-761 
+     [Tags]                                      TIPG-761
      User is on Skapa fraga/svar page
      Select information type position taken
      Publish with information type
